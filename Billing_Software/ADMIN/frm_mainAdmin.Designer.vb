@@ -24,13 +24,13 @@ Partial Class frm_mainAdmin
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_logout = New System.Windows.Forms.Button()
+        Me.btn_Reports = New System.Windows.Forms.Button()
+        Me.btn_manageUsers = New System.Windows.Forms.Button()
         Me.btn_manageProduct = New System.Windows.Forms.Button()
         Me.btn_ManageStock = New System.Windows.Forms.Button()
-        Me.btn_manageUsers = New System.Windows.Forms.Button()
-        Me.btn_Reports = New System.Windows.Forms.Button()
-        Me.btn_logout = New System.Windows.Forms.Button()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -58,6 +58,16 @@ Partial Class frm_mainAdmin
         Me.Panel1.Size = New System.Drawing.Size(919, 74)
         Me.Panel1.TabIndex = 1
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(12, 45)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(145, 23)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "Inventory System"
+        '
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.ColumnCount = 5
@@ -78,6 +88,42 @@ Partial Class frm_mainAdmin
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(474, 74)
         Me.TableLayoutPanel1.TabIndex = 2
+        '
+        'btn_logout
+        '
+        Me.btn_logout.FlatAppearance.BorderSize = 0
+        Me.btn_logout.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack
+        Me.btn_logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_logout.Location = New System.Drawing.Point(381, 3)
+        Me.btn_logout.Name = "btn_logout"
+        Me.btn_logout.Size = New System.Drawing.Size(89, 56)
+        Me.btn_logout.TabIndex = 4
+        Me.btn_logout.Text = "Logout"
+        Me.btn_logout.UseVisualStyleBackColor = True
+        '
+        'btn_Reports
+        '
+        Me.btn_Reports.FlatAppearance.BorderSize = 0
+        Me.btn_Reports.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack
+        Me.btn_Reports.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_Reports.Location = New System.Drawing.Point(285, 3)
+        Me.btn_Reports.Name = "btn_Reports"
+        Me.btn_Reports.Size = New System.Drawing.Size(89, 56)
+        Me.btn_Reports.TabIndex = 3
+        Me.btn_Reports.Text = "Reports"
+        Me.btn_Reports.UseVisualStyleBackColor = True
+        '
+        'btn_manageUsers
+        '
+        Me.btn_manageUsers.FlatAppearance.BorderSize = 0
+        Me.btn_manageUsers.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack
+        Me.btn_manageUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_manageUsers.Location = New System.Drawing.Point(193, 3)
+        Me.btn_manageUsers.Name = "btn_manageUsers"
+        Me.btn_manageUsers.Size = New System.Drawing.Size(86, 56)
+        Me.btn_manageUsers.TabIndex = 2
+        Me.btn_manageUsers.Text = "Manage Users"
+        Me.btn_manageUsers.UseVisualStyleBackColor = True
         '
         'btn_manageProduct
         '
@@ -102,52 +148,6 @@ Partial Class frm_mainAdmin
         Me.btn_ManageStock.TabIndex = 1
         Me.btn_ManageStock.Text = "Manage Stock"
         Me.btn_ManageStock.UseVisualStyleBackColor = True
-        '
-        'btn_manageUsers
-        '
-        Me.btn_manageUsers.FlatAppearance.BorderSize = 0
-        Me.btn_manageUsers.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack
-        Me.btn_manageUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_manageUsers.Location = New System.Drawing.Point(193, 3)
-        Me.btn_manageUsers.Name = "btn_manageUsers"
-        Me.btn_manageUsers.Size = New System.Drawing.Size(86, 56)
-        Me.btn_manageUsers.TabIndex = 2
-        Me.btn_manageUsers.Text = "Manage Users"
-        Me.btn_manageUsers.UseVisualStyleBackColor = True
-        '
-        'btn_Reports
-        '
-        Me.btn_Reports.FlatAppearance.BorderSize = 0
-        Me.btn_Reports.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack
-        Me.btn_Reports.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_Reports.Location = New System.Drawing.Point(285, 3)
-        Me.btn_Reports.Name = "btn_Reports"
-        Me.btn_Reports.Size = New System.Drawing.Size(89, 56)
-        Me.btn_Reports.TabIndex = 3
-        Me.btn_Reports.Text = "Reports"
-        Me.btn_Reports.UseVisualStyleBackColor = True
-        '
-        'btn_logout
-        '
-        Me.btn_logout.FlatAppearance.BorderSize = 0
-        Me.btn_logout.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack
-        Me.btn_logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_logout.Location = New System.Drawing.Point(381, 3)
-        Me.btn_logout.Name = "btn_logout"
-        Me.btn_logout.Size = New System.Drawing.Size(89, 56)
-        Me.btn_logout.TabIndex = 4
-        Me.btn_logout.Text = "Logout"
-        Me.btn_logout.UseVisualStyleBackColor = True
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(12, 45)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(145, 23)
-        Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Inventory System"
         '
         'Panel2
         '
