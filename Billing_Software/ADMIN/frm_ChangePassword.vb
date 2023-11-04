@@ -38,7 +38,7 @@ Public Class frm_ChangePassword
         Finally
             conn.Close()
         End Try
-
+        hello
         ' Clear password fields after operation, for security reasons
 
     End Sub
