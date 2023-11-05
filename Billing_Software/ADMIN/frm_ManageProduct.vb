@@ -12,7 +12,7 @@ Public Class frm_ManageProduct
     End Sub
     Sub load_PorductGroup()
         Try
-            cmd rfr
+        
         Catch ex As Exception
 
         End Try
