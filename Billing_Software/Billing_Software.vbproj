@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9D4AC028-5B55-4156-A60C-BA981A833D46}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Billing_Software.frm_addGroup</StartupObject>
+    <StartupObject>Billing_Software.frm_mainCashier</StartupObject>
     <RootNamespace>Billing_Software</RootNamespace>
     <AssemblyName>Billing_Software</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -56,8 +56,9 @@
     <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
       <HintPath>..\packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
     </Reference>
-    <Reference Include="MessagingToolkit.Barcode">
-      <HintPath>..\..\..\ref\MessagingToolkit.Barcode.dll</HintPath>
+    <Reference Include="MessagingToolkit.Barcode, Version=1.8.3.0, Culture=neutral, PublicKeyToken=4d44dd7196d3c1ac, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ref\MessagingToolkit.Barcode.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
@@ -67,6 +68,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ref\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -104,6 +106,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="WindowsBase" />
     <Reference Include="ZstdSharp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
       <HintPath>..\packages\ZstdSharp.Port.0.7.1\lib\net461\ZstdSharp.dll</HintPath>
     </Reference>
@@ -146,10 +149,22 @@
     <Compile Include="ADMIN\frm_ManageProduct.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ADMIN\frm_ManageStock.Designer.vb">
+      <DependentUpon>frm_ManageStock.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ADMIN\frm_ManageStock.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ADMIN\frm_ManageUser.Designer.vb">
       <DependentUpon>frm_ManageUser.vb</DependentUpon>
     </Compile>
     <Compile Include="ADMIN\frm_ManageUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADMIN\frm_updateStock.Designer.vb">
+      <DependentUpon>frm_updateStock.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ADMIN\frm_updateStock.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CASHIER\frm_mainCashier.Designer.vb">
@@ -194,8 +209,17 @@
     <EmbeddedResource Include="ADMIN\frm_ManageProduct.resx">
       <DependentUpon>frm_ManageProduct.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ADMIN\frm_ManageStock.resx">
+      <DependentUpon>frm_ManageStock.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ADMIN\frm_ManageUser.resx">
       <DependentUpon>frm_ManageUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ADMIN\frm_updateStock.resx">
+      <DependentUpon>frm_updateStock.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CASHIER\frm_mainCashier.resx">
+      <DependentUpon>frm_mainCashier.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_login.resx">
       <DependentUpon>frm_login.vb</DependentUpon>

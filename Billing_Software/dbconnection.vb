@@ -1,7 +1,8 @@
 ﻿Imports MySql.Data.MySqlClient
+
 Module dbconnection
     Public conn As New MySqlConnection
-    Dim result As Boolean
+    Public result As Boolean
     Public cmd As New MySqlCommand
     Public da As New MySqlDataAdapter
     Public dt As New DataTable
@@ -9,15 +10,16 @@ Module dbconnection
     Public i As Integer
 
     Public Function dbconn() As Boolean
-        conn.ConnectionString = "server=localhost;username=root;password=;port=3306;database=db_pos"
         Try
-            conn.Open()
-            result = True
-            MsgBox("Connected !", vbInformation)
+            If conn.State = ConnectionState.Closed Then
+                conn.ConnectionString = "server=localhost;username=root;password=;port=3306;database=db_pos"
+                conn.Open()
+                result = True
+                MsgBox("Connected!", vbInformation)
+            End If
         Catch ex As Exception
             result = False
-            MsgBox(ex.Message + "topa", vbExclamation)
-            conn.Close()
+            MsgBox("Server Not Connected: " & ex.Message, vbExclamation)
         End Try
         Return result
     End Function

@@ -7,8 +7,10 @@ Public Class frm_addGroup
 
     Private Sub btn_save_Click(sender As Object, e As EventArgs) Handles btn_save.Click
         Try
-            ' conn.Open()'
-
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+            conn.Open()
             cmd = New MySqlCommand("INSERT INTO `tblGroup`(`progroup`) VALUES (@progroup)", conn)
             cmd.Parameters.Clear()
             cmd.Parameters.AddWithValue("@progroup", txt_group.Text)
@@ -25,7 +27,7 @@ Public Class frm_addGroup
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-        conn.Close()
+
         frm_ManageProduct.load_PorductGroup()
 
     End Sub
