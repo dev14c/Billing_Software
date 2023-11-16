@@ -22,7 +22,7 @@ Partial Class frm_ManageProduct
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -32,6 +32,10 @@ Partial Class frm_ManageProduct
         Me.txt_search = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.txt_rate_per = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.txt_purchase_price = New System.Windows.Forms.TextBox()
         Me.btn_AddGroup = New System.Windows.Forms.Button()
         Me.btn_clear = New System.Windows.Forms.Button()
         Me.btn_delete = New System.Windows.Forms.Button()
@@ -52,7 +56,7 @@ Partial Class frm_ManageProduct
         Me.pic_barcode = New System.Windows.Forms.PictureBox()
         Me.txt_totalprice = New System.Windows.Forms.TextBox()
         Me.cbo_tax = New System.Windows.Forms.ComboBox()
-        Me.txt_price = New System.Windows.Forms.TextBox()
+        Me.txt_selling_price = New System.Windows.Forms.TextBox()
         Me.txt_location = New System.Windows.Forms.TextBox()
         Me.cbo_uom = New System.Windows.Forms.ComboBox()
         Me.cbo_group = New System.Windows.Forms.ComboBox()
@@ -64,7 +68,9 @@ Partial Class frm_ManageProduct
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -85,7 +91,7 @@ Partial Class frm_ManageProduct
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1070, 77)
+        Me.Panel1.Size = New System.Drawing.Size(1166, 77)
         Me.Panel1.TabIndex = 0
         '
         'Label12
@@ -108,7 +114,7 @@ Partial Class frm_ManageProduct
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.Padding = New System.Drawing.Point(8, 15)
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1070, 550)
+        Me.TabControl1.Size = New System.Drawing.Size(1166, 636)
         Me.TabControl1.TabIndex = 0
         '
         'TabPage1
@@ -119,7 +125,7 @@ Partial Class frm_ManageProduct
         Me.TabPage1.Location = New System.Drawing.Point(4, 53)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(1062, 493)
+        Me.TabPage1.Size = New System.Drawing.Size(1158, 579)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "PRODUCT LIST"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -130,15 +136,15 @@ Partial Class frm_ManageProduct
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.ColumnHeadersHeight = 47
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column9, Me.Column10, Me.Column11, Me.Column7, Me.Column8})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Yellow
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle2
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column13, Me.Column9, Me.Column12, Me.Column10, Me.Column11, Me.Column7, Me.Column8})
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Yellow
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(3, 69)
         Me.DataGridView1.Name = "DataGridView1"
@@ -146,7 +152,7 @@ Partial Class frm_ManageProduct
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidth = 51
         Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(1056, 421)
+        Me.DataGridView1.Size = New System.Drawing.Size(1152, 507)
         Me.DataGridView1.TabIndex = 1
         '
         'Panel2
@@ -156,7 +162,7 @@ Partial Class frm_ManageProduct
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(3, 3)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1056, 66)
+        Me.Panel2.Size = New System.Drawing.Size(1152, 66)
         Me.Panel2.TabIndex = 0
         '
         'txt_search
@@ -177,6 +183,10 @@ Partial Class frm_ManageProduct
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.Label14)
+        Me.TabPage2.Controls.Add(Me.txt_rate_per)
+        Me.TabPage2.Controls.Add(Me.Label13)
+        Me.TabPage2.Controls.Add(Me.txt_purchase_price)
         Me.TabPage2.Controls.Add(Me.btn_AddGroup)
         Me.TabPage2.Controls.Add(Me.btn_clear)
         Me.TabPage2.Controls.Add(Me.btn_delete)
@@ -197,7 +207,7 @@ Partial Class frm_ManageProduct
         Me.TabPage2.Controls.Add(Me.pic_barcode)
         Me.TabPage2.Controls.Add(Me.txt_totalprice)
         Me.TabPage2.Controls.Add(Me.cbo_tax)
-        Me.TabPage2.Controls.Add(Me.txt_price)
+        Me.TabPage2.Controls.Add(Me.txt_selling_price)
         Me.TabPage2.Controls.Add(Me.txt_location)
         Me.TabPage2.Controls.Add(Me.cbo_uom)
         Me.TabPage2.Controls.Add(Me.cbo_group)
@@ -206,10 +216,42 @@ Partial Class frm_ManageProduct
         Me.TabPage2.Location = New System.Drawing.Point(4, 53)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1062, 493)
+        Me.TabPage2.Size = New System.Drawing.Size(1062, 579)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "MANAGE PRODUCT"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(119, 390)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(74, 20)
+        Me.Label14.TabIndex = 29
+        Me.Label14.Text = "Rater per"
+        '
+        'txt_rate_per
+        '
+        Me.txt_rate_per.Location = New System.Drawing.Point(123, 413)
+        Me.txt_rate_per.Name = "txt_rate_per"
+        Me.txt_rate_per.Size = New System.Drawing.Size(245, 27)
+        Me.txt_rate_per.TabIndex = 5
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(434, 85)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(110, 20)
+        Me.Label13.TabIndex = 27
+        Me.Label13.Text = "Purchase Price"
+        '
+        'txt_purchase_price
+        '
+        Me.txt_purchase_price.Location = New System.Drawing.Point(438, 108)
+        Me.txt_purchase_price.Name = "txt_purchase_price"
+        Me.txt_purchase_price.Size = New System.Drawing.Size(245, 27)
+        Me.txt_purchase_price.TabIndex = 6
         '
         'btn_AddGroup
         '
@@ -234,7 +276,7 @@ Partial Class frm_ManageProduct
         Me.btn_clear.FlatAppearance.BorderSize = 0
         Me.btn_clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_clear.ForeColor = System.Drawing.Color.White
-        Me.btn_clear.Location = New System.Drawing.Point(532, 416)
+        Me.btn_clear.Location = New System.Drawing.Point(532, 467)
         Me.btn_clear.Name = "btn_clear"
         Me.btn_clear.Size = New System.Drawing.Size(109, 27)
         Me.btn_clear.TabIndex = 24
@@ -249,7 +291,7 @@ Partial Class frm_ManageProduct
         Me.btn_delete.FlatAppearance.BorderSize = 0
         Me.btn_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_delete.ForeColor = System.Drawing.Color.White
-        Me.btn_delete.Location = New System.Drawing.Point(391, 416)
+        Me.btn_delete.Location = New System.Drawing.Point(391, 467)
         Me.btn_delete.Name = "btn_delete"
         Me.btn_delete.Size = New System.Drawing.Size(109, 27)
         Me.btn_delete.TabIndex = 23
@@ -264,7 +306,7 @@ Partial Class frm_ManageProduct
         Me.btn_edit.FlatAppearance.BorderSize = 0
         Me.btn_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_edit.ForeColor = System.Drawing.Color.White
-        Me.btn_edit.Location = New System.Drawing.Point(259, 416)
+        Me.btn_edit.Location = New System.Drawing.Point(259, 467)
         Me.btn_edit.Name = "btn_edit"
         Me.btn_edit.Size = New System.Drawing.Size(109, 27)
         Me.btn_edit.TabIndex = 22
@@ -279,7 +321,7 @@ Partial Class frm_ManageProduct
         Me.btn_save.FlatAppearance.BorderSize = 0
         Me.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_save.ForeColor = System.Drawing.Color.White
-        Me.btn_save.Location = New System.Drawing.Point(123, 416)
+        Me.btn_save.Location = New System.Drawing.Point(123, 467)
         Me.btn_save.Name = "btn_save"
         Me.btn_save.Size = New System.Drawing.Size(109, 27)
         Me.btn_save.TabIndex = 21
@@ -313,16 +355,16 @@ Partial Class frm_ManageProduct
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(434, 208)
+        Me.Label9.Location = New System.Drawing.Point(434, 262)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(82, 20)
+        Me.Label9.Size = New System.Drawing.Size(94, 20)
         Me.Label9.TabIndex = 18
-        Me.Label9.Text = "Total Price"
+        Me.Label9.Text = "Total Price()"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(434, 277)
+        Me.Label8.Location = New System.Drawing.Point(434, 332)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(66, 20)
         Me.Label8.TabIndex = 17
@@ -331,7 +373,7 @@ Partial Class frm_ManageProduct
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(434, 136)
+        Me.Label7.Location = New System.Drawing.Point(434, 197)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(55, 20)
         Me.Label7.TabIndex = 16
@@ -340,16 +382,16 @@ Partial Class frm_ManageProduct
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(434, 83)
+        Me.Label6.Location = New System.Drawing.Point(434, 140)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(43, 20)
+        Me.Label6.Size = New System.Drawing.Size(169, 20)
         Me.Label6.TabIndex = 15
-        Me.Label6.Text = "Price"
+        Me.Label6.Text = "Selling Price As per qty"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(119, 332)
+        Me.Label5.Location = New System.Drawing.Point(119, 328)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(34, 20)
         Me.Label5.TabIndex = 14
@@ -396,44 +438,44 @@ Partial Class frm_ManageProduct
         Me.txt_SearchProductCode.Location = New System.Drawing.Point(123, 44)
         Me.txt_SearchProductCode.Name = "txt_SearchProductCode"
         Me.txt_SearchProductCode.Size = New System.Drawing.Size(459, 27)
-        Me.txt_SearchProductCode.TabIndex = 9
+        Me.txt_SearchProductCode.TabIndex = 0
         '
         'pic_barcode
         '
         Me.pic_barcode.BackColor = System.Drawing.Color.White
-        Me.pic_barcode.Location = New System.Drawing.Point(438, 300)
+        Me.pic_barcode.Location = New System.Drawing.Point(438, 355)
         Me.pic_barcode.Name = "pic_barcode"
-        Me.pic_barcode.Size = New System.Drawing.Size(235, 82)
+        Me.pic_barcode.Size = New System.Drawing.Size(235, 72)
         Me.pic_barcode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pic_barcode.TabIndex = 8
         Me.pic_barcode.TabStop = False
         '
         'txt_totalprice
         '
-        Me.txt_totalprice.Location = New System.Drawing.Point(438, 231)
+        Me.txt_totalprice.Location = New System.Drawing.Point(438, 286)
         Me.txt_totalprice.Name = "txt_totalprice"
         Me.txt_totalprice.Size = New System.Drawing.Size(245, 27)
-        Me.txt_totalprice.TabIndex = 7
+        Me.txt_totalprice.TabIndex = 9
         '
         'cbo_tax
         '
         Me.cbo_tax.FormattingEnabled = True
         Me.cbo_tax.Items.AddRange(New Object() {"NIL", "5", "12", "18", "28"})
-        Me.cbo_tax.Location = New System.Drawing.Point(438, 160)
+        Me.cbo_tax.Location = New System.Drawing.Point(438, 221)
         Me.cbo_tax.Name = "cbo_tax"
         Me.cbo_tax.Size = New System.Drawing.Size(245, 28)
-        Me.cbo_tax.TabIndex = 6
+        Me.cbo_tax.TabIndex = 8
         '
-        'txt_price
+        'txt_selling_price
         '
-        Me.txt_price.Location = New System.Drawing.Point(438, 106)
-        Me.txt_price.Name = "txt_price"
-        Me.txt_price.Size = New System.Drawing.Size(245, 27)
-        Me.txt_price.TabIndex = 5
+        Me.txt_selling_price.Location = New System.Drawing.Point(438, 163)
+        Me.txt_selling_price.Name = "txt_selling_price"
+        Me.txt_selling_price.Size = New System.Drawing.Size(245, 27)
+        Me.txt_selling_price.TabIndex = 7
         '
         'txt_location
         '
-        Me.txt_location.Location = New System.Drawing.Point(123, 355)
+        Me.txt_location.Location = New System.Drawing.Point(123, 351)
         Me.txt_location.Name = "txt_location"
         Me.txt_location.Size = New System.Drawing.Size(245, 27)
         Me.txt_location.TabIndex = 4
@@ -522,14 +564,30 @@ Partial Class frm_ManageProduct
         Me.Column6.ReadOnly = True
         Me.Column6.Width = 75
         '
+        'Column13
+        '
+        Me.Column13.HeaderText = "Rate Per qty"
+        Me.Column13.MinimumWidth = 6
+        Me.Column13.Name = "Column13"
+        Me.Column13.ReadOnly = True
+        Me.Column13.Width = 125
+        '
         'Column9
         '
         Me.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column9.HeaderText = "PRICE"
+        Me.Column9.HeaderText = "Purchase Price"
         Me.Column9.MinimumWidth = 6
         Me.Column9.Name = "Column9"
         Me.Column9.ReadOnly = True
-        Me.Column9.Width = 77
+        Me.Column9.Width = 127
+        '
+        'Column12
+        '
+        Me.Column12.HeaderText = "Selling Price"
+        Me.Column12.MinimumWidth = 6
+        Me.Column12.Name = "Column12"
+        Me.Column12.ReadOnly = True
+        Me.Column12.Width = 125
         '
         'Column10
         '
@@ -576,7 +634,7 @@ Partial Class frm_ManageProduct
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1070, 627)
+        Me.ClientSize = New System.Drawing.Size(1166, 713)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -606,7 +664,7 @@ Partial Class frm_ManageProduct
     Friend WithEvents Panel2 As Panel
     Friend WithEvents txt_totalprice As TextBox
     Friend WithEvents cbo_tax As ComboBox
-    Friend WithEvents txt_price As TextBox
+    Friend WithEvents txt_selling_price As TextBox
     Friend WithEvents txt_location As TextBox
     Friend WithEvents cbo_uom As ComboBox
     Friend WithEvents cbo_group As ComboBox
@@ -633,13 +691,19 @@ Partial Class frm_ManageProduct
     Friend WithEvents Label11 As Label
     Friend WithEvents txt_search As TextBox
     Friend WithEvents Label12 As Label
+    Friend WithEvents Label13 As Label
+    Friend WithEvents txt_purchase_price As TextBox
+    Friend WithEvents Label14 As Label
+    Friend WithEvents txt_rate_per As TextBox
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents Column13 As DataGridViewTextBoxColumn
     Friend WithEvents Column9 As DataGridViewTextBoxColumn
+    Friend WithEvents Column12 As DataGridViewTextBoxColumn
     Friend WithEvents Column10 As DataGridViewTextBoxColumn
     Friend WithEvents Column11 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn

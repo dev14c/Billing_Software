@@ -44,11 +44,11 @@ Public Class frm_ManageProduct
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT  `procode`, `proname`, `progroup`, `uom`, `location`, `price`, `tax`, `totalprice`, `stock`, `barcode` FROM `tblproduct` ", conn)
+            cmd = New MySqlCommand("SELECT  `procode`, `proname`, `progroup`, `uom`, `stock`,`Rate_per`,`purchase_price`,`Selling_price`, `tax`, `totalprice`,`barcode` FROM `tblproduct` ", conn)
             dr = cmd.ExecuteReader
             While dr.Read
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("procode"), dr.Item("proname"), dr.Item("progroup"), dr.Item("uom"), dr.Item("location"), dr.Item("price"),
-                                       dr.Item("tax"), dr.Item("totalprice"), dr.Item("stock"), dr.Item("barcode"))
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("procode"), dr.Item("proname"), dr.Item("progroup"), dr.Item("uom"), dr.Item("stock"), dr.Item("Rate_per"),
+                                      dr.Item("purchase_price"), dr.Item("Selling_price"), dr.Item("tax"), dr.Item("totalprice"), dr.Item("barcode"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -59,15 +59,17 @@ Public Class frm_ManageProduct
     End Sub
     Sub Clear()
         txt_location.Clear()
-        txt_price.Clear()
-
+        txt_selling_price.Clear()
         txt_procode.Clear()
         txt_proname.Clear()
         txt_totalprice.Clear()
+        txt_purchase_price.Clear() ' Add this line to clear txt_purchase
+        txt_rate_per.Clear() ' Add this line to clear txt_rate_per
         cbo_group.SelectedIndex = -1
         cbo_tax.SelectedIndex = -1
         cbo_uom.SelectedIndex = -1
         pic_barcode.Image = Nothing
+
     End Sub
 
     Private Sub txt_procode_TextChanged(sender As Object, e As EventArgs) Handles txt_procode.TextChanged
@@ -96,19 +98,23 @@ Public Class frm_ManageProduct
             FileSize = mstream.Length
             mstream.Close()
 
-            cmd = New MySqlCommand("INSERT INTO `tblproduct`(`procode`, `proname`, `progroup`, `uom`, `location`, `price`, `tax`, `totalprice`,
-`barcode`) VALUES (@procode,@proname,@progroup,@uom,@location,@price,@tax,@totalprice,@barcode)", conn)
+            cmd = New MySqlCommand("INSERT INTO `tblproduct`(`procode`, `proname`, `progroup`, `uom`, `Rate_per`, `stock`, `purchase_price`, `Selling_price`, `tax`, `totalprice`, `barcode`)
+VALUES (@procode, @proname,@progroup, @uom, @rate_per, @stock, @purchase_price, @selling_price, @tax, @totalprice, @barcode)", conn)
 
             cmd.Parameters.Clear()
             cmd.Parameters.AddWithValue("@procode", txt_procode.Text)
             cmd.Parameters.AddWithValue("@proname", txt_proname.Text)
             cmd.Parameters.AddWithValue("@progroup", cbo_group.Text)
             cmd.Parameters.AddWithValue("@uom", cbo_uom.Text)
-            cmd.Parameters.AddWithValue("@location", txt_location.Text)
-            cmd.Parameters.AddWithValue("@price", CDec(txt_price.Text))
+            cmd.Parameters.AddWithValue("@stock", CDec(txt_location.Text))
+            cmd.Parameters.AddWithValue("@Rate_per", CDec(txt_rate_per.Text))
+            cmd.Parameters.AddWithValue("@purchase_price", CDec(txt_purchase_price.Text))
+            cmd.Parameters.AddWithValue("@selling_price", CDec(txt_selling_price.Text))
             cmd.Parameters.AddWithValue("@tax", CDec(cbo_tax.Text))
             cmd.Parameters.AddWithValue("@totalprice", CDec(txt_totalprice.Text))
             cmd.Parameters.AddWithValue("@barcode", arrImage)
+
+
             i = cmd.ExecuteNonQuery
             If i > 0 Then
                 MsgBox("New Porudct Save Success", vbExclamation)
@@ -133,7 +139,7 @@ Public Class frm_ManageProduct
         Dim qty As Integer
 
 
-        If Decimal.TryParse(txt_price.Text, price) AndAlso Decimal.TryParse(cbo_tax.Text, taxPercentage) AndAlso Integer.TryParse(txt_location.Text, qty) Then
+        If Decimal.TryParse(txt_selling_price.Text, price) AndAlso Decimal.TryParse(cbo_tax.Text, taxPercentage) AndAlso Integer.TryParse(txt_location.Text, qty) Then
             ' Conversion successful, txt_price.Text and cbo_tax.Text contain valid numerical values
             ' Calculate total price with tax
             Dim taxAmount As Decimal = (price * taxPercentage) / 100
@@ -175,15 +181,17 @@ Public Class frm_ManageProduct
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT  `procode`, `proname`, `progroup`, `uom`, `location`, `price`, `tax`, `totalprice`, `stock`, `barcode` FROM `tblproduct` WHERE procode LIKE '%" & txt_SearchProductCode.Text & "%' ", conn)
+            cmd = New MySqlCommand("SELECT  `procode`, `proname`, `progroup`, `uom`, `stock`, `Rate_per`,`purchase_price`,`Selling_price`, `tax`, `totalprice`,`barcode` FROM `tblproduct` WHERE procode LIKE '%" & txt_SearchProductCode.Text & "%' ", conn)
             dr = cmd.ExecuteReader
             While dr.Read
                 txt_procode.Text = dr.Item("procode")
                 txt_proname.Text = dr.Item("proname")
                 cbo_group.Text = dr.Item("progroup")
-                txt_location.Text = dr.Item("location")
                 cbo_uom.Text = dr.Item("uom")
-                txt_price.Text = dr.Item("price")
+                txt_location.Text = dr.Item("stock")
+                txt_location.Text = dr.Item("Rate_per")
+                txt_location.Text = dr.Item("purchase_price")
+                txt_selling_price.Text = dr.Item("Selling_price")
                 cbo_tax.Text = dr.Item("tax")
                 txt_totalprice.Text = dr.Item("totalprice")
             End While
@@ -207,7 +215,7 @@ Public Class frm_ManageProduct
             cmd.Parameters.AddWithValue("@progroup", cbo_group.Text)
             cmd.Parameters.AddWithValue("@uom", cbo_uom.Text)
             cmd.Parameters.AddWithValue("@location", txt_location.Text)
-            cmd.Parameters.AddWithValue("@price", CDec(txt_price.Text))
+            cmd.Parameters.AddWithValue("@price", CDec(txt_selling_price.Text))
             cmd.Parameters.AddWithValue("@tax", CDec(cbo_tax.Text))
             cmd.Parameters.AddWithValue("@totalprice", CDec(txt_totalprice.Text))
             cmd.Parameters.AddWithValue("@procode", txt_procode.Text)
@@ -271,4 +279,30 @@ Public Class frm_ManageProduct
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
 
     End Sub
+
+
+
+    Private Sub txt_rate_per_Leave(sender As Object, e As EventArgs) Handles txt_rate_per.Leave
+        UpdatePurchasePrice()
+    End Sub
+
+    Private Sub UpdatePurchasePrice()
+        ' Check if the text in txt_location is a valid integer
+        Dim qty As Integer
+        If Integer.TryParse(txt_location.Text, qty) Then
+            ' Check if the text in txt_rate_per is a valid integer
+            Dim rate As Integer
+            If Integer.TryParse(txt_rate_per.Text, rate) Then
+                ' Calculate the purchase price and update txt_purchase_price
+                txt_purchase_price.Text = (qty * rate).ToString()
+            Else
+                ' Handle the case where txt_rate_per contains non-numeric text
+                MessageBox.Show("Please enter a valid rate.")
+            End If
+        Else
+            ' Handle the case where txt_location contains non-numeric text
+            MessageBox.Show("Please enter a valid quantity.")
+        End If
+    End Sub
+
 End Class
