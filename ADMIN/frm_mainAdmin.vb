@@ -30,8 +30,4 @@
         report_admin.ShowDialog()
 
     End Sub
-
-    Private Sub frm_mainAdmin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class

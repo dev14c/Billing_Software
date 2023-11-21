@@ -1,15 +1,13 @@
-﻿Imports System.IO
-Imports MySql.Data.MySqlClient
-Public Class frm_report
+﻿Imports MySql.Data.MySqlClient
 
-    Private Sub frm_report_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+Public Class report_admin
+    Private Sub report_admin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dbconn()
         DataGridView1.RowTemplate.Height = 30
-        DataGridView1.Columns(5).HeaderText = "Sales By, " & UserSession.CurrentUser
+
 
         load_report()
         total()
-
     End Sub
     Sub load_report()
         DataGridView1.Rows.Clear()
@@ -20,13 +18,13 @@ Public Class frm_report
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`, `grandtotal` FROM `tbi_pos` WHERE cashier_name = @CurrentUser GROUP BY `billno`", conn)
-            cmd.Parameters.AddWithValue("@CurrentUser", UserSession.CurrentUser)
+            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`, `grandtotal`,`cashier_name` FROM `tbi_pos`   GROUP BY `billno`", conn)
+
 
             dr = cmd.ExecuteReader
 
             While dr.Read = True
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"))
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"), dr.Item("cashier_name"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -43,7 +41,7 @@ Public Class frm_report
             End If
             conn.Open()
             cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`, `grandtotal` FROM `tbi_pos` WHERE cashier_name = @CurrentUser AND billno LIKE '%" & txt_search.Text & "%' GROUP BY billno", conn)
-            cmd.Parameters.AddWithValue("@CurrentUser", UserSession.CurrentUser)
+
             dr = cmd.ExecuteReader
             While dr.Read = True
                 DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"))
@@ -63,7 +61,6 @@ Public Class frm_report
             End If
             conn.Open()
             cmd = New MySqlCommand("SELECT `billno` ,`billdate` ,`bmonth`,`bmonthyear`,`grandtotal` FROM `tbi_pos` WHERE cashier_name = @CurrentUser AND  billdate like '%" & Date.Now.ToString("yyyy-MM-dd") & "%' group by billno", conn)
-            cmd.Parameters.AddWithValue("@CurrentUser", UserSession.CurrentUser)
             dr = cmd.ExecuteReader
             While dr.Read = True
                 DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"))
@@ -83,7 +80,6 @@ Public Class frm_report
             End If
             conn.Open()
             cmd = New MySqlCommand("SELECT `billno` ,`billdate` ,`bmonth`,`bmonthyear`,`grandtotal` FROM `tbi_pos` WHERE cashier_name = @CurrentUser  AND   bmonth like '%" & Date.Now.ToString("MM") & "%'", conn)
-            cmd.Parameters.AddWithValue("@CurrentUser", UserSession.CurrentUser)
             dr = cmd.ExecuteReader
             While dr.Read = True
                 DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"))
@@ -108,7 +104,7 @@ Public Class frm_report
 
             ' Use parameters to avoid SQL injection
             cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`, `grandtotal` FROM `tbi_pos` WHERE billdate BETWEEN @date1 AND @date2 GROUP BY billno", conn)
-            cmd.Parameters.AddWithValue("@CurrentUser", UserSession.CurrentUser)
+
             ' Add parameters
             cmd.Parameters.AddWithValue("@date1", date1)
             cmd.Parameters.AddWithValue("@date2", date2)
