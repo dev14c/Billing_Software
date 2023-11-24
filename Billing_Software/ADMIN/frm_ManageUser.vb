@@ -36,6 +36,9 @@ Public Class frm_ManageUser
         Catch ex As Exception
             MsgBox(ex.Message, vbExclamation)
         End Try
+        frm_mainAdmin.Load_noOfCashier()
+        frm_user_list.load_user()
+
     End Sub
 
     Private Sub cbo_role_SelectedIndexChanged(sender As Object, e As EventArgs)

@@ -186,6 +186,12 @@
     <Compile Include="ADMIN\frm_updateStock.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ADMIN\frm_user_list.Designer.vb">
+      <DependentUpon>frm_user_list.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ADMIN\frm_user_list.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ADMIN\report_admin.Designer.vb">
       <DependentUpon>report_admin.vb</DependentUpon>
     </Compile>
@@ -280,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ADMIN\frm_updateStock.resx">
       <DependentUpon>frm_updateStock.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ADMIN\frm_user_list.resx">
+      <DependentUpon>frm_user_list.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ADMIN\report_admin.resx">
       <DependentUpon>report_admin.vb</DependentUpon>

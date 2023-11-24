@@ -128,6 +128,7 @@ VALUES (@procode, @proname,@progroup, @uom, @rate_per, @stock, @purchase_price, 
         ' conn.Close()
         Clear()
         load_product()
+        frm_mainAdmin.Load_noOfProduct()
 
 
     End Sub
@@ -234,6 +235,7 @@ VALUES (@procode, @proname,@progroup, @uom, @rate_per, @stock, @purchase_price, 
         Clear()
         txt_SearchProductCode.Clear()
         load_product()
+        frm_mainAdmin.Load_noOfProduct()
 
     End Sub
 

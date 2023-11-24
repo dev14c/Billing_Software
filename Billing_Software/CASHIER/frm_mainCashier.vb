@@ -268,7 +268,10 @@ Public Class frm_mainCashier
     End Sub
 
     Private Sub btn_pay_Click(sender As Object, e As EventArgs) Handles btn_pay.Click
+
         save_bill()
+        frm_mainAdmin.Load_monthSale()
+        frm_mainAdmin.Load_todaySale()
         frm_billprint.ShowDialog()
         Clear()
         txt_billno.Text = GetbillNo()
@@ -336,5 +339,22 @@ Public Class frm_mainCashier
 
     Private Sub btn_report_Click(sender As Object, e As EventArgs) Handles btn_report.Click
         frm_report.ShowDialog()
+    End Sub
+
+    Private Sub frm_mainCashier_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If (e.KeyCode = Keys.F1) Then
+            btm_new_Click(sender, e)
+        ElseIf (e.KeyCode = Keys.F2) Then
+            btn_cancel_Click(sender, e)
+
+        ElseIf (e.KeyCode = Keys.F4) Then
+            btn_report_Click(sender, e)
+        ElseIf (e.KeyCode = Keys.F6) Then
+            btn_change_Click(sender, e)
+        ElseIf (e.KeyCode = Keys.F7) Then
+            btn_logout_Click(sender, e)
+        End If
+
+
     End Sub
 End Class

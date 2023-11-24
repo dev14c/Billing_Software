@@ -25,6 +25,7 @@ Partial Class frm_mainCashier
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lbl_username = New System.Windows.Forms.Label()
         Me.lbl_time = New System.Windows.Forms.Label()
         Me.lbl_logintime = New System.Windows.Forms.Label()
         Me.lbl_loginUser = New System.Windows.Forms.Label()
@@ -84,7 +85,6 @@ Partial Class frm_mainCashier
         Me.Column11 = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
-        Me.lbl_username = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -106,6 +106,15 @@ Partial Class frm_mainCashier
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1278, 82)
         Me.Panel1.TabIndex = 0
+        '
+        'lbl_username
+        '
+        Me.lbl_username.AutoSize = True
+        Me.lbl_username.Location = New System.Drawing.Point(585, 20)
+        Me.lbl_username.Name = "lbl_username"
+        Me.lbl_username.Size = New System.Drawing.Size(46, 17)
+        Me.lbl_username.TabIndex = 32
+        Me.lbl_username.Text = "Label6"
         '
         'lbl_time
         '
@@ -753,15 +762,6 @@ Partial Class frm_mainCashier
         'Timer2
         '
         Me.Timer2.Enabled = True
-        '
-        'lbl_username
-        '
-        Me.lbl_username.AutoSize = True
-        Me.lbl_username.Location = New System.Drawing.Point(585, 20)
-        Me.lbl_username.Name = "lbl_username"
-        Me.lbl_username.Size = New System.Drawing.Size(46, 17)
-        Me.lbl_username.TabIndex = 32
-        Me.lbl_username.Text = "Label6"
         '
         'frm_mainCashier
         '
