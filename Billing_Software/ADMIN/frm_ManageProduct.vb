@@ -48,13 +48,11 @@ Public Class frm_ManageProduct
             dr = cmd.ExecuteReader
             While dr.Read
                 DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("procode"), dr.Item("proname"), dr.Item("progroup"), dr.Item("uom"), dr.Item("stock"), dr.Item("Rate_per"),
-                                      dr.Item("purchase_price"), dr.Item("Selling_price"), dr.Item("tax"), dr.Item("totalprice"), dr.Item("barcode"))
+                dr.Item("purchase_price"), dr.Item("Selling_price"), dr.Item("tax"), dr.Item("totalprice"), dr.Item("barcode"))
             End While
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox(ex.Message & "2")
         End Try
-
-
 
     End Sub
     Sub Clear()
@@ -89,7 +87,6 @@ Public Class frm_ManageProduct
                 conn.Close()
             End If
             conn.Open()
-
             'image comnvered to binaryformate'
             Dim FileSize As UInt32
             Dim mstream As New System.IO.MemoryStream
@@ -98,8 +95,10 @@ Public Class frm_ManageProduct
             FileSize = mstream.Length
             mstream.Close()
 
-            cmd = New MySqlCommand("INSERT INTO `tblproduct`(`procode`, `proname`, `progroup`, `uom`, `Rate_per`, `stock`, `purchase_price`, `Selling_price`, `tax`, `totalprice`, `barcode`)
-VALUES (@procode, @proname,@progroup, @uom, @rate_per, @stock, @purchase_price, @selling_price, @tax, @totalprice, @barcode)", conn)
+            'cmd = New MySqlCommand("INSERT INTO `tblproduct`(`procode`, `proname`, `progroup`, `uom`, `Rate_per`, `stock`, `purchase_price`, `Selling_price`, `tax`, `totalprice`, `barcode`)
+            'VALUES (@procode, @proname,@progroup, @uom, @rate_per, @stock, @purchase_price, @selling_price, @tax, @totalprice, @barcode)", conn)
+            cmd = New MySqlCommand("INSERT INTO `tblproduct`(`procode`, `proname`, `progroup`, `uom`, `Rate_per`, `stock`, `purchase_price`, `tax`, `totalprice`, `barcode`)
+    VALUES (@procode, @proname,@progroup, @uom, @rate_per, @stock, @purchase_price, @tax, @totalprice, @barcode)", conn)
 
             cmd.Parameters.Clear()
             cmd.Parameters.AddWithValue("@procode", txt_procode.Text)
@@ -109,28 +108,24 @@ VALUES (@procode, @proname,@progroup, @uom, @rate_per, @stock, @purchase_price, 
             cmd.Parameters.AddWithValue("@stock", CDec(txt_location.Text))
             cmd.Parameters.AddWithValue("@Rate_per", CDec(txt_rate_per.Text))
             cmd.Parameters.AddWithValue("@purchase_price", CDec(txt_purchase_price.Text))
-            cmd.Parameters.AddWithValue("@selling_price", CDec(txt_selling_price.Text))
+            'cmd.Parameters.AddWithValue("@selling_price", CDec(txt_selling_price.Text))
             cmd.Parameters.AddWithValue("@tax", CDec(cbo_tax.Text))
             cmd.Parameters.AddWithValue("@totalprice", CDec(txt_totalprice.Text))
             cmd.Parameters.AddWithValue("@barcode", arrImage)
-
 
             i = cmd.ExecuteNonQuery
             If i > 0 Then
                 MsgBox("New Porudct Save Success", vbExclamation)
             Else
                 MsgBox("New Porudct Save Failed", vbExclamation)
-
             End If
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox(ex.Message + " 4 ")
         End Try
         ' conn.Close()
         Clear()
-        load_product()
-        frm_mainAdmin.Load_noOfProduct()
-
-
+        'load_product()
+        'frm_mainAdmin.Load_noOfProduct()
     End Sub
 
     Private Sub cbo_tax_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbo_tax.SelectedIndexChanged
@@ -284,10 +279,46 @@ VALUES (@procode, @proname,@progroup, @uom, @rate_per, @stock, @purchase_price, 
 
 
 
-    Private Sub txt_rate_per_Leave(sender As Object, e As EventArgs) Handles txt_rate_per.Leave
-        UpdatePurchasePrice()
+    Private Sub txt_rate_per_Leave(sender As Object, e As EventArgs) Handles cbo_tax.TextChanged
+        'UpdatePurchasePrice()
+        updateGST()
+    End Sub
+    Public p_price As Decimal
+    Public t_price As Decimal
+    Private Sub txt_purchase_price_Leave(sender As Object, e As EventArgs) Handles txt_purchase_price.Leave
+
+        If txt_purchase_price.Text <> "" Then
+            If CDec(txt_purchase_price.Text) > p_price Then
+                txt_purchase_price.Clear()
+                txt_purchase_price.Focus()
+                MsgBox("Enter vailid purchase price", vbCritical)
+                Return
+            End If
+            txt_totalprice.Text = Math.Round(CDec(txt_location.Text) * CDec(txt_purchase_price.Text), 2)
+        Else
+            MsgBox("Purchase price khaali reh gaya")
+        End If
     End Sub
 
+
+    Sub updateGST()
+        Try
+            Dim a, b, c As Decimal
+            Decimal.TryParse(txt_rate_per.Text, a)
+            'Decimal.TryParse(txt_rate_per.Text, b)
+            Decimal.TryParse(cbo_tax.Text, c)
+            b = 100 + c
+            gstAmount.Text = Math.Round(a / b * c, 2)
+            p_price = a - CDec(gstAmount.Text)
+            afterGST.Text = p_price
+            MsgBox(a & " " & c)
+            Dim d As Integer
+            Decimal.TryParse(txt_location.Text, d)
+            t_price = Math.Round(d * p_price, 2)
+        Catch ex As Exception
+            MsgBox(ex)
+        End Try
+    End Sub
     Private Sub UpdatePurchasePrice()
         ' Check if the text in txt_location is a valid integer
         Dim qty As Integer
@@ -307,4 +338,7 @@ VALUES (@procode, @proname,@progroup, @uom, @rate_per, @stock, @purchase_price, 
         End If
     End Sub
 
+    Private Sub txt_rate_per_TextChanged(sender As Object, e As EventArgs) Handles txt_rate_per.TextChanged
+
+    End Sub
 End Class

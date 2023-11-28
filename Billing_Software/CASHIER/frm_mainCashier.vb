@@ -43,9 +43,11 @@ Public Class frm_mainCashier
             ' If the product already exists, check stock before incrementing the quantity
             Dim currentStock As Integer = GetStockLevel(txt_SearchProduct.Text)
             If currentStock > 0 Then
-                DataGridView1.Rows(existingRowIndex).Cells(8).Value = existingQuantity + 1
-                Dim totalPrice As Decimal = CDec(DataGridView1.Rows(existingRowIndex).Cells(7).Value) * CInt(DataGridView1.Rows(existingRowIndex).Cells(8).Value)
-                DataGridView1.Rows(existingRowIndex).Cells(9).Value = totalPrice
+                DataGridView1.Rows(existingRowIndex).Cells(8).Value = CInt(DataGridView1.Rows(existingRowIndex).Cells(8).Value) + 1
+                calculate_price(existingRowIndex)
+                'DataGridView1.Rows(existingRowIndex).Cells(8).Value = existingQuantity + 1
+                'Dim totalPrice As Decimal = CDec(DataGridView1.Rows(existingRowIndex).Cells(7).Value) * CInt(DataGridView1.Rows(existingRowIndex).Cells(8).Value)
+                'DataGridView1.Rows(existingRowIndex).Cells(9).Value = totalPrice
             Else
                 MsgBox("Insufficient stock for the selected product.", MsgBoxStyle.Exclamation)
             End If
@@ -72,13 +74,16 @@ Public Class frm_mainCashier
                         Dim rate As Decimal
                         Dim tax As Decimal
                         Dim totalQtyPrice As Double
-
+                        Dim puchase_price As String = dr("purchase_price")
+                        Dim gstAmount As Double
                         If Decimal.TryParse(dr("Rate_per").ToString(), rate) AndAlso Decimal.TryParse(dr("tax").ToString(), tax) Then
-                            totalQtyPrice = rate * tax / 100 + rate
+                            totalQtyPrice = Math.Round(rate / (tax + 100) * tax, 2)
+                            gstAmount = Math.Round(rate - totalQtyPrice, 2)
                             totalQtyPrice = totalQtyPrice * 1
                         End If
 
-                        DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, procode, proname, progroup, uom, rate, tax, totalQtyPrice, 1, totalQtyPrice)
+                        'DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, procode, proname, progroup, uom, rate, tax, totalQtyPrice, 1, totalQtyPrice)
+                        DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, procode, proname, progroup, uom, gstAmount, tax, totalQtyPrice, 1, rate, rate, puchase_price)
                         txt_SearchProduct.Clear()
                         txt_SearchProduct.Focus()
                     Else
@@ -107,14 +112,16 @@ Public Class frm_mainCashier
             Dim query As String = "SELECT stock FROM tblproduct WHERE procode = @procode"
             Using cmd As New MySqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@procode", productCode)
-                Dim result As Object = cmd.ExecuteScalar()
+                'Dim result As Object = cmd.ExecuteScalar()
+                Dim result As Integer = cmd.ExecuteScalar
+                'If result IsNot Nothing AndAlso Integer.TryParse(result.ToString(), stockLevel) Then
+                ' Successfully retrieved stock level from the database
 
-                If result IsNot Nothing AndAlso Integer.TryParse(result.ToString(), stockLevel) Then
-                    ' Successfully retrieved stock level from the database
-                Else
-                    ' Handle the case when the stock level couldn't be retrieved
-                    stockLevel = 0
-                End If
+                'Else
+                ' Handle the case when the stock level couldn't be retrieved
+                'stockLevel = 0
+                'End If
+                stockLevel = CDec(result)
             End Using
         Catch ex As Exception
             ' Handle exceptions
@@ -151,9 +158,11 @@ Public Class frm_mainCashier
         Dim subtotal As Double = 0
         Dim tax As Double = 0
         For i As Integer = 0 To DataGridView1.Rows.Count() - 1 Step +1
-            sum = sum + DataGridView1.Rows(i).Cells(9).Value
-            tax = tax + DataGridView1.Rows(i).Cells(5).Value * DataGridView1.Rows(i).Cells(6).Value / 100 * DataGridView1.Rows(i).Cells(8).Value
-            subtotal = subtotal + DataGridView1.Rows(i).Cells(5).Value * DataGridView1.Rows(i).Cells(8).Value
+            sum = sum + DataGridView1.Rows(i).Cells(10).Value
+            'tax = tax + DataGridView1.Rows(i).Cells(5).Value * DataGridView1.Rows(i).Cells(6).Value / 100 * DataGridView1.Rows(i).Cells(8).Value
+            tax = tax + DataGridView1.Rows(i).Cells(7).Value
+            'subtotal = subtotal + DataGridView1.Rows(i).Cells(5).Value * DataGridView1.Rows(i).Cells(8).Value
+            subtotal = subtotal + DataGridView1.Rows(i).Cells(5).Value
         Next
 
 
@@ -288,9 +297,9 @@ Public Class frm_mainCashier
                     ' Execute the update query
                     cmd.ExecuteNonQuery()
                 Next
-                For j As Integer = 0 To DataGridView1.Rows.Count - 1
-                    cmd = New MySqlCommand("INSERT INTO tbi_pos (billno, billdate, bmonth, bmonthyear, procode, proname, progroup, uom, price, tax, totalproductprice, qty, totalpriceqty, subtotal, totaltax, totalprice, discount_per, discount_amount, grandtotal, paymode, recieveamount, balance,cashier_name,Customer_Name,Customer_Mobile) VALUES " &
-                                               "(@billno, @billdate, @bmonth, @bmonthyear, @procode, @proname, @progroup, @uom, @price, @tax, @totalproductprice, @qty, @totalpriceqty, @subtotal, @totaltax, @totalprice,@discount_per, @discount_amount, @grandtotal, @paymode, @recieveamount, @balance,@cashier_name,@Customer_Name,@Customer_Mobile)", conn)
+                For j As Integer = 0 To DataGridView1.Rows.Count - 1 Step +1
+                    cmd = New MySqlCommand("INSERT INTO tbi_pos (billno, billdate, bmonth, bmonthyear, procode, proname, progroup, uom, price, tax, totalproductprice, qty, totalpriceqty, subtotal, totaltax, totalprice, discount_per, discount_amount, grandtotal, paymode, recieveamount, balance,cashier_name,profit) VALUES " &
+                               "(@billno, @billdate, @bmonth, @bmonthyear, @procode, @proname, @progroup, @uom, @price, @tax, @totalproductprice, @qty, @totalpriceqty, @subtotal, @totaltax, @totalprice,@discount_per, @discount_amount, @grandtotal, @paymode, @recieveamount, @balance,@cashier_name,@profit)", conn)
                     cmd.Parameters.Clear()
                     cmd.Parameters.AddWithValue("@billno", txt_billno.Text)
                     cmd.Parameters.AddWithValue("@billdate", CDate(btp_time.Text))
@@ -315,12 +324,10 @@ Public Class frm_mainCashier
                     cmd.Parameters.AddWithValue("@recieveamount", (txt_amtrec.Text)) ' Assuming txt_AmountReceived is the correct control
                     cmd.Parameters.AddWithValue("@balance", (txt_change.Text))
                     cmd.Parameters.AddWithValue("@cashier_name", (UserSession.CurrentUser))
-                    cmd.Parameters.AddWithValue("@Customer_Name", (txt_cus_name.Text))
-                    cmd.Parameters.AddWithValue("@Customer_Mobile", (txt_cus_num.Text))
-
+                    Dim profit As Decimal
+                    profit = CDec(DataGridView1.Rows(j).Cells(10).Value) - CDec(DataGridView1.Rows(j).Cells(11).Value) * CDec(DataGridView1.Rows(j).Cells(8).Value)
+                    cmd.Parameters.AddWithValue("@profit", profit)
                     i = cmd.ExecuteNonQuery
-
-
                 Next
                 If i > 0 Then
                     MsgBox("New Transcition Save Success !" & vbNewLine & "Bill no : " & txt_billno.Text)
@@ -408,7 +415,7 @@ Public Class frm_mainCashier
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
         ' Check if the clicked cell is the "Remove" button (assuming it's in the 10th column, adjust accordingly)
-        If e.ColumnIndex = 11 AndAlso e.RowIndex >= 0 Then
+        If e.ColumnIndex = 13 AndAlso e.RowIndex >= 0 Then
             ' Remove the clicked row
             DataGridView1.Rows.RemoveAt(e.RowIndex)
 
@@ -419,7 +426,7 @@ Public Class frm_mainCashier
         End If
 
         ' Check if the clicked cell is the button column and a valid row
-        If e.RowIndex >= 0 AndAlso e.ColumnIndex = 10 Then
+        If e.RowIndex >= 0 AndAlso e.ColumnIndex = 12 Then
             ' Get the selected row index
             Dim rowIndex As Integer = e.RowIndex
 
@@ -427,8 +434,9 @@ Public Class frm_mainCashier
             If CInt(DataGridView1.Rows(rowIndex).Cells(8).Value) > 1 Then
                 ' Deduct the quantity by 1
                 DataGridView1.Rows(rowIndex).Cells(8).Value = CInt(DataGridView1.Rows(rowIndex).Cells(8).Value) - 1
+                calculate_price(rowIndex)
                 ' Recalculate total price for the row
-                DataGridView1.Rows(rowIndex).Cells(9).Value = CInt(DataGridView1.Rows(rowIndex).Cells(5).Value) * CInt(DataGridView1.Rows(rowIndex).Cells(8).Value)
+                'DataGridView1.Rows(rowIndex).Cells(9).Value = CInt(DataGridView1.Rows(rowIndex).Cells(5).Value) * CInt(DataGridView1.Rows(rowIndex).Cells(8).Value)
             Else
                 ' If the quantity is already 1, you may choose to remove the row or handle it accordingly
                 MsgBox("Qty is already 1 you cannot deduct the qty now ")
@@ -465,7 +473,17 @@ Public Class frm_mainCashier
         frm_cahier_cash_report.ShowDialog()
     End Sub
 
-    Private Sub Label16_Click(sender As Object, e As EventArgs) Handles Label16.Click
-
+    Sub calculate_price(numrow As Integer)
+        Dim qty As Integer = DataGridView1.Rows(numrow).Cells(8).Value
+        Dim rate As Integer = DataGridView1.Rows(numrow).Cells(9).Value
+        Dim tax As Integer = DataGridView1.Rows(numrow).Cells(6).Value
+        Dim totalqtyprice As Decimal
+        Dim rate_x_qty As Decimal = rate * qty
+        Dim gstAmount As Decimal
+        totalqtyprice = Math.Round((rate_x_qty / (tax + 100)) * tax, 2)
+        gstAmount = Math.Round(rate_x_qty - totalqtyprice, 2)
+        DataGridView1.Rows(numrow).Cells(7).Value = totalqtyprice
+        DataGridView1.Rows(numrow).Cells(5).Value = gstAmount
+        DataGridView1.Rows(numrow).Cells(10).Value = rate_x_qty
     End Sub
 End Class
