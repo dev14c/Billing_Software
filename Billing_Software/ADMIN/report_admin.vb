@@ -18,13 +18,13 @@ Public Class report_admin
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`, `grandtotal`,`cashier_name` FROM `tbi_pos`   GROUP BY `billno`", conn)
+            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`, `grandtotal`,`cashier_name`,sum(profit) as profit FROM `tbi_pos`   GROUP BY `billno`", conn)
 
 
             dr = cmd.ExecuteReader
 
             While dr.Read = True
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"), dr.Item("cashier_name"))
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"), dr.Item("cashier_name"), dr.Item("profit"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -40,11 +40,11 @@ Public Class report_admin
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`, `grandtotal` FROM `tbi_pos` WHERE cashier_name = @CurrentUser AND billno LIKE '%" & txt_search.Text & "%' GROUP BY billno", conn)
+            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`, `grandtotal`,`cashier_name`, sum(profit) as profit  FROM `tbi_pos` WHERE cashier_name = @CurrentUser AND billno LIKE '%" & txt_search.Text & "%' GROUP BY billno", conn)
 
             dr = cmd.ExecuteReader
             While dr.Read = True
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"))
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"), dr.Item("profit"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -60,10 +60,10 @@ Public Class report_admin
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT `billno` ,`billdate` ,`bmonth`,`bmonthyear`,`grandtotal` FROM `tbi_pos` WHERE cashier_name = @CurrentUser AND  billdate like '%" & Date.Now.ToString("yyyy-MM-dd") & "%' group by billno", conn)
+            cmd = New MySqlCommand("SELECT `billno` ,`billdate` ,`bmonth`,`bmonthyear`,`grandtotal`,`cashier_name`, sum(profit) as profit FROM `tbi_pos` WHERE billdate like '%" & Date.Now.ToString("yyyy-MM-dd") & "%' group by billno", conn)
             dr = cmd.ExecuteReader
             While dr.Read = True
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"))
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"), dr.Item("cashier_name"), dr.Item("profit"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -79,10 +79,10 @@ Public Class report_admin
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT `billno` ,`billdate` ,`bmonth`,`bmonthyear`,`grandtotal` FROM `tbi_pos` WHERE cashier_name = @CurrentUser  AND   bmonth like '%" & Date.Now.ToString("MM") & "%'", conn)
+            cmd = New MySqlCommand("SELECT `billno` ,`billdate` ,`bmonth`,`bmonthyear`,`grandtotal`,`cashier_name`,sum(profit) as profit FROM `tbi_pos` WHERE  billdate like '%" & Date.Now.ToString("yyyy-MM") & "%'", conn)
             dr = cmd.ExecuteReader
             While dr.Read = True
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"))
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"), dr.Item("cashier_name"), dr.Item("profit"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -103,7 +103,7 @@ Public Class report_admin
             conn.Open()
 
             ' Use parameters to avoid SQL injection
-            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`, `grandtotal` FROM `tbi_pos` WHERE billdate BETWEEN @date1 AND @date2 GROUP BY billno", conn)
+            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`, `grandtotal`,`cashier_name`,sum(profit) as profit FROM `tbi_pos` WHERE billdate BETWEEN @date1 AND @date2 GROUP BY billno", conn)
 
             ' Add parameters
             cmd.Parameters.AddWithValue("@date1", date1)
@@ -112,7 +112,7 @@ Public Class report_admin
             dr = cmd.ExecuteReader()
 
             While dr.Read()
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"))
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"), dr.Item("cashier_name"), dr.Item("profit"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -122,10 +122,13 @@ Public Class report_admin
     End Sub
     Sub total()
         Dim sum As Double = 0
+        Dim profit As Double = 0
         For i As Integer = 0 To DataGridView1.Rows.Count() - 1 Step +1
             sum = sum + DataGridView1.Rows(i).Cells(5).Value
+            profit += DataGridView1.Rows(i).Cells(7).Value
         Next
         lbl_totalDisplay.Text = Format(CDec(sum), "#,##0.00")
+        lbl_profit.Text = Format(CDec(profit), "#,##0.00")
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick

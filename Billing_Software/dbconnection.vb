@@ -18,7 +18,7 @@ Module dbconnection
             conn.ConnectionString = "server=localhost;username=root;password=;port=3306;database=db_pos"
             conn.Open()
             result = True
-            MsgBox("Connected!", vbInformation)
+            'MsgBox("Connected!", vbInformation)
         Catch ex As Exception
             result = False
             MsgBox("Server Not Connected: " & ex.Message, vbExclamation)
