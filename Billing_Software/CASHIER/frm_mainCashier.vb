@@ -1,8 +1,14 @@
 ﻿Imports System.Windows.Media
 Imports MySql.Data.MySqlClient
 Public Class frm_mainCashier
+
+    Public Event MessageReceived(message As String)
     Private Sub frm_mainCashier_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dbconn()
+
+
+        AddHandler Me.MessageReceived, AddressOf DisplayMessage
+
         DataGridView1.RowTemplate.Height = 30
         txt_SearchProduct.Focus()
         btn_pay.Enabled = False
@@ -10,67 +16,117 @@ Public Class frm_mainCashier
         lbl_username.Text = "Welcome, " & UserSession.CurrentUser
 
         txt_billno.Text = GetbillNo()
+
     End Sub
 
-
+    Public Sub DisplayMessage(message As String)
+        ' Display the message in your form
+        MessageBox.Show(message, "Message from Admin", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
 
     Public Sub addlist()
-        Dim exist As Boolean = False, numrow As Integer = 0, numtext As Integer
-        For Each itm As DataGridViewRow In DataGridView1.Rows
-            If itm.Cells(0).Value IsNot Nothing Then
-                If itm.Cells(1).Value.ToString = txt_SearchProduct.Text Then
-                    exist = True
-                    numrow = itm.Index
-                    numtext = CInt(itm.Cells(8).Value)
-                    Exit For
-                End If
+        Dim exist As Boolean = False
+        Dim existingRowIndex As Integer = 0
+        Dim existingQuantity As Integer = 0
+
+        ' Check if the product already exists in the DataGridView
+        For Each row As DataGridViewRow In DataGridView1.Rows
+            If row.Cells(1).Value IsNot Nothing AndAlso row.Cells(1).Value.ToString() = txt_SearchProduct.Text Then
+                exist = True
+                existingRowIndex = row.Index
+                existingQuantity = CInt(row.Cells(8).Value)
+                Exit For
             End If
         Next
 
         If exist Then
-            ' If the product code already exists in a row, increment the quantity
-            DataGridView1.Rows(numrow).Cells(8).Value = CInt(DataGridView1.Rows(numrow).Cells(8).Value) + 1
-            DataGridView1.Rows(numrow).Cells(9).Value = CDec(DataGridView1.Rows(numrow).Cells(7).Value) * CInt(DataGridView1.Rows(numrow).Cells(8).Value)
-            DataGridView1.Rows(numrow).Cells(9).Value = CDec(DataGridView1.Rows(numrow).Cells(7).Value) * CInt(DataGridView1.Rows(numrow).Cells(8).Value)
+            ' If the product already exists, check stock before incrementing the quantity
+            Dim currentStock As Integer = GetStockLevel(txt_SearchProduct.Text)
+            If currentStock > 0 Then
+                DataGridView1.Rows(existingRowIndex).Cells(8).Value = existingQuantity + 1
+                Dim totalPrice As Decimal = CDec(DataGridView1.Rows(existingRowIndex).Cells(7).Value) * CInt(DataGridView1.Rows(existingRowIndex).Cells(8).Value)
+                DataGridView1.Rows(existingRowIndex).Cells(9).Value = totalPrice
+            Else
+                MsgBox("Insufficient stock for the selected product.", MsgBoxStyle.Exclamation)
+            End If
         Else
-            ' If the product code doesn't exist, add a new row
+            ' If the product doesn't exist, add a new row
             If conn.State = ConnectionState.Open Then
                 conn.Close()
             End If
+
             Try
                 conn.Open()
                 cmd = New MySqlCommand("SELECT * FROM tblproduct WHERE procode = @procode", conn)
                 cmd.Parameters.AddWithValue("@procode", txt_SearchProduct.Text)
                 dr = cmd.ExecuteReader
-                While dr.Read()
-                    If txt_SearchProduct.Text = String.Empty Then
-                        Return
-                    Else
-                        ' Create new row
-                        Dim procode As String = dr("procode").ToString()
-                        Dim proname As String = dr("proname").ToString()
-                        Dim progroup As String = dr("progroup").ToString()
-                        Dim uom As String = dr("uom").ToString()
 
+                If dr.Read() Then
+                    Dim procode As String = dr("procode").ToString()
+                    Dim proname As String = dr("proname").ToString()
+                    Dim progroup As String = dr("progroup").ToString()
+                    Dim uom As String = dr("uom").ToString()
+                    Dim stock As Integer = CInt(dr("stock"))
+
+                    If stock > 0 Then
                         Dim rate As Decimal
                         Dim tax As Decimal
-                        Dim totalqtyprice As Double
+                        Dim totalQtyPrice As Double
 
                         If Decimal.TryParse(dr("Rate_per").ToString(), rate) AndAlso Decimal.TryParse(dr("tax").ToString(), tax) Then
-                            totalqtyprice = rate * tax / 100 + rate
-                            totalqtyprice = totalqtyprice * 1
+                            totalQtyPrice = rate * tax / 100 + rate
+                            totalQtyPrice = totalQtyPrice * 1
                         End If
 
-                        DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, procode, proname, progroup, uom, rate, tax, totalqtyprice, 1, totalqtyprice)
+                        DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, procode, proname, progroup, uom, rate, tax, totalQtyPrice, 1, totalQtyPrice)
                         txt_SearchProduct.Clear()
                         txt_SearchProduct.Focus()
+                    Else
+                        MsgBox("Insufficient stock for the selected product.", MsgBoxStyle.Exclamation)
                     End If
-                End While
+                Else
+                    MsgBox("Product not found.", MsgBoxStyle.Exclamation)
+                End If
             Catch ex As Exception
                 MsgBox("Error: " & ex.Message, MsgBoxStyle.Exclamation)
+            Finally
+                conn.Close()
             End Try
         End If
     End Sub
+
+    Private Function GetStockLevel(productCode As String) As Integer
+        Dim stockLevel As Integer = 0
+
+        ' Replace the following lines with your actual database query logic
+        If conn.State = ConnectionState.Closed Then
+            conn.Open()
+        End If
+
+        Try
+            Dim query As String = "SELECT stock FROM tblproduct WHERE procode = @procode"
+            Using cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@procode", productCode)
+                Dim result As Object = cmd.ExecuteScalar()
+
+                If result IsNot Nothing AndAlso Integer.TryParse(result.ToString(), stockLevel) Then
+                    ' Successfully retrieved stock level from the database
+                Else
+                    ' Handle the case when the stock level couldn't be retrieved
+                    stockLevel = 0
+                End If
+            End Using
+        Catch ex As Exception
+            ' Handle exceptions
+            stockLevel = 0
+        Finally
+            conn.Close()
+        End Try
+
+        Return stockLevel
+    End Function
+
+
 
 
 
@@ -131,6 +187,9 @@ Public Class frm_mainCashier
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         total()
 
+        ' Or reload your data or perform any other refresh logic
+
+
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txt_discount.TextChanged
@@ -174,18 +233,46 @@ Public Class frm_mainCashier
         lbl_date.Text = Date.Now.ToString("dd:MMMM:yyyy dddd")
     End Sub
 
+    Dim isError As Boolean = False
     Sub save_bill()
-        If cbo_payMode.Text = String.Empty Then
-            MsgBox("Pls select payment mode !", vbInformation)
-            Return
-        ElseIf txt_amtrec.Text = String.Empty Then
-            MsgBox("Pls eneter payment mode ", vbInformation)
-            Return
-        ElseIf txt_grandtotal.Text > txt_amtrec.Text Then
-            MsgBox("Infinity Balance !", vbInformation)
-            Return
 
-        Else
+        If txt_cus_name.Text = String.Empty Then
+            MsgBox("Please enter customer name!", vbInformation)
+            isError = True
+            Return
+        End If
+
+        If txt_cus_num.Text = String.Empty Then
+            MsgBox("Please enter mobile number!", vbInformation)
+            isError = True
+            Return
+        End If
+
+        If cbo_payMode.Text = String.Empty Then
+            MsgBox("Please select payment mode!", vbInformation)
+            isError = True
+            Return
+        End If
+
+        If txt_amtrec.Text = String.Empty Then
+            MsgBox("Please enter the payment amount!", vbInformation)
+            isError = True
+            Return
+        End If
+
+        If Not IsNumeric(txt_amtrec.Text) Then
+            MsgBox("Please enter a valid numeric value for the payment amount!", vbInformation)
+            isError = True
+            Return
+        End If
+
+        If CDec(txt_grandtotal.Text) > CDec(txt_amtrec.Text) Then
+            MsgBox("Payment amount cannot be less than the grand total!", vbInformation)
+            isError = True
+            Return
+        End If
+
+        If Not isError Then ' Only proceed if no error has occurred
             Try
                 If conn.State = ConnectionState.Open Then
                     conn.Close()
@@ -201,9 +288,9 @@ Public Class frm_mainCashier
                     ' Execute the update query
                     cmd.ExecuteNonQuery()
                 Next
-                For j As Integer = 0 To DataGridView1.Rows.Count - 1 Step +1
-                    cmd = New MySqlCommand("INSERT INTO tbi_pos (billno, billdate, bmonth, bmonthyear, procode, proname, progroup, uom, price, tax, totalproductprice, qty, totalpriceqty, subtotal, totaltax, totalprice, discount_per, discount_amount, grandtotal, paymode, recieveamount, balance,cashier_name) VALUES " &
-                                               "(@billno, @billdate, @bmonth, @bmonthyear, @procode, @proname, @progroup, @uom, @price, @tax, @totalproductprice, @qty, @totalpriceqty, @subtotal, @totaltax, @totalprice,@discount_per, @discount_amount, @grandtotal, @paymode, @recieveamount, @balance,@cashier_name)", conn)
+                For j As Integer = 0 To DataGridView1.Rows.Count - 1
+                    cmd = New MySqlCommand("INSERT INTO tbi_pos (billno, billdate, bmonth, bmonthyear, procode, proname, progroup, uom, price, tax, totalproductprice, qty, totalpriceqty, subtotal, totaltax, totalprice, discount_per, discount_amount, grandtotal, paymode, recieveamount, balance,cashier_name,Customer_Name,Customer_Mobile) VALUES " &
+                                               "(@billno, @billdate, @bmonth, @bmonthyear, @procode, @proname, @progroup, @uom, @price, @tax, @totalproductprice, @qty, @totalpriceqty, @subtotal, @totaltax, @totalprice,@discount_per, @discount_amount, @grandtotal, @paymode, @recieveamount, @balance,@cashier_name,@Customer_Name,@Customer_Mobile)", conn)
                     cmd.Parameters.Clear()
                     cmd.Parameters.AddWithValue("@billno", txt_billno.Text)
                     cmd.Parameters.AddWithValue("@billdate", CDate(btp_time.Text))
@@ -228,6 +315,8 @@ Public Class frm_mainCashier
                     cmd.Parameters.AddWithValue("@recieveamount", (txt_amtrec.Text)) ' Assuming txt_AmountReceived is the correct control
                     cmd.Parameters.AddWithValue("@balance", (txt_change.Text))
                     cmd.Parameters.AddWithValue("@cashier_name", (UserSession.CurrentUser))
+                    cmd.Parameters.AddWithValue("@Customer_Name", (txt_cus_name.Text))
+                    cmd.Parameters.AddWithValue("@Customer_Mobile", (txt_cus_num.Text))
 
                     i = cmd.ExecuteNonQuery
 
@@ -265,17 +354,31 @@ Public Class frm_mainCashier
         txt_totaltax.Text = "0.00"
         cbo_payMode.SelectedIndex = -1
         txt_amtrec.Clear()
+        txt_cus_name.Clear()
+        txt_cus_name.Clear()
     End Sub
 
     Private Sub btn_pay_Click(sender As Object, e As EventArgs) Handles btn_pay.Click
 
         save_bill()
-        frm_mainAdmin.Load_monthSale()
-        frm_mainAdmin.Load_todaySale()
-        frm_billprint.ShowDialog()
-        Clear()
-        txt_billno.Text = GetbillNo()
-        txt_SearchProduct.Focus()
+        If isError = False Then
+            frm_billprint.ShowDialog()
+            frm_mainAdmin.Load_monthSale()
+            frm_mainAdmin.Load_todaySale()
+
+            Clear()
+            txt_billno.Text = GetbillNo()
+            txt_SearchProduct.Focus()
+        End If
+        If isError = True Then
+            frm_mainAdmin.Load_monthSale()
+            frm_mainAdmin.Load_todaySale()
+
+
+
+            txt_SearchProduct.Focus()
+        End If
+
 
     End Sub
 
@@ -355,6 +458,14 @@ Public Class frm_mainCashier
             btn_logout_Click(sender, e)
         End If
 
+
+    End Sub
+
+    Private Sub btn_setdiscount_Click(sender As Object, e As EventArgs) Handles btn_submit_cash1.Click
+        frm_cahier_cash_report.ShowDialog()
+    End Sub
+
+    Private Sub Label16_Click(sender As Object, e As EventArgs) Handles Label16.Click
 
     End Sub
 End Class

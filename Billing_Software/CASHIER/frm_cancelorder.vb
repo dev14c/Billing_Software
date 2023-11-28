@@ -72,11 +72,6 @@ Public Class frm_cancelorder
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim form2Instance As New Form2()
 
-        ' Show Form2
-        form2Instance.Show()
-    End Sub
 
 End Class

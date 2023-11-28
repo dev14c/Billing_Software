@@ -35,7 +35,12 @@ Public Class frm_mainAdmin
 
     Sub Load_noOfTodaySale()
         Try
-            'conn.Open()
+
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+            conn.Open()
+
             cmd = New MySqlCommand("SELECT COUNT(DISTINCT billno) FROM `tbi_pos` WHERE `billdate` = @billdate", conn)
             cmd.Parameters.AddWithValue("@billdate", Date.Now.ToString("yyyy-MM-dd"))
             lbl_noOfTodaySale.Text = cmd.ExecuteScalar().ToString()
@@ -47,7 +52,12 @@ Public Class frm_mainAdmin
     End Sub
     Sub Load_noOfProduct()
         Try
-            'conn.Open()
+
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+            conn.Open()
+
             cmd = New MySqlCommand("SELECT COUNT(`procode`) FROM `tblproduct`", conn)
             lbl_noOfProduct.Text = cmd.ExecuteScalar.ToString
 
@@ -59,6 +69,11 @@ Public Class frm_mainAdmin
     End Sub
     Sub Load_monthSale()
         Try
+
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+            conn.Open()
             'conn.Open()
             cmd = New MySqlCommand("SELECT SUM(`grandtotal`) FROM `tbi_pos` WHERE MONTH(billdate) = '" & Date.Now.ToString("MM") & " ' ", conn)
             lbl_monthlySale.Text = cmd.ExecuteScalar.ToString
@@ -69,9 +84,16 @@ Public Class frm_mainAdmin
         End Try
 
     End Sub
+
     Sub Load_todaySale()
+        ' If the product code doesn't exist, add a new row
         Try
-            'conn.Open()
+
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+            conn.Open()
+
             cmd = New MySqlCommand("SELECT SUM(`grandtotal`) FROM `tbi_pos` WHERE `billdate` = '" & Date.Now.ToString("yyyy-MM-dd") & " ' ", conn)
             lbl_todaySale.Text = cmd.ExecuteScalar.ToString
 
@@ -81,8 +103,15 @@ Public Class frm_mainAdmin
         End Try
 
     End Sub
+
+
     Sub Load_noOfCashier()
         Try
+
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+            conn.Open()
             cmd = New MySqlCommand("Select  COUNT(DISTINCT name) As totalUsers
 FROM `tbluser`
 WHERE role = 'Cashier'", conn)
@@ -96,6 +125,11 @@ WHERE role = 'Cashier'", conn)
     End Sub
     Sub Load_noOfmonthSale()
         Try
+
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+            conn.Open()
             cmd = New MySqlCommand("SELECT COUNT(DISTINCT billno) AS numberOfBills FROM tbi_pos WHERE MONTH(billdate) = MONTH(CURDATE())", conn)
             lbl_noOfMonthlySale.Text = cmd.ExecuteScalar().ToString
         Catch ex As Exception
@@ -103,6 +137,36 @@ WHERE role = 'Cashier'", conn)
         End Try
     End Sub
 
+    Private Sub TableLayoutPanel1_Paint(sender As Object, e As PaintEventArgs) Handles TableLayoutPanel1.Paint
+
+    End Sub
+
+    Private Sub cash_report_btn_Click(sender As Object, e As EventArgs) Handles cash_report_btn.Click
+        frm_cash_sumbit.ShowDialog()
+
+    End Sub
+
+    Private Sub Refreshbutton_Click_1(sender As Object, e As EventArgs) Handles Refreshbutton.Click
+        ReloadData()
+    End Sub
+
+    Private Sub ReloadData()
+        ' Place the logic to reload your data here
+        ' For example, if you have a DataGridView, you can reload its data source
+        ' or if you have other controls, update their values accordingly
+
+        ' Call the methods or logic you use to load or display data
+        Load_todaySale()
+        Load_noOfCashier()
+        Load_monthSale()
+        Load_noOfmonthSale()
+        Load_noOfProduct()
+        Load_noOfTodaySale()
+        ' Add more methods as needed
+
+        ' Optionally, display a message or perform other actions after the refresh
+        MessageBox.Show("Data refreshed successfully!", "Refresh", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
 
 
 End Class

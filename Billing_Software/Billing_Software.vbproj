@@ -156,6 +156,12 @@
     <Compile Include="ADMIN\frm_ChangePassword.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ADMIN\frm_email_send.Designer.vb">
+      <DependentUpon>frm_email_send.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ADMIN\frm_email_send.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ADMIN\frm_mainAdmin.Designer.vb">
       <DependentUpon>frm_mainAdmin.vb</DependentUpon>
     </Compile>
@@ -204,10 +210,22 @@
     <Compile Include="CASHIER\frm_billprint.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CASHIER\frm_cahier_cash_report.Designer.vb">
+      <DependentUpon>frm_cahier_cash_report.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CASHIER\frm_cahier_cash_report.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CASHIER\frm_cancelorder.Designer.vb">
       <DependentUpon>frm_cancelorder.vb</DependentUpon>
     </Compile>
     <Compile Include="CASHIER\frm_cancelorder.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADMIN\frm_cash_sumbit.Designer.vb">
+      <DependentUpon>frm_cash_sumbit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ADMIN\frm_cash_sumbit.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CASHIER\frm_discount.Designer.vb">
@@ -272,6 +290,9 @@
     <EmbeddedResource Include="ADMIN\frm_ChangePassword.resx">
       <DependentUpon>frm_ChangePassword.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ADMIN\frm_email_send.resx">
+      <DependentUpon>frm_email_send.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ADMIN\frm_mainAdmin.resx">
       <DependentUpon>frm_mainAdmin.vb</DependentUpon>
     </EmbeddedResource>
@@ -296,8 +317,14 @@
     <EmbeddedResource Include="CASHIER\frm_billprint.resx">
       <DependentUpon>frm_billprint.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CASHIER\frm_cahier_cash_report.resx">
+      <DependentUpon>frm_cahier_cash_report.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CASHIER\frm_cancelorder.resx">
       <DependentUpon>frm_cancelorder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ADMIN\frm_cash_sumbit.resx">
+      <DependentUpon>frm_cash_sumbit.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CASHIER\frm_discount.resx">
       <DependentUpon>frm_discount.vb</DependentUpon>

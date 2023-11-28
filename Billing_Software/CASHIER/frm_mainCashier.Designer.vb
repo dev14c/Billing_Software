@@ -44,7 +44,7 @@ Partial Class frm_mainCashier
         Me.btn_change = New System.Windows.Forms.Button()
         Me.btn_remove = New System.Windows.Forms.Button()
         Me.btn_report = New System.Windows.Forms.Button()
-        Me.btn_setdiscount = New System.Windows.Forms.Button()
+        Me.btn_submit_cash1 = New System.Windows.Forms.Button()
         Me.btn_cancel = New System.Windows.Forms.Button()
         Me.btm_new = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -85,6 +85,10 @@ Partial Class frm_mainCashier
         Me.Column11 = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.txt_cus_name = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.txt_cus_num = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -172,6 +176,10 @@ Partial Class frm_mainCashier
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.White
+        Me.Panel2.Controls.Add(Me.txt_cus_num)
+        Me.Panel2.Controls.Add(Me.txt_cus_name)
+        Me.Panel2.Controls.Add(Me.Label6)
+        Me.Panel2.Controls.Add(Me.Label16)
         Me.Panel2.Controls.Add(Me.lbl_date)
         Me.Panel2.Controls.Add(Me.btp_time)
         Me.Panel2.Controls.Add(Me.txt_SearchProduct)
@@ -182,7 +190,7 @@ Partial Class frm_mainCashier
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 82)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1278, 87)
+        Me.Panel2.Size = New System.Drawing.Size(1278, 113)
         Me.Panel2.TabIndex = 1
         '
         'lbl_date
@@ -208,7 +216,7 @@ Partial Class frm_mainCashier
         'txt_SearchProduct
         '
         Me.txt_SearchProduct.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.txt_SearchProduct.Location = New System.Drawing.Point(150, 46)
+        Me.txt_SearchProduct.Location = New System.Drawing.Point(150, 77)
         Me.txt_SearchProduct.Name = "txt_SearchProduct"
         Me.txt_SearchProduct.Size = New System.Drawing.Size(621, 25)
         Me.txt_SearchProduct.TabIndex = 11
@@ -224,7 +232,7 @@ Partial Class frm_mainCashier
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(12, 48)
+        Me.Label5.Location = New System.Drawing.Point(12, 79)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(139, 23)
         Me.Label5.TabIndex = 9
@@ -265,11 +273,11 @@ Partial Class frm_mainCashier
         Me.TableLayoutPanel1.Controls.Add(Me.btn_change, 5, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.btn_remove, 4, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.btn_report, 3, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.btn_setdiscount, 2, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.btn_submit_cash1, 2, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.btn_cancel, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.btm_new, 0, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 645)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 671)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
@@ -325,17 +333,17 @@ Partial Class frm_mainCashier
         Me.btn_report.Text = "[F4-REPORT]"
         Me.btn_report.UseVisualStyleBackColor = False
         '
-        'btn_setdiscount
+        'btn_submit_cash1
         '
-        Me.btn_setdiscount.BackColor = System.Drawing.Color.RoyalBlue
-        Me.btn_setdiscount.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_setdiscount.ForeColor = System.Drawing.Color.White
-        Me.btn_setdiscount.Location = New System.Drawing.Point(367, 3)
-        Me.btn_setdiscount.Name = "btn_setdiscount"
-        Me.btn_setdiscount.Size = New System.Drawing.Size(170, 64)
-        Me.btn_setdiscount.TabIndex = 15
-        Me.btn_setdiscount.Text = "[F3-SET DISCOUNT]"
-        Me.btn_setdiscount.UseVisualStyleBackColor = False
+        Me.btn_submit_cash1.BackColor = System.Drawing.Color.RoyalBlue
+        Me.btn_submit_cash1.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_submit_cash1.ForeColor = System.Drawing.Color.White
+        Me.btn_submit_cash1.Location = New System.Drawing.Point(367, 3)
+        Me.btn_submit_cash1.Name = "btn_submit_cash1"
+        Me.btn_submit_cash1.Size = New System.Drawing.Size(170, 64)
+        Me.btn_submit_cash1.TabIndex = 15
+        Me.btn_submit_cash1.Text = "[F3-SUBMIT THE CASH]"
+        Me.btn_submit_cash1.UseVisualStyleBackColor = False
         '
         'btn_cancel
         '
@@ -387,7 +395,7 @@ Partial Class frm_mainCashier
         Me.Panel3.Controls.Add(Me.Label7)
         Me.Panel3.Controls.Add(Me.txt_overallGrandTotal)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel3.Location = New System.Drawing.Point(851, 169)
+        Me.Panel3.Location = New System.Drawing.Point(851, 195)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(427, 476)
         Me.Panel3.TabIndex = 3
@@ -633,7 +641,7 @@ Partial Class frm_mainCashier
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.Column9, Me.Column10, Me.btnDeductQty, Me.Column11})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 169)
+        Me.DataGridView1.Location = New System.Drawing.Point(0, 195)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
@@ -763,11 +771,45 @@ Partial Class frm_mainCashier
         '
         Me.Timer2.Enabled = True
         '
+        'txt_cus_name
+        '
+        Me.txt_cus_name.Location = New System.Drawing.Point(146, 45)
+        Me.txt_cus_name.Name = "txt_cus_name"
+        Me.txt_cus_name.Size = New System.Drawing.Size(209, 25)
+        Me.txt_cus_name.TabIndex = 35
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(362, 46)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(95, 23)
+        Me.Label6.TabIndex = 33
+        Me.Label6.Text = "Mobile No:"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(12, 44)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(139, 23)
+        Me.Label16.TabIndex = 34
+        Me.Label16.Text = "Customer Name:"
+        '
+        'txt_cus_num
+        '
+        Me.txt_cus_num.Location = New System.Drawing.Point(463, 46)
+        Me.txt_cus_num.Name = "txt_cus_num"
+        Me.txt_cus_num.Size = New System.Drawing.Size(168, 25)
+        Me.txt_cus_num.TabIndex = 36
+        '
         'frm_mainCashier
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1278, 715)
+        Me.ClientSize = New System.Drawing.Size(1278, 741)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.TableLayoutPanel1)
@@ -807,7 +849,7 @@ Partial Class frm_mainCashier
     Friend WithEvents btn_change As Button
     Friend WithEvents btn_remove As Button
     Friend WithEvents btn_report As Button
-    Friend WithEvents btn_setdiscount As Button
+    Friend WithEvents btn_submit_cash1 As Button
     Friend WithEvents btn_cancel As Button
     Friend WithEvents txt_overallGrandTotal As Label
     Friend WithEvents Label12 As Label
@@ -850,4 +892,8 @@ Partial Class frm_mainCashier
     Friend WithEvents btnDeductQty As DataGridViewButtonColumn
     Friend WithEvents Column11 As DataGridViewButtonColumn
     Friend WithEvents lbl_username As Label
+    Friend WithEvents txt_cus_name As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label16 As Label
+    Friend WithEvents txt_cus_num As TextBox
 End Class

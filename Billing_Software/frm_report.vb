@@ -20,13 +20,13 @@ Public Class frm_report
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`, `grandtotal` FROM `tbi_pos` WHERE cashier_name = @CurrentUser GROUP BY `billno`", conn)
+            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`, `grandtotal`,`Customer_Name` FROM `tbi_pos` WHERE cashier_name = @CurrentUser GROUP BY `billno`", conn)
             cmd.Parameters.AddWithValue("@CurrentUser", UserSession.CurrentUser)
 
             dr = cmd.ExecuteReader
 
             While dr.Read = True
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"))
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"), dr.Item("Customer_Name"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
