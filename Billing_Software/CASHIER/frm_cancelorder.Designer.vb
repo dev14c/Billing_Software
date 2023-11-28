@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frm_cancelorder
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,20 +20,20 @@ Partial Class frm_cancelorder
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txt_search = New System.Windows.Forms.TextBox()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Col_del = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.txt_search = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Column5 = New System.Windows.Forms.DataGridViewButtonColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -44,7 +44,7 @@ Partial Class frm_cancelorder
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Col_del})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Col_del, Me.Column5})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 77)
         Me.DataGridView1.Name = "DataGridView1"
@@ -54,6 +54,32 @@ Partial Class frm_cancelorder
         Me.DataGridView1.RowTemplate.Height = 24
         Me.DataGridView1.Size = New System.Drawing.Size(800, 373)
         Me.DataGridView1.TabIndex = 1
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Controls.Add(Me.txt_search)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(800, 77)
+        Me.Panel1.TabIndex = 2
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(12, 23)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(50, 16)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Search"
+        '
+        'txt_search
+        '
+        Me.txt_search.Location = New System.Drawing.Point(68, 20)
+        Me.txt_search.Name = "txt_search"
+        Me.txt_search.Size = New System.Drawing.Size(178, 22)
+        Me.txt_search.TabIndex = 0
         '
         'Column1
         '
@@ -106,51 +132,24 @@ Partial Class frm_cancelorder
         Me.Col_del.ReadOnly = True
         Me.Col_del.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Col_del.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Col_del.Text = "Delete"
+        Me.Col_del.Text = "View"
         Me.Col_del.UseColumnTextForButtonValue = True
         Me.Col_del.Width = 125
         '
-        'Panel1
+        'Column5
         '
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Controls.Add(Me.txt_search)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(800, 77)
-        Me.Panel1.TabIndex = 2
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 23)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(50, 16)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Search"
-        '
-        'txt_search
-        '
-        Me.txt_search.Location = New System.Drawing.Point(68, 20)
-        Me.txt_search.Name = "txt_search"
-        Me.txt_search.Size = New System.Drawing.Size(178, 22)
-        Me.txt_search.TabIndex = 0
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(535, 171)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 3
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Column5.HeaderText = "Send Request"
+        Me.Column5.MinimumWidth = 6
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        Me.Column5.Text = "Send Request"
+        Me.Column5.Width = 125
         '
         'frm_cancelorder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
@@ -171,5 +170,5 @@ Partial Class frm_cancelorder
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Col_del As DataGridViewButtonColumn
-    Friend WithEvents Button1 As Button
+    Friend WithEvents Column5 As DataGridViewButtonColumn
 End Class

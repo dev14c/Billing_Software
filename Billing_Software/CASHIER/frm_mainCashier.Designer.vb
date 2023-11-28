@@ -23,7 +23,7 @@ Partial Class frm_mainCashier
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lbl_username = New System.Windows.Forms.Label()
         Me.lbl_time = New System.Windows.Forms.Label()
@@ -32,6 +32,10 @@ Partial Class frm_mainCashier
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.txt_cus_num = New System.Windows.Forms.TextBox()
+        Me.txt_cus_name = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
         Me.lbl_date = New System.Windows.Forms.Label()
         Me.btp_time = New System.Windows.Forms.DateTimePicker()
         Me.txt_SearchProduct = New System.Windows.Forms.TextBox()
@@ -85,10 +89,6 @@ Partial Class frm_mainCashier
         Me.Column11 = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
-        Me.txt_cus_name = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.txt_cus_num = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -192,6 +192,40 @@ Partial Class frm_mainCashier
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1278, 113)
         Me.Panel2.TabIndex = 1
+        '
+        'txt_cus_num
+        '
+        Me.txt_cus_num.Location = New System.Drawing.Point(463, 46)
+        Me.txt_cus_num.Name = "txt_cus_num"
+        Me.txt_cus_num.Size = New System.Drawing.Size(168, 25)
+        Me.txt_cus_num.TabIndex = 36
+        '
+        'txt_cus_name
+        '
+        Me.txt_cus_name.Location = New System.Drawing.Point(146, 45)
+        Me.txt_cus_name.Name = "txt_cus_name"
+        Me.txt_cus_name.Size = New System.Drawing.Size(209, 25)
+        Me.txt_cus_name.TabIndex = 35
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(362, 46)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(95, 23)
+        Me.Label6.TabIndex = 33
+        Me.Label6.Text = "Mobile No:"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(12, 44)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(139, 23)
+        Me.Label16.TabIndex = 34
+        Me.Label16.Text = "Customer Name:"
         '
         'lbl_date
         '
@@ -354,7 +388,7 @@ Partial Class frm_mainCashier
         Me.btn_cancel.Name = "btn_cancel"
         Me.btn_cancel.Size = New System.Drawing.Size(170, 64)
         Me.btn_cancel.TabIndex = 14
-        Me.btn_cancel.Text = "[F2-CANCEL]"
+        Me.btn_cancel.Text = "[F2-View Bills]"
         Me.btn_cancel.UseVisualStyleBackColor = False
         '
         'btm_new
@@ -646,11 +680,11 @@ Partial Class frm_mainCashier
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidth = 30
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Yellow
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Yellow
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView1.RowTemplate.Height = 24
         Me.DataGridView1.Size = New System.Drawing.Size(851, 476)
         Me.DataGridView1.TabIndex = 4
@@ -771,40 +805,6 @@ Partial Class frm_mainCashier
         '
         Me.Timer2.Enabled = True
         '
-        'txt_cus_name
-        '
-        Me.txt_cus_name.Location = New System.Drawing.Point(146, 45)
-        Me.txt_cus_name.Name = "txt_cus_name"
-        Me.txt_cus_name.Size = New System.Drawing.Size(209, 25)
-        Me.txt_cus_name.TabIndex = 35
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(362, 46)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(95, 23)
-        Me.Label6.TabIndex = 33
-        Me.Label6.Text = "Mobile No:"
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(12, 44)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(139, 23)
-        Me.Label16.TabIndex = 34
-        Me.Label16.Text = "Customer Name:"
-        '
-        'txt_cus_num
-        '
-        Me.txt_cus_num.Location = New System.Drawing.Point(463, 46)
-        Me.txt_cus_num.Name = "txt_cus_num"
-        Me.txt_cus_num.Size = New System.Drawing.Size(168, 25)
-        Me.txt_cus_num.TabIndex = 36
-        '
         'frm_mainCashier
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 17.0!)
@@ -818,7 +818,7 @@ Partial Class frm_mainCashier
         Me.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Name = "frm_mainCashier"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "POS InvenTory and Management System"
+        Me.Text = "   "
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)

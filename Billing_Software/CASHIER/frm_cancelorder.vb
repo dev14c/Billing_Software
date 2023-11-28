@@ -4,6 +4,7 @@ Public Class frm_cancelorder
         dbconn()
         load_cancelorder()
 
+
     End Sub
     Sub load_cancelorder()
         DataGridView1.Rows.Clear()
@@ -13,7 +14,9 @@ Public Class frm_cancelorder
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT * FROM `tbi_pos`  group by billno", conn)
+            cmd = New MySqlCommand("SELECT * FROM `tbi_pos` WHERE cashier_name = @CurrentUser GROUP BY billno", conn)
+            cmd.Parameters.AddWithValue("@CurrentUser", UserSession.CurrentUser)
+
             dr = cmd.ExecuteReader
             While dr.Read
                 DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("grandtotal"))
@@ -46,32 +49,43 @@ Public Class frm_cancelorder
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-        Dim colname As String = DataGridView1.Columns(e.ColumnIndex).Name
-        If colname = "Col_del" Then
-            If MsgBox("Are you sure want delete this bill !", vbQuestion + vbYesNo) = vbYes Then
-                Try
+        ' Check if the clicked cell is in the "View Bill" column
+        If e.ColumnIndex = DataGridView1.Columns(4).Index AndAlso e.RowIndex >= 0 Then
+            ' Retrieve the procode from the selected row
+            Dim billno As String = DataGridView1.Rows(e.RowIndex).Cells(1).Value.ToString()
 
-                    If conn.State = ConnectionState.Open Then
-                        conn.Close()
-                    End If
-                    conn.Open()
-                    cmd = New MySqlCommand("Delete from tbi_pos where billno='" & DataGridView1.CurrentRow.Cells(1).Value & "'", conn)
-                    i = cmd.ExecuteNonQuery
-                    If i > 0 Then
-                        MsgBox("Bill Delete Success !", vbInformation)
-                        load_cancelorder()
-                    Else
-                        MsgBox("Bill Delete Failed!", vbInformation)
-                    End If
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-
-                End Try
-            End If
+            ' Call a function to display the bill details based on the procode
+            DisplayBillDetails(billno)
         End If
-
     End Sub
+    Private Sub DisplayBillDetails(billno As String)
 
+        ' Instantiate and show the BillDetailsForm
+        Dim billDetailsForm As New view_bill()
+        Try
+
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+            conn.Open()
+            cmd = New MySqlCommand("select grandtotal from tbi_pos where billno=@billno", conn)
+            cmd.Parameters.AddWithValue("@billno", billno)
+            dr = cmd.ExecuteReader
+            If dr.Read() Then
+                ' Set the TextBox on the BillDetailsForm with the retrieved grandtotal
+                billDetailsForm.TextBox2.Text = dr("grandtotal").ToString()
+            Else
+                MsgBox("No details found for the selected bill.", MsgBoxStyle.Information)
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
+        End Try
+
+        ' Show the BillDetailsForm
+        billDetailsForm.Show()
+    End Sub
 
 
 End Class

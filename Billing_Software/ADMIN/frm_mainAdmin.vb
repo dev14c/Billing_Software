@@ -168,5 +168,7 @@ WHERE role = 'Cashier'", conn)
         MessageBox.Show("Data refreshed successfully!", "Refresh", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
-
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        frm_cancelorder.ShowDialog()
+    End Sub
 End Class
