@@ -333,7 +333,7 @@
         <Top>5.13503cm</Top>
         <Left>1.93887cm</Left>
         <Height>1.2cm</Height>
-        <Width>13.048cm</Width>
+        <Width>13.04799cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -357,10 +357,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>billno</rd:DefaultName>
-        <Top>2.4322cm</Top>
+        <Top>3.3147cm</Top>
         <Left>3.16124cm</Left>
         <Height>0.6cm</Height>
-        <Width>3.82644cm</Width>
+        <Width>2.5cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -424,7 +424,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>2.4322cm</Top>
+        <Top>3.3147cm</Top>
         <Left>1.70074cm</Left>
         <Height>0.6cm</Height>
         <Width>1.28411cm</Width>
@@ -565,7 +565,7 @@
         <Top>6.81497cm</Top>
         <Left>9.62378cm</Left>
         <Height>0.6cm</Height>
-        <Width>1.94028cm</Width>
+        <Width>1.94027cm</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -699,7 +699,7 @@
         <Top>6.81497cm</Top>
         <Left>12.08471cm</Left>
         <Height>0.6cm</Height>
-        <Width>2.5cm</Width>
+        <Width>2.49999cm</Width>
         <ZIndex>11</ZIndex>
         <Style>
           <Border>
@@ -859,119 +859,25 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Customer Name:</Value>
+                <Value>Thanks For Shopping</Value>
                 <Style>
                   <FontFamily>calibri</FontFamily>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>3.20859cm</Top>
-        <Left>1.70074cm</Left>
+        <rd:DefaultName>Textbox8</rd:DefaultName>
+        <Top>2.33525cm</Top>
+        <Left>1.39584cm</Left>
         <Height>0.6cm</Height>
-        <Width>2.78694cm</Width>
+        <Width>14.35333cm</Width>
         <ZIndex>16</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Customer_Name">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!Customer_Name.Value, "DataSet1")</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Customer_Name</rd:DefaultName>
-        <Top>3.20859cm</Top>
-        <Left>4.48768cm</Left>
-        <Height>0.6cm</Height>
-        <Width>3.97519cm</Width>
-        <ZIndex>17</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox17">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Customer Mobile:</Value>
-                <Style>
-                  <FontFamily>calibri</FontFamily>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>3.98498cm</Top>
-        <Left>1.70074cm</Left>
-        <Height>0.6cm</Height>
-        <Width>2.78694cm</Width>
-        <ZIndex>18</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Customer_Mobile">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!Customer_Mobile.Value, "DataSet1")</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Customer_Mobile</rd:DefaultName>
-        <Top>3.91442cm</Top>
-        <Left>4.59351cm</Left>
-        <Height>0.6cm</Height>
-        <Width>2.5cm</Width>
-        <ZIndex>19</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1013,104 +919,6 @@
         <DataSourceName>DataSet1</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
-      <Fields>
-        <Field Name="billno">
-          <DataField>billno</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="billdate">
-          <DataField>billdate</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="bmonth">
-          <DataField>bmonth</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="bmonthyear">
-          <DataField>bmonthyear</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="procode">
-          <DataField>procode</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="proname">
-          <DataField>proname</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="progroup">
-          <DataField>progroup</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="uom">
-          <DataField>uom</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="price">
-          <DataField>price</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="tax">
-          <DataField>tax</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="totalproductprice">
-          <DataField>totalproductprice</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="qty">
-          <DataField>qty</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="totalpriceqty">
-          <DataField>totalpriceqty</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="subtotal">
-          <DataField>subtotal</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="totaltax">
-          <DataField>totaltax</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="totalprice">
-          <DataField>totalprice</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="discount_per">
-          <DataField>discount_per</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="discount_amount">
-          <DataField>discount_amount</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="grandtotal">
-          <DataField>grandtotal</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="paymode">
-          <DataField>paymode</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="recieveamount">
-          <DataField>recieveamount</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="balance">
-          <DataField>balance</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Customer_Name">
-          <DataField>Customer_Name</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Customer_Mobile">
-          <DataField>Customer_Mobile</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSet1</rd:DataSetName>
         <rd:SchemaPath>C:\Users\devda\OneDrive\Desktop\Billing_Software\Billing_Software\DataSet1.xsd</rd:SchemaPath>
