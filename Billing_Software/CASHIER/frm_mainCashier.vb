@@ -316,7 +316,7 @@ Public Class frm_mainCashier
                     cmd.Parameters.AddWithValue("@totalpriceqty", (DataGridView1.Rows(j).Cells(9).Value)) ' Assuming totalpriceqty is in the ninth column
                     cmd.Parameters.AddWithValue("@subtotal", (txt_sub_total.Text))
                     cmd.Parameters.AddWithValue("@totaltax", (txt_totaltax.Text))
-                    cmd.Parameters.AddWithValue("@totalprice", (txt_totalprice.Text))
+                    cmd.Parameters.AddWithValue("@totalprice", DataGridView1.Rows(j).Cells(10).Value)
                     cmd.Parameters.AddWithValue("@discount_per", (txt_discount.Text))
                     cmd.Parameters.AddWithValue("@discount_amount", (lbl_discount.Text)) ' Please verify if 181_discount is the correct control
                     cmd.Parameters.AddWithValue("@grandtotal", (txt_grandtotal.Text))

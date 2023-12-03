@@ -75,7 +75,7 @@ Public Class frm_mainAdmin
             End If
             conn.Open()
             'conn.Open()
-            cmd = New MySqlCommand("SELECT SUM(`grandtotal`) FROM `tbi_pos` WHERE MONTH(billdate) = '" & Date.Now.ToString("MM") & " ' ", conn)
+            cmd = New MySqlCommand("SELECT SUM(`totalprice`) FROM `tbi_pos` WHERE MONTH(billdate) = '" & Date.Now.ToString("MM") & "'", conn)
             lbl_monthlySale.Text = cmd.ExecuteScalar.ToString
 
         Catch ex As Exception
@@ -94,7 +94,7 @@ Public Class frm_mainAdmin
             End If
             conn.Open()
 
-            cmd = New MySqlCommand("SELECT SUM(`grandtotal`) FROM `tbi_pos` WHERE `billdate` = '" & Date.Now.ToString("yyyy-MM-dd") & " ' ", conn)
+            cmd = New MySqlCommand("SELECT SUM(`totalprice`) FROM `tbi_pos` WHERE `billdate` = '" & Date.Now.ToString("yyyy-MM-dd") & "'", conn)
             lbl_todaySale.Text = cmd.ExecuteScalar.ToString
 
         Catch ex As Exception
@@ -170,5 +170,13 @@ WHERE role = 'Cashier'", conn)
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         frm_cancelorder.ShowDialog()
+    End Sub
+
+    Private Sub Label3_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub TableLayoutPanel2_Paint(sender As Object, e As PaintEventArgs)
+
     End Sub
 End Class
