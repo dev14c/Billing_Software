@@ -28,6 +28,7 @@ Partial Class frm_mainAdmin
         Me.Refreshbutton = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.btn_manageUsers = New System.Windows.Forms.Button()
         Me.btn_manageProduct = New System.Windows.Forms.Button()
         Me.btn_ManageStock = New System.Windows.Forms.Button()
@@ -59,7 +60,6 @@ Partial Class frm_mainAdmin
         Me.lbl_todaySale = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -80,7 +80,7 @@ Partial Class frm_mainAdmin
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Label1.Location = New System.Drawing.Point(42, 21)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(43, 23)
+        Me.Label1.Size = New System.Drawing.Size(37, 19)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "POS"
         '
@@ -111,7 +111,7 @@ Partial Class frm_mainAdmin
         Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(12, 45)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(145, 23)
+        Me.Label2.Size = New System.Drawing.Size(118, 19)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Inventory System"
         '
@@ -139,6 +139,18 @@ Partial Class frm_mainAdmin
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(631, 82)
         Me.TableLayoutPanel1.TabIndex = 2
+        '
+        'Button1
+        '
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Location = New System.Drawing.Point(543, 3)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(83, 56)
+        Me.Button1.TabIndex = 5
+        Me.Button1.Text = "View Bills"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'btn_manageUsers
         '
@@ -266,7 +278,7 @@ Partial Class frm_mainAdmin
         Me.Label13.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.Location = New System.Drawing.Point(30, 61)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(78, 17)
+        Me.Label13.Size = New System.Drawing.Size(65, 13)
         Me.Label13.TabIndex = 1
         Me.Label13.Text = "No of users"
         '
@@ -276,7 +288,7 @@ Partial Class frm_mainAdmin
         Me.lbl_noOfUser.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_noOfUser.Location = New System.Drawing.Point(27, 21)
         Me.lbl_noOfUser.Name = "lbl_noOfUser"
-        Me.lbl_noOfUser.Size = New System.Drawing.Size(27, 31)
+        Me.lbl_noOfUser.Size = New System.Drawing.Size(23, 25)
         Me.lbl_noOfUser.TabIndex = 0
         Me.lbl_noOfUser.Text = "0"
         '
@@ -295,7 +307,7 @@ Partial Class frm_mainAdmin
         Me.Label9.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.Location = New System.Drawing.Point(30, 61)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(116, 17)
+        Me.Label9.Size = New System.Drawing.Size(99, 13)
         Me.Label9.TabIndex = 1
         Me.Label9.Text = "No of Today Sales"
         '
@@ -305,7 +317,7 @@ Partial Class frm_mainAdmin
         Me.lbl_noOfTodaySale.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_noOfTodaySale.Location = New System.Drawing.Point(27, 21)
         Me.lbl_noOfTodaySale.Name = "lbl_noOfTodaySale"
-        Me.lbl_noOfTodaySale.Size = New System.Drawing.Size(59, 31)
+        Me.lbl_noOfTodaySale.Size = New System.Drawing.Size(50, 25)
         Me.lbl_noOfTodaySale.TabIndex = 0
         Me.lbl_noOfTodaySale.Text = "0.00"
         '
@@ -324,7 +336,7 @@ Partial Class frm_mainAdmin
         Me.Label7.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.Location = New System.Drawing.Point(30, 61)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(130, 17)
+        Me.Label7.Size = New System.Drawing.Size(109, 13)
         Me.Label7.TabIndex = 1
         Me.Label7.Text = "No of Monthly sales"
         '
@@ -334,7 +346,7 @@ Partial Class frm_mainAdmin
         Me.lbl_noOfMonthlySale.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_noOfMonthlySale.Location = New System.Drawing.Point(27, 21)
         Me.lbl_noOfMonthlySale.Name = "lbl_noOfMonthlySale"
-        Me.lbl_noOfMonthlySale.Size = New System.Drawing.Size(59, 31)
+        Me.lbl_noOfMonthlySale.Size = New System.Drawing.Size(50, 25)
         Me.lbl_noOfMonthlySale.TabIndex = 0
         Me.lbl_noOfMonthlySale.Text = "0.00"
         '
@@ -380,7 +392,7 @@ Partial Class frm_mainAdmin
         Me.Label11.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.Location = New System.Drawing.Point(30, 61)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(94, 17)
+        Me.Label11.Size = New System.Drawing.Size(78, 13)
         Me.Label11.TabIndex = 1
         Me.Label11.Text = "No of Product"
         '
@@ -390,7 +402,7 @@ Partial Class frm_mainAdmin
         Me.lbl_noOfProduct.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_noOfProduct.Location = New System.Drawing.Point(27, 21)
         Me.lbl_noOfProduct.Name = "lbl_noOfProduct"
-        Me.lbl_noOfProduct.Size = New System.Drawing.Size(27, 31)
+        Me.lbl_noOfProduct.Size = New System.Drawing.Size(23, 25)
         Me.lbl_noOfProduct.TabIndex = 0
         Me.lbl_noOfProduct.Text = "0"
         '
@@ -409,7 +421,7 @@ Partial Class frm_mainAdmin
         Me.Label5.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(30, 61)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(93, 17)
+        Me.Label5.Size = New System.Drawing.Size(78, 13)
         Me.Label5.TabIndex = 1
         Me.Label5.Text = "Monthly Sales"
         '
@@ -419,7 +431,7 @@ Partial Class frm_mainAdmin
         Me.lbl_monthlySale.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_monthlySale.Location = New System.Drawing.Point(27, 21)
         Me.lbl_monthlySale.Name = "lbl_monthlySale"
-        Me.lbl_monthlySale.Size = New System.Drawing.Size(59, 31)
+        Me.lbl_monthlySale.Size = New System.Drawing.Size(50, 25)
         Me.lbl_monthlySale.TabIndex = 0
         Me.lbl_monthlySale.Text = "0.00"
         '
@@ -438,7 +450,7 @@ Partial Class frm_mainAdmin
         Me.Label4.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(30, 61)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(78, 17)
+        Me.Label4.Size = New System.Drawing.Size(67, 13)
         Me.Label4.TabIndex = 1
         Me.Label4.Text = "Today Sales"
         '
@@ -448,7 +460,7 @@ Partial Class frm_mainAdmin
         Me.lbl_todaySale.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_todaySale.Location = New System.Drawing.Point(27, 21)
         Me.lbl_todaySale.Name = "lbl_todaySale"
-        Me.lbl_todaySale.Size = New System.Drawing.Size(59, 31)
+        Me.lbl_todaySale.Size = New System.Drawing.Size(50, 25)
         Me.lbl_todaySale.TabIndex = 0
         Me.lbl_todaySale.Text = "0.00"
         '
@@ -464,21 +476,9 @@ Partial Class frm_mainAdmin
         '
         Me.Timer1.Enabled = True
         '
-        'Button1
-        '
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Location = New System.Drawing.Point(543, 3)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(83, 56)
-        Me.Button1.TabIndex = 5
-        Me.Button1.Text = "View Bills"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'frm_mainAdmin
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 21.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1115, 648)
         Me.Controls.Add(Me.Panel3)

@@ -34,28 +34,25 @@ Partial Class frm_login
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(155, 25)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(116, 20)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(73, 16)
+        Me.Label1.Size = New System.Drawing.Size(59, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Login Here"
         '
         'txt_username
         '
-        Me.txt_username.Location = New System.Drawing.Point(111, 119)
-        Me.txt_username.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_username.Location = New System.Drawing.Point(83, 97)
         Me.txt_username.Name = "txt_username"
-        Me.txt_username.Size = New System.Drawing.Size(263, 22)
+        Me.txt_username.Size = New System.Drawing.Size(198, 20)
         Me.txt_username.TabIndex = 0
         Me.txt_username.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'txt_password
         '
-        Me.txt_password.Location = New System.Drawing.Point(111, 196)
-        Me.txt_password.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_password.Location = New System.Drawing.Point(83, 159)
         Me.txt_password.Name = "txt_password"
-        Me.txt_password.Size = New System.Drawing.Size(263, 22)
+        Me.txt_password.Size = New System.Drawing.Size(198, 20)
         Me.txt_password.TabIndex = 1
         Me.txt_password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.txt_password.UseSystemPasswordChar = True
@@ -63,20 +60,18 @@ Partial Class frm_login
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(107, 100)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(80, 81)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(67, 16)
+        Me.Label2.Size = New System.Drawing.Size(53, 13)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "username"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(107, 176)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Location = New System.Drawing.Point(80, 143)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(66, 16)
+        Me.Label3.Size = New System.Drawing.Size(52, 13)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "password"
         '
@@ -84,10 +79,9 @@ Partial Class frm_login
         '
         Me.btn_login.BackColor = System.Drawing.Color.Blue
         Me.btn_login.ForeColor = System.Drawing.Color.White
-        Me.btn_login.Location = New System.Drawing.Point(111, 228)
-        Me.btn_login.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_login.Location = New System.Drawing.Point(83, 185)
         Me.btn_login.Name = "btn_login"
-        Me.btn_login.Size = New System.Drawing.Size(264, 43)
+        Me.btn_login.Size = New System.Drawing.Size(198, 35)
         Me.btn_login.TabIndex = 2
         Me.btn_login.Text = "Login"
         Me.btn_login.UseVisualStyleBackColor = False
@@ -96,20 +90,19 @@ Partial Class frm_login
         '
         Me.Btn_exit.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Btn_exit.ForeColor = System.Drawing.Color.White
-        Me.Btn_exit.Location = New System.Drawing.Point(111, 278)
-        Me.Btn_exit.Margin = New System.Windows.Forms.Padding(4)
+        Me.Btn_exit.Location = New System.Drawing.Point(83, 226)
         Me.Btn_exit.Name = "Btn_exit"
-        Me.Btn_exit.Size = New System.Drawing.Size(264, 43)
+        Me.Btn_exit.Size = New System.Drawing.Size(198, 35)
         Me.Btn_exit.TabIndex = 3
         Me.Btn_exit.Text = "Exit"
         Me.Btn_exit.UseVisualStyleBackColor = False
         '
         'frm_login
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(499, 373)
+        Me.ClientSize = New System.Drawing.Size(408, 314)
         Me.Controls.Add(Me.Btn_exit)
         Me.Controls.Add(Me.btn_login)
         Me.Controls.Add(Me.Label3)
@@ -117,7 +110,6 @@ Partial Class frm_login
         Me.Controls.Add(Me.txt_password)
         Me.Controls.Add(Me.txt_username)
         Me.Controls.Add(Me.Label1)
-        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.name = "frm_login"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frm_login"
