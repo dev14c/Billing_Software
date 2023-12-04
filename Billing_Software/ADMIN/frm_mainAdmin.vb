@@ -25,10 +25,44 @@ Public Class frm_mainAdmin
         Load_noOfmonthSale()
         Load_noOfProduct()
         Load_noOfTodaySale()
-
+        Load_todayProfit()
+        Load_monthProfit()
         'MsgBox("SELECT SUM(`grandtotal`),`billno` FROM `tbi_pos` WHERE `billdate` = '" & Date.Now.ToString("yyyy-MM-dd") & "' group by billno ")
     End Sub
 
+    Sub Load_todayProfit()
+        Try
+
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+            conn.Open()
+
+            cmd = New MySqlCommand("SELECT SUM(`profit`) FROM `tbi_pos` WHERE `billdate` = '" & Date.Now.ToString("yyyy-MM-dd") & "'", conn)
+            todayProfit.Text = cmd.ExecuteScalar.ToString
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
+        End Try
+    End Sub
+    Sub Load_monthProfit()
+        Try
+
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+            conn.Open()
+            'conn.Open()
+            cmd = New MySqlCommand("SELECT SUM(`profit`) FROM `tbi_pos` WHERE MONTH(billdate) = '" & Date.Now.ToString("MM") & "'", conn)
+            monthProfit.Text = cmd.ExecuteScalar.ToString
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
+        End Try
+
+    End Sub
     Private Sub btn_Reports_Click(sender As Object, e As EventArgs) Handles btn_Reports.Click
         report_admin.ShowDialog()
     End Sub
@@ -172,11 +206,7 @@ WHERE role = 'Cashier'", conn)
         frm_cancelorder.ShowDialog()
     End Sub
 
-    Private Sub Label3_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub TableLayoutPanel2_Paint(sender As Object, e As PaintEventArgs)
+    Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
 
     End Sub
 End Class
