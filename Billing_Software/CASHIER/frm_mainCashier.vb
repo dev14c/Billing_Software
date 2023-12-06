@@ -298,8 +298,8 @@ Public Class frm_mainCashier
                     cmd.ExecuteNonQuery()
                 Next
                 For j As Integer = 0 To DataGridView1.Rows.Count - 1 Step +1
-                    cmd = New MySqlCommand("INSERT INTO tbi_pos (billno, billdate, bmonth, bmonthyear, procode, proname, progroup, uom, price, tax, totalproductprice, qty, totalpriceqty, subtotal, totaltax, totalprice, discount_per, discount_amount, grandtotal, paymode, recieveamount, balance,cashier_name,profit) VALUES " &
-                               "(@billno, @billdate, @bmonth, @bmonthyear, @procode, @proname, @progroup, @uom, @price, @tax, @totalproductprice, @qty, @totalpriceqty, @subtotal, @totaltax, @totalprice,@discount_per, @discount_amount, @grandtotal, @paymode, @recieveamount, @balance,@cashier_name,@profit)", conn)
+                    cmd = New MySqlCommand("INSERT INTO tbi_pos (billno, billdate, bmonth, bmonthyear, procode, proname, progroup, uom, price, tax, totalproductprice, qty, totalpriceqty, subtotal, totaltax, totalprice, discount_per, discount_amount, grandtotal, paymode, recieveamount, balance,cashier_name,Customer_Name,Customer_Mobile,profit) VALUES " &
+                               "(@billno, @billdate, @bmonth, @bmonthyear, @procode, @proname, @progroup, @uom, @price, @tax, @totalproductprice, @qty, @totalpriceqty, @subtotal, @totaltax, @totalprice,@discount_per, @discount_amount, @grandtotal, @paymode, @recieveamount, @balance,@cashier_name,@Customer_Name,@Customer_Mobile,@profit)", conn)
                     cmd.Parameters.Clear()
                     cmd.Parameters.AddWithValue("@billno", txt_billno.Text)
                     cmd.Parameters.AddWithValue("@billdate", CDate(btp_time.Text))
@@ -324,6 +324,8 @@ Public Class frm_mainCashier
                     cmd.Parameters.AddWithValue("@recieveamount", (txt_amtrec.Text)) ' Assuming txt_AmountReceived is the correct control
                     cmd.Parameters.AddWithValue("@balance", (txt_change.Text))
                     cmd.Parameters.AddWithValue("@cashier_name", (UserSession.CurrentUser))
+                    cmd.Parameters.AddWithValue("@Customer_name", (txt_cus_name.Text))
+                    cmd.Parameters.AddWithValue("@Customer_Mobile", (txt_cus_num.Text))
                     Dim profit As Decimal
                     profit = CDec(DataGridView1.Rows(j).Cells(10).Value) - CDec(DataGridView1.Rows(j).Cells(11).Value) * CDec(DataGridView1.Rows(j).Cells(8).Value)
                     cmd.Parameters.AddWithValue("@profit", profit)

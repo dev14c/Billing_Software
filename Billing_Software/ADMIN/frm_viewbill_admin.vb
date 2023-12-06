@@ -1,9 +1,9 @@
 ﻿Imports MySql.Data.MySqlClient
-Public Class frm_cancelorder
-    Private Sub frm_cancelorder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+Public Class frm_viewbill_admin
+    Private Sub frm_viewbill_admin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dbconn()
         load_cancelorder()
-
 
     End Sub
     Sub load_cancelorder()
@@ -14,8 +14,7 @@ Public Class frm_cancelorder
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT * FROM `tbi_pos` WHERE cashier_name = @CurrentUser GROUP BY billno", conn)
-            cmd.Parameters.AddWithValue("@CurrentUser", UserSession.CurrentUser)
+            cmd = New MySqlCommand("SELECT * FROM `tbi_pos`  GROUP BY billno", conn)
 
             dr = cmd.ExecuteReader
             While dr.Read
@@ -50,6 +49,30 @@ Public Class frm_cancelorder
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
         ' Check if the clicked cell is in the "View Bill" column
+        If e.ColumnIndex = DataGridView1.Columns(5).Index AndAlso e.RowIndex >= 0 Then
+            If MsgBox("Are you sure want delete this bill !", vbQuestion + vbYesNo) = vbYes Then
+                Try
+
+                    If conn.State = ConnectionState.Open Then
+                        conn.Close()
+                    End If
+                    conn.Open()
+                    cmd = New MySqlCommand("Delete from tbi_pos where billno='" & DataGridView1.CurrentRow.Cells(1).Value & "'", conn)
+                    i = cmd.ExecuteNonQuery
+                    If i > 0 Then
+                        MsgBox("Bill Delete Success !", vbInformation)
+                        load_cancelorder()
+                    Else
+                        MsgBox("Bill Delete Failed!", vbInformation)
+                    End If
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+
+                End Try
+            End If
+        End If
+
+
         If e.ColumnIndex = DataGridView1.Columns(4).Index AndAlso e.RowIndex >= 0 Then
             ' Retrieve the procode from the selected row
             Dim billno As String = DataGridView1.Rows(e.RowIndex).Cells(1).Value.ToString()
@@ -91,5 +114,7 @@ Public Class frm_cancelorder
         ' Show the BillDetailsForm
         billDetailsForm.Show()
     End Sub
+
+
 
 End Class

@@ -169,6 +169,6 @@ WHERE role = 'Cashier'", conn)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        frm_cancelorder.ShowDialog()
+        frm_viewbill_admin.ShowDialog()
     End Sub
 End Class

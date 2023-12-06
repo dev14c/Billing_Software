@@ -53,8 +53,8 @@
     <Reference Include="K4os.Compression.LZ4, Version=1.3.6.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
       <HintPath>..\packages\K4os.Compression.LZ4.1.3.6\lib\net462\K4os.Compression.LZ4.dll</HintPath>
     </Reference>
-    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.3.5.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
-      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.3.5\lib\net462\K4os.Compression.LZ4.Streams.dll</HintPath>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.3.6.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.3.6\lib\net462\K4os.Compression.LZ4.Streams.dll</HintPath>
     </Reference>
     <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
       <HintPath>..\packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
@@ -201,10 +201,22 @@
     <Compile Include="ADMIN\frm_user_list.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ADMIN\frm_viewbill_admin.Designer.vb">
+      <DependentUpon>frm_viewbill_admin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ADMIN\frm_viewbill_admin.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ADMIN\report_admin.Designer.vb">
       <DependentUpon>report_admin.vb</DependentUpon>
     </Compile>
     <Compile Include="ADMIN\report_admin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADMIN\view_admin_bill.Designer.vb">
+      <DependentUpon>view_admin_bill.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ADMIN\view_admin_bill.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CASHIER\frm_billprint.Designer.vb">
@@ -320,8 +332,14 @@
     <EmbeddedResource Include="ADMIN\frm_user_list.resx">
       <DependentUpon>frm_user_list.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ADMIN\frm_viewbill_admin.resx">
+      <DependentUpon>frm_viewbill_admin.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ADMIN\report_admin.resx">
       <DependentUpon>report_admin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ADMIN\view_admin_bill.resx">
+      <DependentUpon>view_admin_bill.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CASHIER\frm_billprint.resx">
       <DependentUpon>frm_billprint.vb</DependentUpon>

@@ -44,11 +44,11 @@ Public Class frm_ManageProduct
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT  `procode`, `proname`, `progroup`, `uom`, `stock`,`Rate_per`,`purchase_price`,`Selling_price`, `tax`, `totalprice`,`barcode` FROM `tblproduct` ", conn)
+            cmd = New MySqlCommand("SELECT  `procode`, `proname`, `progroup`, `uom`, `stock`,`Rate_per`,`purchase_price`, `tax`, `totalprice`,`barcode` FROM `tblproduct` ", conn)
             dr = cmd.ExecuteReader
             While dr.Read
                 DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("procode"), dr.Item("proname"), dr.Item("progroup"), dr.Item("uom"), dr.Item("stock"), dr.Item("Rate_per"),
-                dr.Item("purchase_price"), dr.Item("Selling_price"), dr.Item("tax"), dr.Item("totalprice"), dr.Item("barcode"))
+                dr.Item("purchase_price"), dr.Item("tax"), dr.Item("totalprice"), dr.Item("barcode"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message & "2")
