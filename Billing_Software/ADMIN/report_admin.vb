@@ -74,19 +74,17 @@ Public Class report_admin
     Private Sub rbtn_currentMonth_CheckedChanged(sender As Object, e As EventArgs) Handles rbtn_currentMonth.CheckedChanged
         DataGridView1.Rows.Clear()
         Try
-
             If conn.State = ConnectionState.Open Then
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT `billno` ,`billdate` ,`bmonth`,`bmonthyear`,`grandtotal`,`cashier_name`,sum(profit) as profit FROM `tbi_pos` WHERE  billdate like '%" & Date.Now.ToString("yyyy-MM") & "%'", conn)
+            cmd = New MySqlCommand("SELECT `billno` ,`billdate` ,`bmonth`,`bmonthyear`,`grandtotal`,`cashier_name`,sum(profit) as profit FROM `tbi_pos` WHERE  billdate like '%" & Date.Now.ToString("yyyy-MM") & "%' group by `billno` ", conn)
             dr = cmd.ExecuteReader
             While dr.Read = True
                 DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"), dr.Item("cashier_name"), dr.Item("profit"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
-
         End Try
     End Sub
 
