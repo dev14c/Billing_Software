@@ -39,8 +39,13 @@ Public Class frm_mainAdmin
             conn.Open()
 
             cmd = New MySqlCommand("SELECT SUM(`profit`) FROM `tbi_pos` WHERE `billdate` = '" & Date.Now.ToString("yyyy-MM-dd") & "'", conn)
-            todayProfit.Text = cmd.ExecuteScalar.ToString
-
+            'todayProfit.Text = cmd.ExecuteScalar.ToString
+            Dim result As Object = cmd.ExecuteScalar()
+            If result IsNot DBNull.Value AndAlso result IsNot Nothing Then
+                todayProfit.Text = result.ToString()
+            Else
+                todayProfit.Text = "0" ' Set a default value if the result is null
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
 
@@ -55,8 +60,14 @@ Public Class frm_mainAdmin
             conn.Open()
             'conn.Open()
             cmd = New MySqlCommand("SELECT SUM(`profit`) FROM `tbi_pos` WHERE MONTH(billdate) = '" & Date.Now.ToString("MM") & "'", conn)
-            monthProfit.Text = cmd.ExecuteScalar.ToString
+            'monthProfit.Text = cmd.ExecuteScalar.ToString
 
+            Dim result As Object = cmd.ExecuteScalar()
+            If result IsNot DBNull.Value AndAlso result IsNot Nothing Then
+                monthProfit.Text = result.ToString()
+            Else
+                monthProfit.Text = "0" ' Set a default value if the result is null
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
 
@@ -77,7 +88,13 @@ Public Class frm_mainAdmin
 
             cmd = New MySqlCommand("SELECT COUNT(DISTINCT billno) FROM `tbi_pos` WHERE `billdate` = @billdate", conn)
             cmd.Parameters.AddWithValue("@billdate", Date.Now.ToString("yyyy-MM-dd"))
-            lbl_noOfTodaySale.Text = cmd.ExecuteScalar().ToString()
+            'lbl_noOfTodaySale.Text = cmd.ExecuteScalar().ToString()
+            Dim result As Object = cmd.ExecuteScalar()
+            If result IsNot DBNull.Value AndAlso result IsNot Nothing Then
+                lbl_noOfTodaySale.Text = result.ToString()
+            Else
+                lbl_noOfTodaySale.Text = "0" ' Set a default value if the result is null
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -93,8 +110,13 @@ Public Class frm_mainAdmin
             conn.Open()
 
             cmd = New MySqlCommand("SELECT COUNT(`procode`) FROM `tblproduct`", conn)
-            lbl_noOfProduct.Text = cmd.ExecuteScalar.ToString
-
+            'lbl_noOfProduct.Text = cmd.ExecuteScalar.ToString
+            Dim result As Object = cmd.ExecuteScalar()
+            If result IsNot DBNull.Value AndAlso result IsNot Nothing Then
+                lbl_noOfProduct.Text = result.ToString()
+            Else
+                lbl_noOfProduct.Text = "0" ' Set a default value if the result is null
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
 
@@ -110,8 +132,13 @@ Public Class frm_mainAdmin
             conn.Open()
             'conn.Open()
             cmd = New MySqlCommand("SELECT SUM(`totalprice`) FROM `tbi_pos` WHERE MONTH(billdate) = '" & Date.Now.ToString("MM") & "'", conn)
-            lbl_monthlySale.Text = cmd.ExecuteScalar.ToString
-
+            'lbl_monthlySale.Text = cmd.ExecuteScalar.ToString
+            Dim result As Object = cmd.ExecuteScalar()
+            If result IsNot DBNull.Value AndAlso result IsNot Nothing Then
+                lbl_monthlySale.Text = result.ToString()
+            Else
+                lbl_monthlySale.Text = "0" ' Set a default value if the result is null
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
 
@@ -129,8 +156,13 @@ Public Class frm_mainAdmin
             conn.Open()
 
             cmd = New MySqlCommand("SELECT SUM(`totalprice`) FROM `tbi_pos` WHERE `billdate` = '" & Date.Now.ToString("yyyy-MM-dd") & "'", conn)
-            lbl_todaySale.Text = cmd.ExecuteScalar.ToString
-
+            'lbl_todaySale.Text = cmd.ExecuteScalar.ToString
+            Dim result As Object = cmd.ExecuteScalar()
+            If result IsNot DBNull.Value AndAlso result IsNot Nothing Then
+                lbl_todaySale.Text = result.ToString()
+            Else
+                lbl_todaySale.Text = "0" ' Set a default value if the result is null
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
 
@@ -149,8 +181,13 @@ Public Class frm_mainAdmin
             cmd = New MySqlCommand("Select  COUNT(DISTINCT name) As totalUsers
 FROM `tbluser`
 WHERE role = 'Cashier'", conn)
-            lbl_noOfUser.Text = cmd.ExecuteScalar.ToString
-
+            'lbl_noOfUser.Text = cmd.ExecuteScalar.ToString
+            Dim result As Object = cmd.ExecuteScalar()
+            If result IsNot DBNull.Value AndAlso result IsNot Nothing Then
+                lbl_noOfUser.Text = result.ToString()
+            Else
+                lbl_noOfUser.Text = "0" ' Set a default value if the result is null
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
 
@@ -165,7 +202,13 @@ WHERE role = 'Cashier'", conn)
             End If
             conn.Open()
             cmd = New MySqlCommand("SELECT COUNT(DISTINCT billno) AS numberOfBills FROM tbi_pos WHERE MONTH(billdate) = MONTH(CURDATE())", conn)
-            lbl_noOfMonthlySale.Text = cmd.ExecuteScalar().ToString
+            'lbl_noOfMonthlySale.Text = cmd.ExecuteScalar().ToString
+            Dim result As Object = cmd.ExecuteScalar()
+            If result IsNot DBNull.Value AndAlso result IsNot Nothing Then
+                lbl_noOfMonthlySale.Text = result.ToString()
+            Else
+                lbl_noOfMonthlySale.Text = "0" ' Set a default value if the result is null
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
