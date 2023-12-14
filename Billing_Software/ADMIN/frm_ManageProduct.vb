@@ -64,8 +64,11 @@ Public Class frm_ManageProduct
         txt_purchase_price.Clear() ' Add this line to clear txt_purchase
         txt_rate_per.Clear() ' Add this line to clear txt_rate_per
         cbo_group.SelectedIndex = -1
-        cbo_tax.SelectedIndex = -1
+        cbo_tax.Text = Nothing
+        gstAmount.Clear()
+        afterGST.Clear()
         cbo_uom.SelectedIndex = -1
+
         pic_barcode.Image = Nothing
 
     End Sub
@@ -177,7 +180,7 @@ Public Class frm_ManageProduct
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT  `procode`, `proname`, `progroup`, `uom`, `stock`, `Rate_per`,`purchase_price`,`Selling_price`, `tax`, `totalprice`,`barcode` FROM `tblproduct` WHERE procode LIKE '%" & txt_SearchProductCode.Text & "%' ", conn)
+            cmd = New MySqlCommand("SELECT  * FROM `tblproduct` WHERE procode LIKE '%" & txt_SearchProductCode.Text & "%' ", conn)
             dr = cmd.ExecuteReader
             While dr.Read
                 txt_procode.Text = dr.Item("procode")
@@ -185,8 +188,8 @@ Public Class frm_ManageProduct
                 cbo_group.Text = dr.Item("progroup")
                 cbo_uom.Text = dr.Item("uom")
                 txt_location.Text = dr.Item("stock")
-                txt_location.Text = dr.Item("Rate_per")
-                txt_location.Text = dr.Item("purchase_price")
+                txt_rate_per.Text = dr.Item("Rate_per")
+                txt_purchase_price.Text = dr.Item("purchase_price")
                 txt_selling_price.Text = dr.Item("Selling_price")
                 cbo_tax.Text = dr.Item("tax")
                 txt_totalprice.Text = dr.Item("totalprice")
@@ -203,16 +206,18 @@ Public Class frm_ManageProduct
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("UPDATE `tblproduct` SET `proname`=@proname,`progroup`=@progroup,`uom`=@uom,`location`=@location,`price`=@price,`tax`=@tax,`totalprice`=@totalprice WHERE `procode`=@procode", conn)
+            'cmd = New MySqlCommand("UPDATE `tblproduct` SET `proname`=@proname,`progroup`=@progroup,`uom`=@uom,`location`=@location,`price`=@price,`tax`=@tax,`totalprice`=@totalprice WHERE `procode`=@procode", conn)
+            cmd = New MySqlCommand("UPDATE `tblproduct` SET `proname`=@proname, `progroup`=@progroup, `uom`=@uom, `Rate_per` = @mrp, `stock` = @qty, `purchase_price`=@pp, `tax`=@tax, `totalprice`=@totalprice where `procode`=@procode ", conn)
 
             cmd.Parameters.Clear()
 
             cmd.Parameters.AddWithValue("@proname", txt_proname.Text)
             cmd.Parameters.AddWithValue("@progroup", cbo_group.Text)
             cmd.Parameters.AddWithValue("@uom", cbo_uom.Text)
-            cmd.Parameters.AddWithValue("@location", txt_location.Text)
-            cmd.Parameters.AddWithValue("@price", CDec(txt_selling_price.Text))
+            cmd.Parameters.AddWithValue("@mrp", txt_rate_per.Text)
+            cmd.Parameters.AddWithValue("@qty", CDec(txt_location.Text))
             cmd.Parameters.AddWithValue("@tax", CDec(cbo_tax.Text))
+            cmd.Parameters.AddWithValue("@pp", CDec(txt_purchase_price.Text))
             cmd.Parameters.AddWithValue("@totalprice", CDec(txt_totalprice.Text))
             cmd.Parameters.AddWithValue("@procode", txt_procode.Text)
 

@@ -47,6 +47,9 @@ Partial Class frm_mainAdmin
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.lbl_noOfMonthlySale = New System.Windows.Forms.Label()
+        Me.Panel13 = New System.Windows.Forms.Panel()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.monthProfit = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel10 = New System.Windows.Forms.Panel()
@@ -63,9 +66,6 @@ Partial Class frm_mainAdmin
         Me.todayProfit = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Panel13 = New System.Windows.Forms.Panel()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.monthProfit = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -73,12 +73,12 @@ Partial Class frm_mainAdmin
         Me.Panel11.SuspendLayout()
         Me.Panel9.SuspendLayout()
         Me.Panel8.SuspendLayout()
+        Me.Panel13.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.Panel10.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.Panel12.SuspendLayout()
-        Me.Panel13.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -151,7 +151,7 @@ Partial Class frm_mainAdmin
         'Button1
         '
         Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red
+        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Location = New System.Drawing.Point(603, 3)
         Me.Button1.Name = "Button1"
@@ -360,6 +360,35 @@ Partial Class frm_mainAdmin
         Me.lbl_noOfMonthlySale.TabIndex = 0
         Me.lbl_noOfMonthlySale.Text = "0.00"
         '
+        'Panel13
+        '
+        Me.Panel13.Controls.Add(Me.Label8)
+        Me.Panel13.Controls.Add(Me.monthProfit)
+        Me.Panel13.Location = New System.Drawing.Point(743, 3)
+        Me.Panel13.Name = "Panel13"
+        Me.Panel13.Size = New System.Drawing.Size(179, 94)
+        Me.Panel13.TabIndex = 4
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(30, 61)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(99, 19)
+        Me.Label8.TabIndex = 1
+        Me.Label8.Text = "Month's Profit"
+        '
+        'monthProfit
+        '
+        Me.monthProfit.AutoSize = True
+        Me.monthProfit.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.monthProfit.Location = New System.Drawing.Point(27, 21)
+        Me.monthProfit.Name = "monthProfit"
+        Me.monthProfit.Size = New System.Drawing.Size(53, 28)
+        Me.monthProfit.TabIndex = 0
+        Me.monthProfit.Text = "0.00"
+        '
         'Panel5
         '
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
@@ -517,35 +546,6 @@ Partial Class frm_mainAdmin
         '
         Me.Timer1.Enabled = True
         '
-        'Panel13
-        '
-        Me.Panel13.Controls.Add(Me.Label8)
-        Me.Panel13.Controls.Add(Me.monthProfit)
-        Me.Panel13.Location = New System.Drawing.Point(743, 3)
-        Me.Panel13.Name = "Panel13"
-        Me.Panel13.Size = New System.Drawing.Size(179, 94)
-        Me.Panel13.TabIndex = 4
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(30, 61)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(99, 19)
-        Me.Label8.TabIndex = 1
-        Me.Label8.Text = "Month's Profit"
-        '
-        'monthProfit
-        '
-        Me.monthProfit.AutoSize = True
-        Me.monthProfit.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.monthProfit.Location = New System.Drawing.Point(27, 21)
-        Me.monthProfit.Name = "monthProfit"
-        Me.monthProfit.Size = New System.Drawing.Size(53, 28)
-        Me.monthProfit.TabIndex = 0
-        Me.monthProfit.Text = "0.00"
-        '
         'frm_mainAdmin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
@@ -571,6 +571,8 @@ Partial Class frm_mainAdmin
         Me.Panel9.PerformLayout()
         Me.Panel8.ResumeLayout(False)
         Me.Panel8.PerformLayout()
+        Me.Panel13.ResumeLayout(False)
+        Me.Panel13.PerformLayout()
         Me.TableLayoutPanel2.ResumeLayout(False)
         Me.Panel10.ResumeLayout(False)
         Me.Panel10.PerformLayout()
@@ -580,8 +582,6 @@ Partial Class frm_mainAdmin
         Me.Panel6.PerformLayout()
         Me.Panel12.ResumeLayout(False)
         Me.Panel12.PerformLayout()
-        Me.Panel13.ResumeLayout(False)
-        Me.Panel13.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

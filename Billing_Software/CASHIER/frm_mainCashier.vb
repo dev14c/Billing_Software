@@ -494,4 +494,8 @@ Public Class frm_mainCashier
     Private Sub Label17_Click(sender As Object, e As EventArgs) Handles Label17.Click
 
     End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
+    End Sub
 End Class
