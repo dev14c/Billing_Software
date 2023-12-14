@@ -34,6 +34,7 @@ Public Class frm_mainCashier
             If row.Cells(1).Value IsNot Nothing AndAlso row.Cells(1).Value.ToString() = txt_SearchProduct.Text Then
                 exist = True
                 existingRowIndex = row.Index
+                Label17.Text = row.Index.ToString
                 existingQuantity = CInt(row.Cells(8).Value)
                 Exit For
             End If
@@ -99,6 +100,7 @@ Public Class frm_mainCashier
             End Try
         End If
     End Sub
+
 
     Private Function GetStockLevel(productCode As String) As Integer
         Dim stockLevel As Integer = 0
@@ -487,5 +489,9 @@ Public Class frm_mainCashier
         DataGridView1.Rows(numrow).Cells(7).Value = totalqtyprice
         DataGridView1.Rows(numrow).Cells(5).Value = gstAmount
         DataGridView1.Rows(numrow).Cells(10).Value = rate_x_qty
+    End Sub
+
+    Private Sub Label17_Click(sender As Object, e As EventArgs) Handles Label17.Click
+
     End Sub
 End Class

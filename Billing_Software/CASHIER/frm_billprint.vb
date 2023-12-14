@@ -5,6 +5,7 @@ Public Class frm_billprint
         dbconn()
         Me.ReportViewer1.RefreshReport()
         load_billprint()
+
     End Sub
     Sub load_billprint()
         Try

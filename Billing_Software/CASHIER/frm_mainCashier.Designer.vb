@@ -23,7 +23,7 @@ Partial Class frm_mainCashier
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lbl_username = New System.Windows.Forms.Label()
         Me.lbl_time = New System.Windows.Forms.Label()
@@ -91,6 +91,7 @@ Partial Class frm_mainCashier
         Me.Column11 = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.Label17 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -101,6 +102,7 @@ Partial Class frm_mainCashier
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.Controls.Add(Me.Label17)
         Me.Panel1.Controls.Add(Me.lbl_username)
         Me.Panel1.Controls.Add(Me.lbl_time)
         Me.Panel1.Controls.Add(Me.lbl_logintime)
@@ -682,11 +684,11 @@ Partial Class frm_mainCashier
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidth = 30
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Yellow
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Yellow
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView1.RowTemplate.Height = 24
         Me.DataGridView1.Size = New System.Drawing.Size(851, 476)
         Me.DataGridView1.TabIndex = 4
@@ -824,6 +826,15 @@ Partial Class frm_mainCashier
         '
         Me.Timer2.Enabled = True
         '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(433, 30)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(51, 17)
+        Me.Label17.TabIndex = 33
+        Me.Label17.Text = "Label17"
+        '
         'frm_mainCashier
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 17.0!)
@@ -917,4 +928,5 @@ Partial Class frm_mainCashier
     Friend WithEvents Column12 As DataGridViewTextBoxColumn
     Friend WithEvents btnDeductQty As DataGridViewButtonColumn
     Friend WithEvents Column11 As DataGridViewButtonColumn
+    Friend WithEvents Label17 As Label
 End Class
