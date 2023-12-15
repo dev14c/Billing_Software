@@ -23,8 +23,9 @@ Partial Class frm_mainCashier
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label17 = New System.Windows.Forms.Label()
         Me.lbl_username = New System.Windows.Forms.Label()
         Me.lbl_time = New System.Windows.Forms.Label()
         Me.lbl_logintime = New System.Windows.Forms.Label()
@@ -91,7 +92,6 @@ Partial Class frm_mainCashier
         Me.Column11 = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
-        Me.Label17 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -115,12 +115,21 @@ Partial Class frm_mainCashier
         Me.Panel1.Size = New System.Drawing.Size(1278, 82)
         Me.Panel1.TabIndex = 0
         '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(433, 30)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(44, 13)
+        Me.Label17.TabIndex = 33
+        Me.Label17.Text = "Label17"
+        '
         'lbl_username
         '
         Me.lbl_username.AutoSize = True
         Me.lbl_username.Location = New System.Drawing.Point(585, 20)
         Me.lbl_username.Name = "lbl_username"
-        Me.lbl_username.Size = New System.Drawing.Size(46, 17)
+        Me.lbl_username.Size = New System.Drawing.Size(40, 13)
         Me.lbl_username.TabIndex = 32
         Me.lbl_username.Text = "Label6"
         '
@@ -142,7 +151,7 @@ Partial Class frm_mainCashier
         Me.lbl_logintime.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_logintime.Location = New System.Drawing.Point(917, 43)
         Me.lbl_logintime.Name = "lbl_logintime"
-        Me.lbl_logintime.Size = New System.Drawing.Size(145, 23)
+        Me.lbl_logintime.Size = New System.Drawing.Size(118, 19)
         Me.lbl_logintime.TabIndex = 7
         Me.lbl_logintime.Text = "Inventory System"
         '
@@ -152,7 +161,7 @@ Partial Class frm_mainCashier
         Me.lbl_loginUser.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_loginUser.Location = New System.Drawing.Point(917, 9)
         Me.lbl_loginUser.Name = "lbl_loginUser"
-        Me.lbl_loginUser.Size = New System.Drawing.Size(145, 23)
+        Me.lbl_loginUser.Size = New System.Drawing.Size(118, 19)
         Me.lbl_loginUser.TabIndex = 6
         Me.lbl_loginUser.Text = "Inventory System"
         '
@@ -162,7 +171,7 @@ Partial Class frm_mainCashier
         Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(12, 33)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(145, 23)
+        Me.Label2.Size = New System.Drawing.Size(118, 19)
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "Inventory System"
         '
@@ -173,7 +182,7 @@ Partial Class frm_mainCashier
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Label1.Location = New System.Drawing.Point(42, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(43, 23)
+        Me.Label1.Size = New System.Drawing.Size(37, 19)
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "POS"
         '
@@ -201,14 +210,14 @@ Partial Class frm_mainCashier
         '
         Me.txt_cus_num.Location = New System.Drawing.Point(463, 46)
         Me.txt_cus_num.Name = "txt_cus_num"
-        Me.txt_cus_num.Size = New System.Drawing.Size(168, 25)
+        Me.txt_cus_num.Size = New System.Drawing.Size(168, 21)
         Me.txt_cus_num.TabIndex = 36
         '
         'txt_cus_name
         '
         Me.txt_cus_name.Location = New System.Drawing.Point(146, 45)
         Me.txt_cus_name.Name = "txt_cus_name"
-        Me.txt_cus_name.Size = New System.Drawing.Size(209, 25)
+        Me.txt_cus_name.Size = New System.Drawing.Size(209, 21)
         Me.txt_cus_name.TabIndex = 35
         '
         'Label6
@@ -217,7 +226,7 @@ Partial Class frm_mainCashier
         Me.Label6.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(362, 46)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(95, 23)
+        Me.Label6.Size = New System.Drawing.Size(79, 19)
         Me.Label6.TabIndex = 33
         Me.Label6.Text = "Mobile No:"
         '
@@ -227,7 +236,7 @@ Partial Class frm_mainCashier
         Me.Label16.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.Location = New System.Drawing.Point(12, 44)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(139, 23)
+        Me.Label16.Size = New System.Drawing.Size(113, 19)
         Me.Label16.TabIndex = 34
         Me.Label16.Text = "Customer Name:"
         '
@@ -248,7 +257,7 @@ Partial Class frm_mainCashier
         Me.btp_time.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.btp_time.Location = New System.Drawing.Point(409, 13)
         Me.btp_time.Name = "btp_time"
-        Me.btp_time.Size = New System.Drawing.Size(131, 25)
+        Me.btp_time.Size = New System.Drawing.Size(131, 21)
         Me.btp_time.TabIndex = 12
         '
         'txt_SearchProduct
@@ -256,14 +265,14 @@ Partial Class frm_mainCashier
         Me.txt_SearchProduct.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.txt_SearchProduct.Location = New System.Drawing.Point(150, 77)
         Me.txt_SearchProduct.Name = "txt_SearchProduct"
-        Me.txt_SearchProduct.Size = New System.Drawing.Size(621, 25)
+        Me.txt_SearchProduct.Size = New System.Drawing.Size(621, 21)
         Me.txt_SearchProduct.TabIndex = 11
         '
         'txt_billno
         '
         Me.txt_billno.Location = New System.Drawing.Point(87, 13)
         Me.txt_billno.Name = "txt_billno"
-        Me.txt_billno.Size = New System.Drawing.Size(209, 25)
+        Me.txt_billno.Size = New System.Drawing.Size(209, 21)
         Me.txt_billno.TabIndex = 10
         '
         'Label5
@@ -272,7 +281,7 @@ Partial Class frm_mainCashier
         Me.Label5.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(12, 79)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(139, 23)
+        Me.Label5.Size = New System.Drawing.Size(114, 19)
         Me.Label5.TabIndex = 9
         Me.Label5.Text = "Product/Barcode"
         '
@@ -282,7 +291,7 @@ Partial Class frm_mainCashier
         Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(312, 15)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(80, 23)
+        Me.Label3.Size = New System.Drawing.Size(67, 19)
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Bill date :"
         '
@@ -292,7 +301,7 @@ Partial Class frm_mainCashier
         Me.Label4.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(12, 13)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(69, 23)
+        Me.Label4.Size = New System.Drawing.Size(59, 19)
         Me.Label4.TabIndex = 8
         Me.Label4.Text = "Bill No :"
         '
@@ -456,7 +465,7 @@ Partial Class frm_mainCashier
         Me.txt_subtotal.Location = New System.Drawing.Point(72, 120)
         Me.txt_subtotal.Name = "txt_subtotal"
         Me.txt_subtotal.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txt_subtotal.Size = New System.Drawing.Size(80, 23)
+        Me.txt_subtotal.Size = New System.Drawing.Size(68, 19)
         Me.txt_subtotal.TabIndex = 29
         Me.txt_subtotal.Text = "Sub Total"
         '
@@ -477,14 +486,14 @@ Partial Class frm_mainCashier
         Me.cbo_payMode.Items.AddRange(New Object() {"CASH", "UPI", "CREDIT CARD", "DEBIT CARD"})
         Me.cbo_payMode.Location = New System.Drawing.Point(258, 302)
         Me.cbo_payMode.Name = "cbo_payMode"
-        Me.cbo_payMode.Size = New System.Drawing.Size(146, 25)
+        Me.cbo_payMode.Size = New System.Drawing.Size(146, 20)
         Me.cbo_payMode.TabIndex = 27
         '
         'txt_amtrec
         '
         Me.txt_amtrec.Location = New System.Drawing.Point(253, 339)
         Me.txt_amtrec.Name = "txt_amtrec"
-        Me.txt_amtrec.Size = New System.Drawing.Size(151, 25)
+        Me.txt_amtrec.Size = New System.Drawing.Size(151, 21)
         Me.txt_amtrec.TabIndex = 13
         '
         'txt_grandtotal
@@ -549,7 +558,7 @@ Partial Class frm_mainCashier
         Me.Label15.Location = New System.Drawing.Point(72, 378)
         Me.Label15.Name = "Label15"
         Me.Label15.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label15.Size = New System.Drawing.Size(69, 23)
+        Me.Label15.Size = New System.Drawing.Size(56, 19)
         Me.Label15.TabIndex = 21
         Me.Label15.Text = "Change"
         '
@@ -572,7 +581,7 @@ Partial Class frm_mainCashier
         Me.Label14.Location = New System.Drawing.Point(71, 364)
         Me.Label14.Name = "Label14"
         Me.Label14.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label14.Size = New System.Drawing.Size(0, 23)
+        Me.Label14.Size = New System.Drawing.Size(0, 19)
         Me.Label14.TabIndex = 20
         '
         'Label13
@@ -582,7 +591,7 @@ Partial Class frm_mainCashier
         Me.Label13.Location = New System.Drawing.Point(71, 341)
         Me.Label13.Name = "Label13"
         Me.Label13.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label13.Size = New System.Drawing.Size(146, 23)
+        Me.Label13.Size = New System.Drawing.Size(119, 19)
         Me.Label13.TabIndex = 19
         Me.Label13.Text = "Amount Received"
         '
@@ -593,7 +602,7 @@ Partial Class frm_mainCashier
         Me.Label12.Location = New System.Drawing.Point(71, 262)
         Me.Label12.Name = "Label12"
         Me.Label12.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label12.Size = New System.Drawing.Size(98, 23)
+        Me.Label12.Size = New System.Drawing.Size(82, 19)
         Me.Label12.TabIndex = 18
         Me.Label12.Text = "Grand Total"
         '
@@ -604,7 +613,7 @@ Partial Class frm_mainCashier
         Me.Label11.Location = New System.Drawing.Point(72, 304)
         Me.Label11.Name = "Label11"
         Me.Label11.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label11.Size = New System.Drawing.Size(128, 23)
+        Me.Label11.Size = New System.Drawing.Size(103, 19)
         Me.Label11.TabIndex = 17
         Me.Label11.Text = "Payment Mode"
         '
@@ -613,7 +622,7 @@ Partial Class frm_mainCashier
         Me.txt_discount.Location = New System.Drawing.Point(154, 226)
         Me.txt_discount.Name = "txt_discount"
         Me.txt_discount.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txt_discount.Size = New System.Drawing.Size(45, 25)
+        Me.txt_discount.Size = New System.Drawing.Size(45, 21)
         Me.txt_discount.TabIndex = 13
         '
         'Label10
@@ -623,7 +632,7 @@ Partial Class frm_mainCashier
         Me.Label10.Location = New System.Drawing.Point(71, 228)
         Me.Label10.Name = "Label10"
         Me.Label10.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label10.Size = New System.Drawing.Size(77, 23)
+        Me.Label10.Size = New System.Drawing.Size(65, 19)
         Me.Label10.TabIndex = 16
         Me.Label10.Text = "Discount"
         '
@@ -634,7 +643,7 @@ Partial Class frm_mainCashier
         Me.Label9.Location = New System.Drawing.Point(72, 153)
         Me.Label9.Name = "Label9"
         Me.Label9.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label9.Size = New System.Drawing.Size(76, 23)
+        Me.Label9.Size = New System.Drawing.Size(65, 19)
         Me.Label9.TabIndex = 15
         Me.Label9.Text = "Total Tax"
         '
@@ -645,7 +654,7 @@ Partial Class frm_mainCashier
         Me.Label8.Location = New System.Drawing.Point(72, 186)
         Me.Label8.Name = "Label8"
         Me.Label8.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label8.Size = New System.Drawing.Size(88, 23)
+        Me.Label8.Size = New System.Drawing.Size(75, 19)
         Me.Label8.TabIndex = 14
         Me.Label8.Text = "Total Price"
         '
@@ -656,7 +665,7 @@ Partial Class frm_mainCashier
         Me.Label7.Location = New System.Drawing.Point(71, 82)
         Me.Label7.Name = "Label7"
         Me.Label7.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label7.Size = New System.Drawing.Size(101, 23)
+        Me.Label7.Size = New System.Drawing.Size(83, 19)
         Me.Label7.TabIndex = 13
         Me.Label7.Text = "No of Items"
         '
@@ -684,11 +693,11 @@ Partial Class frm_mainCashier
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidth = 30
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Yellow
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Yellow
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.RowTemplate.Height = 24
         Me.DataGridView1.Size = New System.Drawing.Size(851, 476)
         Me.DataGridView1.TabIndex = 4
@@ -700,7 +709,7 @@ Partial Class frm_mainCashier
         Me.Column1.MinimumWidth = 6
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = True
-        Me.Column1.Width = 45
+        Me.Column1.Width = 39
         '
         'Column2
         '
@@ -709,7 +718,7 @@ Partial Class frm_mainCashier
         Me.Column2.MinimumWidth = 6
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
-        Me.Column2.Width = 120
+        Me.Column2.Width = 93
         '
         'Column3
         '
@@ -726,7 +735,7 @@ Partial Class frm_mainCashier
         Me.Column4.MinimumWidth = 6
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
-        Me.Column4.Width = 127
+        Me.Column4.Width = 97
         '
         'Column5
         '
@@ -735,7 +744,7 @@ Partial Class frm_mainCashier
         Me.Column5.MinimumWidth = 6
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
-        Me.Column5.Width = 68
+        Me.Column5.Width = 58
         '
         'Column6
         '
@@ -744,7 +753,7 @@ Partial Class frm_mainCashier
         Me.Column6.MinimumWidth = 6
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
-        Me.Column6.Width = 66
+        Me.Column6.Width = 56
         '
         'Column7
         '
@@ -753,7 +762,7 @@ Partial Class frm_mainCashier
         Me.Column7.MinimumWidth = 6
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
-        Me.Column7.Width = 72
+        Me.Column7.Width = 49
         '
         'Column8
         '
@@ -762,7 +771,7 @@ Partial Class frm_mainCashier
         Me.Column8.MinimumWidth = 6
         Me.Column8.Name = "Column8"
         Me.Column8.ReadOnly = True
-        Me.Column8.Width = 93
+        Me.Column8.Width = 73
         '
         'Column9
         '
@@ -771,7 +780,7 @@ Partial Class frm_mainCashier
         Me.Column9.MinimumWidth = 6
         Me.Column9.Name = "Column9"
         Me.Column9.ReadOnly = True
-        Me.Column9.Width = 59
+        Me.Column9.Width = 50
         '
         'Rate
         '
@@ -788,7 +797,7 @@ Partial Class frm_mainCashier
         Me.Column10.MinimumWidth = 6
         Me.Column10.Name = "Column10"
         Me.Column10.ReadOnly = True
-        Me.Column10.Width = 66
+        Me.Column10.Width = 57
         '
         'Column12
         '
@@ -826,18 +835,9 @@ Partial Class frm_mainCashier
         '
         Me.Timer2.Enabled = True
         '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(433, 30)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(51, 17)
-        Me.Label17.TabIndex = 33
-        Me.Label17.Text = "Label17"
-        '
         'frm_mainCashier
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 17.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1278, 741)
         Me.Controls.Add(Me.DataGridView1)

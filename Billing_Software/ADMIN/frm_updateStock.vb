@@ -12,18 +12,16 @@ Public Class frm_updateStock
             End If
             conn.Open()
 
-            cmd = New MySqlCommand("UPDATE tblproduct SET stock = stock + @newQuantity WHERE procode = @procode AND proname = @proname", conn)
+            cmd = New MySqlCommand("UPDATE tblproduct SET stock = stock + @newQuantity WHERE procode = @procode", conn)
             cmd.Parameters.Clear()
             cmd.Parameters.AddWithValue("@newQuantity", CDec(txt_location.Text))
             cmd.Parameters.AddWithValue("@procode", txt_procode.Text)
-            cmd.Parameters.AddWithValue("@proname", txt_proname.Text)
             i = cmd.ExecuteNonQuery()
 
             If i > 0 Then
                 MsgBox("Stock Update Success", vbInformation)
                 frm_ManageStock.Load_stock()
                 txt_procode.Text = ""
-                txt_proname.Text = ""
                 txt_location.Text = ""
 
 

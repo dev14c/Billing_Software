@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9D4AC028-5B55-4156-A60C-BA981A833D46}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Billing_Software.frm_login</StartupObject>
+    <StartupObject>Billing_Software.frm_mainAdmin</StartupObject>
     <RootNamespace>Billing_Software</RootNamespace>
     <AssemblyName>Billing_Software</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -280,6 +280,12 @@
     <Compile Include="DataSet1.vb">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Form1.designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frm_report.Designer.vb">
       <DependentUpon>frm_report.vb</DependentUpon>
     </Compile>
@@ -369,6 +375,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CASHIER\view_bill.resx">
       <DependentUpon>view_bill.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_login.resx">
       <DependentUpon>frm_login.vb</DependentUpon>

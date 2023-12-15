@@ -151,7 +151,7 @@ Partial Class frm_mainAdmin
         'Button1
         '
         Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red
+        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Location = New System.Drawing.Point(603, 3)
         Me.Button1.Name = "Button1"
@@ -375,7 +375,11 @@ Partial Class frm_mainAdmin
         Me.Label8.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.Location = New System.Drawing.Point(30, 61)
         Me.Label8.Name = "Label8"
+<<<<<<< HEAD
         Me.Label8.Size = New System.Drawing.Size(119, 23)
+=======
+        Me.Label8.Size = New System.Drawing.Size(99, 19)
+>>>>>>> d96aa29963123eeb7b47e85f082b34e15967f288
         Me.Label8.TabIndex = 1
         Me.Label8.Text = "Month's Profit"
         '
@@ -385,7 +389,11 @@ Partial Class frm_mainAdmin
         Me.monthProfit.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.monthProfit.Location = New System.Drawing.Point(27, 21)
         Me.monthProfit.Name = "monthProfit"
+<<<<<<< HEAD
         Me.monthProfit.Size = New System.Drawing.Size(64, 35)
+=======
+        Me.monthProfit.Size = New System.Drawing.Size(53, 28)
+>>>>>>> d96aa29963123eeb7b47e85f082b34e15967f288
         Me.monthProfit.TabIndex = 0
         Me.monthProfit.Text = "0.00"
         '
