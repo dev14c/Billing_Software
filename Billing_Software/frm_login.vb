@@ -11,7 +11,10 @@ Public Class frm_login
     End Sub
 
     Private Sub frm_login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dbconn()
+        Dim b As Boolean = dbconn()
+        If b = False Then
+            Me.Close()
+        End If
     End Sub
 
     Private Sub Btn_exit_Click(sender As Object, e As EventArgs) Handles Btn_exit.Click
