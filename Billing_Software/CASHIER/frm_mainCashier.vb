@@ -1,18 +1,22 @@
 ﻿Imports System.Windows.Media
 Imports MySql.Data.MySqlClient
 Public Class frm_mainCashier
+
     Public Event MessageReceived(message As String)
-
     Private Sub frm_mainCashier_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         dbconn()
+
+
         AddHandler Me.MessageReceived, AddressOf DisplayMessage
+
         DataGridView1.RowTemplate.Height = 30
         txt_SearchProduct.Focus()
         btn_pay.Enabled = False
         total()
         lbl_username.Text = "Welcome, " & UserSession.CurrentUser
+
         txt_billno.Text = GetbillNo()
+
     End Sub
 
     Public Sub DisplayMessage(message As String)
@@ -30,6 +34,7 @@ Public Class frm_mainCashier
             If row.Cells(1).Value IsNot Nothing AndAlso row.Cells(1).Value.ToString() = txt_SearchProduct.Text Then
                 exist = True
                 existingRowIndex = row.Index
+                Label17.Text = row.Index.ToString
                 existingQuantity = CInt(row.Cells(8).Value)
                 Exit For
             End If
@@ -97,7 +102,7 @@ Public Class frm_mainCashier
     End Sub
 
 
-    Public Function GetStockLevel(productCode As String) As Integer
+    Private Function GetStockLevel(productCode As String) As Integer
         Dim stockLevel As Integer = 0
 
         ' Replace the following lines with your actual database query logic
@@ -130,6 +135,11 @@ Public Class frm_mainCashier
         Return stockLevel
     End Function
 
+
+
+
+
+
     Private Sub txt_SearchProduct_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_SearchProduct.KeyDown
         If txt_SearchProduct.Text = Nothing Then
         Else
@@ -149,7 +159,6 @@ Public Class frm_mainCashier
         Dim sum As Double = 0
         Dim subtotal As Double = 0
         Dim tax As Double = 0
-        Dim items As Integer = DataGridView1.Rows.Count()
         For i As Integer = 0 To DataGridView1.Rows.Count() - 1 Step +1
             sum = sum + DataGridView1.Rows(i).Cells(10).Value
             'tax = tax + DataGridView1.Rows(i).Cells(5).Value * DataGridView1.Rows(i).Cells(6).Value / 100 * DataGridView1.Rows(i).Cells(8).Value
@@ -161,7 +170,6 @@ Public Class frm_mainCashier
 
         Try
 
-            txt_no_of_items.Text = items
             ' Display subtotal
             txt_sub_total.Text = Format(CDec(subtotal), "#,##0.00")
 
@@ -283,7 +291,7 @@ Public Class frm_mainCashier
                 conn.Open()
                 ' Update product stock in tblproduct
                 For j As Integer = 0 To DataGridView1.Rows.Count - 1
-                    Dim updateStockQuery As String = "UPDATE tblproduct SET stock = stock - @qty, totalprice = purchase_price * stock  WHERE procode = @procode"
+                    Dim updateStockQuery As String = "UPDATE tblproduct SET stock = stock - @qty WHERE procode = @procode"
                     cmd = New MySqlCommand(updateStockQuery, conn)
                     cmd.Parameters.AddWithValue("@qty", CInt(DataGridView1.Rows(j).Cells(8).Value)) ' Assuming qty is in the eighth column
                     cmd.Parameters.AddWithValue("@procode", DataGridView1.Rows(j).Cells(1).Value.ToString())
@@ -337,6 +345,8 @@ Public Class frm_mainCashier
             End Try
 
         End If
+
+
 
     End Sub
     Sub Clear()
@@ -481,8 +491,11 @@ Public Class frm_mainCashier
         DataGridView1.Rows(numrow).Cells(10).Value = rate_x_qty
     End Sub
 
-    Private Sub qtyUpdate_Click(sender As Object, e As EventArgs) Handles qtyUpdate.Click
-        Dim form2Instance As New frm_qty_add(Me)
-        form2Instance.ShowDialog()
+    Private Sub Label17_Click(sender As Object, e As EventArgs) Handles Label17.Click
+
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
     End Sub
 End Class

@@ -343,4 +343,7 @@ Public Class frm_ManageProduct
         End If
     End Sub
 
+    Private Sub txt_rate_per_TextChanged(sender As Object, e As EventArgs) Handles txt_rate_per.TextChanged
+
+    End Sub
 End Class

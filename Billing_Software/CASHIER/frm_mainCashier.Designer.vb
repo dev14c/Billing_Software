@@ -25,13 +25,14 @@ Partial Class frm_mainCashier
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label17 = New System.Windows.Forms.Label()
         Me.lbl_username = New System.Windows.Forms.Label()
         Me.lbl_time = New System.Windows.Forms.Label()
+        Me.lbl_logintime = New System.Windows.Forms.Label()
         Me.lbl_loginUser = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.qtyUpdate = New System.Windows.Forms.Button()
         Me.txt_cus_num = New System.Windows.Forms.TextBox()
         Me.txt_cus_name = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -101,8 +102,10 @@ Partial Class frm_mainCashier
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.Controls.Add(Me.Label17)
         Me.Panel1.Controls.Add(Me.lbl_username)
         Me.Panel1.Controls.Add(Me.lbl_time)
+        Me.Panel1.Controls.Add(Me.lbl_logintime)
         Me.Panel1.Controls.Add(Me.lbl_loginUser)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Label1)
@@ -111,6 +114,15 @@ Partial Class frm_mainCashier
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1278, 82)
         Me.Panel1.TabIndex = 0
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(433, 30)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(44, 13)
+        Me.Label17.TabIndex = 33
+        Me.Label17.Text = "Label17"
         '
         'lbl_username
         '
@@ -132,6 +144,16 @@ Partial Class frm_mainCashier
         Me.lbl_time.TabIndex = 31
         Me.lbl_time.Text = "00.00"
         Me.lbl_time.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'lbl_logintime
+        '
+        Me.lbl_logintime.AutoSize = True
+        Me.lbl_logintime.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_logintime.Location = New System.Drawing.Point(917, 43)
+        Me.lbl_logintime.Name = "lbl_logintime"
+        Me.lbl_logintime.Size = New System.Drawing.Size(118, 19)
+        Me.lbl_logintime.TabIndex = 7
+        Me.lbl_logintime.Text = "Inventory System"
         '
         'lbl_loginUser
         '
@@ -167,7 +189,6 @@ Partial Class frm_mainCashier
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.White
-        Me.Panel2.Controls.Add(Me.qtyUpdate)
         Me.Panel2.Controls.Add(Me.txt_cus_num)
         Me.Panel2.Controls.Add(Me.txt_cus_name)
         Me.Panel2.Controls.Add(Me.Label6)
@@ -184,15 +205,6 @@ Partial Class frm_mainCashier
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1278, 113)
         Me.Panel2.TabIndex = 1
-        '
-        'qtyUpdate
-        '
-        Me.qtyUpdate.Location = New System.Drawing.Point(760, 77)
-        Me.qtyUpdate.Name = "qtyUpdate"
-        Me.qtyUpdate.Size = New System.Drawing.Size(75, 23)
-        Me.qtyUpdate.TabIndex = 37
-        Me.qtyUpdate.Text = "Update Qty"
-        Me.qtyUpdate.UseVisualStyleBackColor = True
         '
         'txt_cus_num
         '
@@ -253,7 +265,7 @@ Partial Class frm_mainCashier
         Me.txt_SearchProduct.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.txt_SearchProduct.Location = New System.Drawing.Point(150, 77)
         Me.txt_SearchProduct.Name = "txt_SearchProduct"
-        Me.txt_SearchProduct.Size = New System.Drawing.Size(569, 21)
+        Me.txt_SearchProduct.Size = New System.Drawing.Size(621, 21)
         Me.txt_SearchProduct.TabIndex = 11
         '
         'txt_billno
@@ -802,7 +814,6 @@ Partial Class frm_mainCashier
         Me.btnDeductQty.MinimumWidth = 6
         Me.btnDeductQty.Name = "btnDeductQty"
         Me.btnDeductQty.ReadOnly = True
-        Me.btnDeductQty.Text = "-"
         Me.btnDeductQty.UseColumnTextForButtonValue = True
         Me.btnDeductQty.Width = 50
         '
@@ -894,6 +905,7 @@ Partial Class frm_mainCashier
     Friend WithEvents txt_subtotal As Label
     Friend WithEvents txt_sub_total As Label
     Friend WithEvents lbl_loginUser As Label
+    Friend WithEvents lbl_logintime As Label
     Friend WithEvents lbl_time As Label
     Friend WithEvents lbl_date As Label
     Friend WithEvents Timer2 As Timer
@@ -902,7 +914,6 @@ Partial Class frm_mainCashier
     Friend WithEvents Label6 As Label
     Friend WithEvents Label16 As Label
     Friend WithEvents txt_cus_num As TextBox
-    Friend WithEvents qtyUpdate As Button
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
@@ -917,4 +928,5 @@ Partial Class frm_mainCashier
     Friend WithEvents Column12 As DataGridViewTextBoxColumn
     Friend WithEvents btnDeductQty As DataGridViewButtonColumn
     Friend WithEvents Column11 As DataGridViewButtonColumn
+    Friend WithEvents Label17 As Label
 End Class
