@@ -6,6 +6,7 @@ Public Class frm_billprint
         Me.ReportViewer1.RefreshReport()
         load_billprint()
 
+        Me.ReportViewer1.RefreshReport()
     End Sub
     Sub load_billprint()
         Try
@@ -16,7 +17,7 @@ Public Class frm_billprint
                 conn.Close()
             End If
             conn.Open()
-            ReportViewer1.LocalReport.ReportPath = Application.StartupPath & "\Report\Report1.rdlc"
+            'ReportViewer1.LocalReport.ReportPath = Application.StartupPath & "\Report\Report1.rdlc"
             ReportViewer1.LocalReport.DataSources.Clear()
 
             Dim ds As New DataSet1

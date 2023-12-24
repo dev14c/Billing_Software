@@ -43,7 +43,10 @@ Public Class frm_mainCashier
         If exist Then
             ' If the product already exists, check stock before incrementing the quantity
             Dim currentStock As Integer = GetStockLevel(txt_SearchProduct.Text)
-            If currentStock > 0 Then
+
+            Dim x As Integer
+            x = currentStock - CInt(DataGridView1.Rows(existingRowIndex).Cells(8).Value)
+            If x > 0 Then
                 DataGridView1.Rows(existingRowIndex).Cells(8).Value = CInt(DataGridView1.Rows(existingRowIndex).Cells(8).Value) + 1
                 calculate_price(existingRowIndex)
                 'DataGridView1.Rows(existingRowIndex).Cells(8).Value = existingQuantity + 1
@@ -53,11 +56,10 @@ Public Class frm_mainCashier
                 MsgBox("Insufficient stock for the selected product.", MsgBoxStyle.Exclamation)
             End If
         Else
-            ' If the product doesn't exist, add a new row
             If conn.State = ConnectionState.Open Then
                 conn.Close()
             End If
-
+            ' If the product doesn't exist, add a new 
             Try
                 conn.Open()
                 cmd = New MySqlCommand("SELECT * FROM tblproduct WHERE procode = @procode", conn)
@@ -70,12 +72,10 @@ Public Class frm_mainCashier
                     Dim progroup As String = dr("progroup").ToString()
                     Dim uom As String = dr("uom").ToString()
                     Dim stock As Integer = CInt(dr("stock"))
-
                     If stock > 0 Then
                         Dim rate As Decimal
                         Dim tax As Decimal
                         Dim totalQtyPrice As Double
-                        Dim puchase_price As String = dr("purchase_price")
                         Dim gstAmount As Double
                         If Decimal.TryParse(dr("Rate_per").ToString(), rate) AndAlso Decimal.TryParse(dr("tax").ToString(), tax) Then
                             totalQtyPrice = Math.Round(rate / (tax + 100) * tax, 2)
@@ -84,7 +84,7 @@ Public Class frm_mainCashier
                         End If
 
                         'DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, procode, proname, progroup, uom, rate, tax, totalQtyPrice, 1, totalQtyPrice)
-                        DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, procode, proname, progroup, uom, gstAmount, tax, totalQtyPrice, 1, rate, rate, puchase_price)
+                        DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, procode, proname, progroup, uom, gstAmount, tax, totalQtyPrice, 1, rate, rate)
                         txt_SearchProduct.Clear()
                         txt_SearchProduct.Focus()
                     Else
@@ -97,12 +97,12 @@ Public Class frm_mainCashier
                 MsgBox("Error: " & ex.Message, MsgBoxStyle.Exclamation)
             Finally
                 conn.Close()
-            End Try
-        End If
+                End Try
+            End If
     End Sub
 
 
-    Private Function GetStockLevel(productCode As String) As Integer
+    Public Function GetStockLevel(productCode As String) As Integer
         Dim stockLevel As Integer = 0
 
         ' Replace the following lines with your actual database query logic
@@ -159,6 +159,7 @@ Public Class frm_mainCashier
         Dim sum As Double = 0
         Dim subtotal As Double = 0
         Dim tax As Double = 0
+        Dim items As Integer = DataGridView1.Rows.Count()
         For i As Integer = 0 To DataGridView1.Rows.Count() - 1 Step +1
             sum = sum + DataGridView1.Rows(i).Cells(10).Value
             'tax = tax + DataGridView1.Rows(i).Cells(5).Value * DataGridView1.Rows(i).Cells(6).Value / 100 * DataGridView1.Rows(i).Cells(8).Value
@@ -169,7 +170,7 @@ Public Class frm_mainCashier
 
 
         Try
-
+            txt_no_of_items.Text = items
             ' Display subtotal
             txt_sub_total.Text = Format(CDec(subtotal), "#,##0.00")
 
@@ -291,7 +292,7 @@ Public Class frm_mainCashier
                 conn.Open()
                 ' Update product stock in tblproduct
                 For j As Integer = 0 To DataGridView1.Rows.Count - 1
-                    Dim updateStockQuery As String = "UPDATE tblproduct SET stock = stock - @qty WHERE procode = @procode"
+                    Dim updateStockQuery As String = "UPDATE tblproduct SET stock = stock - @qty, totalprice = purchase_price * stock  WHERE procode = @procode"
                     cmd = New MySqlCommand(updateStockQuery, conn)
                     cmd.Parameters.AddWithValue("@qty", CInt(DataGridView1.Rows(j).Cells(8).Value)) ' Assuming qty is in the eighth column
                     cmd.Parameters.AddWithValue("@procode", DataGridView1.Rows(j).Cells(1).Value.ToString())
@@ -497,5 +498,10 @@ Public Class frm_mainCashier
 
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
+    End Sub
+
+    Private Sub qtyUpdate_Click(sender As Object, e As EventArgs) Handles qtyUpdate.Click
+        Dim form2Instance As New frm_qty_add(Me)
+        form2Instance.ShowDialog()
     End Sub
 End Class

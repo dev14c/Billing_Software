@@ -330,8 +330,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>5.13503cm</Top>
-        <Left>1.93887cm</Left>
+        <Top>4.61433cm</Top>
+        <Left>1.62502cm</Left>
         <Height>1.2cm</Height>
         <Width>13.048cm</Width>
         <Style>
@@ -357,8 +357,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>billno</rd:DefaultName>
-        <Top>3.3147cm</Top>
-        <Left>3.12596cm</Left>
+        <Top>2.794cm</Top>
+        <Left>2.81211cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>1</ZIndex>
@@ -391,8 +391,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>billdate</rd:DefaultName>
-        <Top>3.6322cm</Top>
-        <Left>12.12003cm</Left>
+        <Top>3.1115cm</Top>
+        <Left>11.80618cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>2</ZIndex>
@@ -424,8 +424,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>3.3147cm</Top>
-        <Left>1.70074cm</Left>
+        <Top>2.794cm</Top>
+        <Left>1.38689cm</Left>
         <Height>0.6cm</Height>
         <Width>1.28411cm</Width>
         <ZIndex>3</ZIndex>
@@ -457,8 +457,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>3.6322cm</Top>
-        <Left>10.53253cm</Left>
+        <Top>3.1115cm</Top>
+        <Left>10.21868cm</Left>
         <Height>0.6cm</Height>
         <Width>1.27233cm</Width>
         <ZIndex>4</ZIndex>
@@ -493,8 +493,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>0.5207cm</Top>
-        <Left>1.38853cm</Left>
+        <Top>0cm</Top>
+        <Left>1.07468cm</Left>
         <Height>0.6cm</Height>
         <Width>14.35333cm</Width>
         <ZIndex>5</ZIndex>
@@ -529,8 +529,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>1.23458cm</Top>
-        <Left>1.39584cm</Left>
+        <Top>0.71388cm</Top>
+        <Left>1.08199cm</Left>
         <Height>0.6cm</Height>
         <Width>14.35333cm</Width>
         <ZIndex>6</ZIndex>
@@ -562,8 +562,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>6.81497cm</Top>
-        <Left>9.62378cm</Left>
+        <Top>6.29427cm</Top>
+        <Left>9.30993cm</Left>
         <Height>0.6cm</Height>
         <Width>1.94027cm</Width>
         <ZIndex>7</ZIndex>
@@ -595,8 +595,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>7.59136cm</Top>
-        <Left>9.62378cm</Left>
+        <Top>7.07066cm</Top>
+        <Left>9.30993cm</Left>
         <Height>0.6cm</Height>
         <Width>1.94028cm</Width>
         <ZIndex>8</ZIndex>
@@ -628,8 +628,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>8.36775cm</Top>
-        <Left>9.62377cm</Left>
+        <Top>7.84705cm</Top>
+        <Left>9.30992cm</Left>
         <Height>0.6cm</Height>
         <Width>1.94028cm</Width>
         <ZIndex>9</ZIndex>
@@ -661,8 +661,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>9.14414cm</Top>
-        <Left>9.62378cm</Left>
+        <Top>8.62344cm</Top>
+        <Left>9.30993cm</Left>
         <Height>0.6cm</Height>
         <Width>1.94028cm</Width>
         <ZIndex>10</ZIndex>
@@ -696,8 +696,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>subtotal</rd:DefaultName>
-        <Top>6.81497cm</Top>
-        <Left>12.08471cm</Left>
+        <Top>6.29427cm</Top>
+        <Left>11.77086cm</Left>
         <Height>0.6cm</Height>
         <Width>2.49999cm</Width>
         <ZIndex>11</ZIndex>
@@ -731,8 +731,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>totaltax</rd:DefaultName>
-        <Top>7.55608cm</Top>
-        <Left>12.08471cm</Left>
+        <Top>7.03538cm</Top>
+        <Left>11.77086cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>12</ZIndex>
@@ -766,8 +766,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>discount_amount</rd:DefaultName>
-        <Top>8.35237cm</Top>
-        <Left>12.08471cm</Left>
+        <Top>7.83167cm</Top>
+        <Left>11.77086cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>13</ZIndex>
@@ -801,8 +801,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>grandtotal</rd:DefaultName>
-        <Top>9.19903cm</Top>
-        <Left>12.08471cm</Left>
+        <Top>8.67833cm</Top>
+        <Left>11.77086cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>14</ZIndex>
@@ -837,8 +837,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>10.37858cm</Top>
-        <Left>1.39584cm</Left>
+        <Top>9.85788cm</Top>
+        <Left>1.08199cm</Left>
         <Height>0.6cm</Height>
         <Width>14.35333cm</Width>
         <ZIndex>15</ZIndex>
@@ -873,8 +873,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>2.33525cm</Top>
-        <Left>1.39584cm</Left>
+        <Top>1.81455cm</Top>
+        <Left>1.08199cm</Left>
         <Height>0.6cm</Height>
         <Width>14.35333cm</Width>
         <ZIndex>16</ZIndex>
@@ -889,18 +889,15 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>4.65in</Height>
+    <Height>4.11728in</Height>
     <Style />
   </Body>
   <Width>6.5in</Width>
   <Page>
-    <PageHeight>29.7cm</PageHeight>
-    <PageWidth>21cm</PageWidth>
-    <LeftMargin>2cm</LeftMargin>
-    <RightMargin>2cm</RightMargin>
-    <TopMargin>2cm</TopMargin>
-    <BottomMargin>2cm</BottomMargin>
-    <ColumnSpacing>0.13cm</ColumnSpacing>
+    <LeftMargin>1in</LeftMargin>
+    <RightMargin>1in</RightMargin>
+    <TopMargin>1in</TopMargin>
+    <BottomMargin>1in</BottomMargin>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
@@ -910,7 +907,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>9184c442-f0a6-41ba-b7d9-55236c913dc6</rd:DataSourceID>
+      <rd:DataSourceID>24f85391-5092-492b-bf70-4b89da419896</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -1019,7 +1016,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSet1</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\abcd\source\repos\dev14c\Billing_Software\Billing_Software\DataSet1.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\abcd\Source\Repos\dev14c\Billing_Software\Billing_Software\DataSet1.xsd</rd:SchemaPath>
         <rd:TableName>DataTable1</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
@@ -1027,6 +1024,6 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>29862cdf-e7f2-46d6-97c4-83c04ac9c081</rd:ReportID>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>b7e8a779-ba47-42d8-bc72-bb1ff0e9835a</rd:ReportID>
 </Report>

@@ -92,6 +92,7 @@ Partial Class frm_mainCashier
         Me.Column11 = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.qtyUpdate = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -189,6 +190,7 @@ Partial Class frm_mainCashier
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.White
+        Me.Panel2.Controls.Add(Me.qtyUpdate)
         Me.Panel2.Controls.Add(Me.txt_cus_num)
         Me.Panel2.Controls.Add(Me.txt_cus_name)
         Me.Panel2.Controls.Add(Me.Label6)
@@ -835,6 +837,15 @@ Partial Class frm_mainCashier
         '
         Me.Timer2.Enabled = True
         '
+        'qtyUpdate
+        '
+        Me.qtyUpdate.Location = New System.Drawing.Point(822, 77)
+        Me.qtyUpdate.Name = "qtyUpdate"
+        Me.qtyUpdate.Size = New System.Drawing.Size(75, 23)
+        Me.qtyUpdate.TabIndex = 37
+        Me.qtyUpdate.Text = "Update Qty"
+        Me.qtyUpdate.UseVisualStyleBackColor = True
+        '
         'frm_mainCashier
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
@@ -929,4 +940,5 @@ Partial Class frm_mainCashier
     Friend WithEvents btnDeductQty As DataGridViewButtonColumn
     Friend WithEvents Column11 As DataGridViewButtonColumn
     Friend WithEvents Label17 As Label
+    Friend WithEvents qtyUpdate As Button
 End Class
