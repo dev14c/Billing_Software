@@ -27,8 +27,7 @@ Public Class frm_ManageUser
             i = cmd.ExecuteNonQuery
             If i > 0 Then
                 MsgBox("New User Register Success !", vbInformation)
-                clear() ' Clear the fields after successful registration
-
+                clear()
 
             Else
                 MsgBox("New User Register Failed !", vbExclamation)
@@ -36,16 +35,10 @@ Public Class frm_ManageUser
         Catch ex As Exception
             MsgBox(ex.Message, vbExclamation)
         End Try
-        frm_mainAdmin.Load_noOfCashier()
+        frm_mainAdmin.NoOfCashier()
         frm_user_list.load_user()
 
     End Sub
 
-    Private Sub cbo_role_SelectedIndexChanged(sender As Object, e As EventArgs)
 
-    End Sub
-
-    Private Sub txt_username_TextChanged(sender As Object, e As EventArgs) Handles txt_username.TextChanged
-
-    End Sub
 End Class

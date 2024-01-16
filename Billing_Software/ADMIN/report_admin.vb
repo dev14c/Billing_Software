@@ -18,13 +18,13 @@ Public Class report_admin
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`, `grandtotal`,`cashier_name`,sum(profit) as profit FROM `tbi_pos`   GROUP BY `billno`", conn)
+            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`,`proname`,`qty`,`totalprice`,`cashier_name`,sum(profit) as profit,proname FROM `tbi_pos` GROUP BY `billno`,`proname`", conn)
 
 
             dr = cmd.ExecuteReader
 
             While dr.Read = True
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"), dr.Item("cashier_name"), dr.Item("profit"))
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("proname"), dr.Item("qty"), dr.Item("totalprice"), dr.Item("cashier_name"), dr.Item("profit"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -40,11 +40,14 @@ Public Class report_admin
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`, `grandtotal`,`cashier_name`, sum(profit) as profit  FROM `tbi_pos` WHERE cashier_name = @CurrentUser AND billno LIKE '%" & txt_search.Text & "%' GROUP BY billno", conn)
+            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`, `proname`, `qty`, `totalprice`, `cashier_name`, SUM(profit) AS profit FROM `tbi_pos` WHERE billno LIKE @billno GROUP BY `billno`, `proname`", conn)
+
+            cmd.Parameters.AddWithValue("@billno", "%" & txt_search.Text & "%")
+
 
             dr = cmd.ExecuteReader
             While dr.Read = True
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"), dr.Item("profit"))
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("proname"), dr.Item("qty"), dr.Item("totalprice"), dr.Item("cashier_name"), dr.Item("profit"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -60,10 +63,10 @@ Public Class report_admin
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT `billno` ,`billdate` ,`bmonth`,`bmonthyear`,`grandtotal`,`cashier_name`, sum(profit) as profit FROM `tbi_pos` WHERE billdate like '%" & Date.Now.ToString("yyyy-MM-dd") & "%' group by billno", conn)
+            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`,`proname`,`qty`,`totalprice`,`cashier_name`,sum(profit) as profit,proname FROM `tbi_pos` WHERE billdate Like '%" & Date.Now.ToString("yyyy-MM-dd") & "%' GROUP BY `billno`,`proname`  ", conn)
             dr = cmd.ExecuteReader
             While dr.Read = True
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"), dr.Item("cashier_name"), dr.Item("profit"))
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("proname"), dr.Item("qty"), dr.Item("totalprice"), dr.Item("cashier_name"), dr.Item("profit"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -78,10 +81,10 @@ Public Class report_admin
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT `billno` ,`billdate` ,`bmonth`,`bmonthyear`,`grandtotal`,`cashier_name`,sum(profit) as profit FROM `tbi_pos` WHERE  billdate like '%" & Date.Now.ToString("yyyy-MM") & "%' group by `billno` ", conn)
+            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`,`proname`,`qty`,`totalprice`,`cashier_name`,sum(profit) as profit,proname FROM `tbi_pos`  WHERE  billdate like '%" & Date.Now.ToString("yyyy-MM") & "%' GROUP BY `billno`,`proname`  ", conn)
             dr = cmd.ExecuteReader
             While dr.Read = True
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"), dr.Item("cashier_name"), dr.Item("profit"))
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("proname"), dr.Item("qty"), dr.Item("totalprice"), dr.Item("cashier_name"), dr.Item("profit"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -100,17 +103,17 @@ Public Class report_admin
 
             conn.Open()
 
-            ' Use parameters to avoid SQL injection
-            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`, `grandtotal`,`cashier_name`,sum(profit) as profit FROM `tbi_pos` WHERE billdate BETWEEN @date1 AND @date2 GROUP BY billno", conn)
 
-            ' Add parameters
+            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`,`proname`,`qty`,`totalprice`,`cashier_name`,sum(profit) as profit,proname FROM `tbi_pos` WHERE billdate BETWEEN @date1 AND @date2 GROUP BY `billno`,`proname`  ", conn)
+
+
             cmd.Parameters.AddWithValue("@date1", date1)
             cmd.Parameters.AddWithValue("@date2", date2)
 
             dr = cmd.ExecuteReader()
 
             While dr.Read()
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"), dr.Item("cashier_name"), dr.Item("profit"))
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("proname"), dr.Item("qty"), dr.Item("totalprice"), dr.Item("cashier_name"), dr.Item("profit"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -122,11 +125,11 @@ Public Class report_admin
         Dim sum As Double = 0
         Dim profit As Double = 0
         For i As Integer = 0 To DataGridView1.Rows.Count() - 1 Step +1
-            sum = sum + DataGridView1.Rows(i).Cells(5).Value
-            profit += DataGridView1.Rows(i).Cells(7).Value
+            sum = sum + DataGridView1.Rows(i).Cells(7).Value
+            profit += DataGridView1.Rows(i).Cells(9).Value
         Next
-        lbl_totalDisplay.Text = Format(CDec(sum), "#,##0.00")
-        lbl_profit.Text = Format(CDec(profit), "#,##0.00")
+        label_totaldisplay.Text = Format(CDec(sum), "#,##0.00")
+        label_profit.Text = Format(CDec(profit), "#,##0.00")
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick

@@ -22,7 +22,7 @@ Partial Class frm_cahier_cash_report
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btn_submit_cash = New System.Windows.Forms.Button()
         Me.cashier_name = New System.Windows.Forms.Label()
@@ -53,7 +53,7 @@ Partial Class frm_cahier_cash_report
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(920, 100)
+        Me.Panel1.Size = New System.Drawing.Size(1018, 100)
         Me.Panel1.TabIndex = 3
         '
         'btn_submit_cash
@@ -91,7 +91,7 @@ Partial Class frm_cahier_cash_report
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 100)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(920, 57)
+        Me.Panel2.Size = New System.Drawing.Size(1018, 57)
         Me.Panel2.TabIndex = 4
         '
         'Label2
@@ -170,7 +170,7 @@ Partial Class frm_cahier_cash_report
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidth = 51
         Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(920, 354)
+        Me.DataGridView1.Size = New System.Drawing.Size(1018, 438)
         Me.DataGridView1.TabIndex = 5
         '
         'Column1
@@ -185,9 +185,9 @@ Partial Class frm_cahier_cash_report
         'Column2
         '
         Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle2.Format = "d"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Format = "d"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle1
         Me.Column2.HeaderText = "Date"
         Me.Column2.MinimumWidth = 6
         Me.Column2.Name = "Column2"
@@ -224,7 +224,7 @@ Partial Class frm_cahier_cash_report
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(920, 511)
+        Me.ClientSize = New System.Drawing.Size(1018, 595)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)

@@ -7,8 +7,8 @@ Public Class frm_ManageProduct
 
         DataGridView1.RowTemplate.Height = 30
 
-        load_PorductGroup()
-        load_product()
+        loadproductgroup()
+        loadproduct()
 
     End Sub
 
@@ -17,7 +17,7 @@ Public Class frm_ManageProduct
 
 
     End Sub
-    Sub load_PorductGroup()
+    Sub loadproductgroup()
         cbo_group.Items.Clear()
 
         Try
@@ -37,7 +37,7 @@ Public Class frm_ManageProduct
 
 
     End Sub
-    Sub load_product()
+    Sub loadproduct()
         DataGridView1.Rows.Clear()
         Try
             If conn.State = ConnectionState.Open Then
@@ -56,13 +56,14 @@ Public Class frm_ManageProduct
 
     End Sub
     Sub Clear()
-        txt_location.Clear()
-        txt_selling_price.Clear()
+        txt_qty.Clear()
+
         txt_procode.Clear()
+
         txt_proname.Clear()
         txt_totalprice.Clear()
-        txt_purchase_price.Clear() ' Add this line to clear txt_purchase
-        txt_rate_per.Clear() ' Add this line to clear txt_rate_per
+        txt_purchase_price.Clear()
+        txt_rate_per.Clear()
         cbo_group.SelectedIndex = -1
         cbo_tax.Text = Nothing
         gstAmount.Clear()
@@ -70,11 +71,37 @@ Public Class frm_ManageProduct
         cbo_uom.SelectedIndex = -1
 
         pic_barcode.Image = Nothing
-
+        txt_procode.Focus()
+        txt_procode.ReadOnly = False
     End Sub
 
-    Private Sub txt_procode_TextChanged(sender As Object, e As EventArgs) Handles txt_procode.TextChanged
-        'Barcode Generator'
+    Private Sub txt_procode_TextChanged(sender As Object, e As EventArgs) Handles txt_procode.LostFocus
+
+
+        Try
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+            conn.Open()
+
+            cmd = New MySqlCommand("SELECT COUNT(procode) FROM tblproduct WHERE procode=@procode", conn)
+            cmd.Parameters.Clear()
+            cmd.Parameters.AddWithValue("@procode", txt_procode.Text)
+
+
+            Dim count As Integer = CInt(cmd.ExecuteScalar())
+
+
+            If count > 1 Then
+                MsgBox("Product code already exists in the product table", vbInformation)
+                txt_procode.Clear()
+
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            conn.Close()
+        End Try
         Dim Generator As New MessagingToolkit.Barcode.BarcodeEncoder
         Generator.BackColor = Color.White
         Try
@@ -85,6 +112,38 @@ Public Class frm_ManageProduct
     End Sub
 
     Private Sub btn_save_Click(sender As Object, e As EventArgs) Handles btn_save.Click
+        If String.IsNullOrWhiteSpace(txt_procode.Text) Then
+            MsgBox("Please enter a product code")
+            Return
+        End If
+
+        If String.IsNullOrWhiteSpace(txt_proname.Text) Then
+            MsgBox("Please enter a product name")
+            Return
+        End If
+
+        If String.IsNullOrWhiteSpace(cbo_group.Text) Then
+            MsgBox("Please select a product group")
+            Return
+        End If
+        If String.IsNullOrWhiteSpace(txt_qty.Text) Then
+            MsgBox("Please Enter a qty")
+            Return
+        End If
+        If String.IsNullOrWhiteSpace(txt_rate_per.Text) Then
+            MsgBox("Please Enter a rate")
+            Return
+        End If
+        If String.IsNullOrWhiteSpace(cbo_tax.Text) Then
+            MsgBox("Please select a tax")
+            Return
+        End If
+        If String.IsNullOrWhiteSpace(txt_purchase_price.Text) Then
+            MsgBox("Please Enter a purchase price")
+            Return
+        End If
+
+
         Try
             If conn.State = ConnectionState.Open Then
                 conn.Close()
@@ -108,10 +167,10 @@ Public Class frm_ManageProduct
             cmd.Parameters.AddWithValue("@proname", txt_proname.Text)
             cmd.Parameters.AddWithValue("@progroup", cbo_group.Text)
             cmd.Parameters.AddWithValue("@uom", cbo_uom.Text)
-            cmd.Parameters.AddWithValue("@stock", CDec(txt_location.Text))
+            cmd.Parameters.AddWithValue("@stock", CDec(txt_qty.Text))
             cmd.Parameters.AddWithValue("@Rate_per", CDec(txt_rate_per.Text))
             cmd.Parameters.AddWithValue("@purchase_price", CDec(txt_purchase_price.Text))
-            'cmd.Parameters.AddWithValue("@selling_price", CDec(txt_selling_price.Text))
+
             cmd.Parameters.AddWithValue("@tax", CDec(cbo_tax.Text))
             cmd.Parameters.AddWithValue("@totalprice", CDec(txt_totalprice.Text))
             cmd.Parameters.AddWithValue("@barcode", arrImage)
@@ -123,84 +182,75 @@ Public Class frm_ManageProduct
                 MsgBox("New Porudct Save Failed", vbExclamation)
             End If
         Catch ex As Exception
-            MsgBox(ex.Message + " 4 ")
+            MsgBox(ex.Message)
         End Try
         ' conn.Close()
         Clear()
-        'load_product()
+        loadproduct()
+        'loadproduct()
         'frm_mainAdmin.Load_noOfProduct()
     End Sub
 
-    Private Sub cbo_tax_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbo_tax.SelectedIndexChanged
 
-        Dim price As Decimal
-        Dim taxPercentage As Decimal
-        Dim qty As Integer
-
-
-        If Decimal.TryParse(txt_selling_price.Text, price) AndAlso Decimal.TryParse(cbo_tax.Text, taxPercentage) AndAlso Integer.TryParse(txt_location.Text, qty) Then
-            ' Conversion successful, txt_price.Text and cbo_tax.Text contain valid numerical values
-            ' Calculate total price with tax
-            Dim taxAmount As Decimal = (price * taxPercentage) / 100
-            Dim totalPrice As Decimal = price * qty
-            totalPrice = totalPrice + taxAmount
-
-
-            ' Update txt_totalprice TextBox with the calculated total price
-            txt_totalprice.Text = totalPrice.ToString()
-
-        End If
-    End Sub
-
-
-
-    Private Sub txt_search_TextChanged(sender As Object, e As EventArgs) Handles txt_search.TextChanged
-        'search product
-        DataGridView1.Rows.Clear()
-        Try
-            If conn.State = ConnectionState.Open Then
-                conn.Close()
-            End If
-            conn.Open()
-            cmd = New MySqlCommand("SELECT * FROM `tblproduct` WHERE procode LIKE '%" & txt_search.Text & "%' OR proname LIKE '%" & txt_search.Text & "%'", conn)
-            dr = cmd.ExecuteReader
-            While dr.Read
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("procode"), dr.Item("proname"), dr.Item("progroup"), dr.Item("uom"), dr.Item("location"), dr.Item("price"),
-                                       dr.Item("tax"), dr.Item("totalprice"), dr.Item("stock"), dr.Item("barcode"))
-            End While
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
 
     Private Sub btn_search_Click(sender As Object, e As EventArgs) Handles btn_search.Click
-        txt_procode.ReadOnly = True
+        If String.IsNullOrEmpty(txt_SearchProductCode.Text.Trim()) Then
+
+            MsgBox("Please enter a product code.", vbInformation)
+            Return
+        End If
+
         Try
             If conn.State = ConnectionState.Open Then
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT  * FROM `tblproduct` WHERE procode LIKE '%" & txt_SearchProductCode.Text & "%' ", conn)
+            'this is for if the code is present or not to check the code presend tin the db'
+            cmd = New MySqlCommand("SELECT COUNT(procode) FROM tblproduct WHERE procode=@procode", conn)
+            cmd.Parameters.AddWithValue("@procode", txt_SearchProductCode.Text)
+            Dim count As Integer = CInt(cmd.ExecuteScalar())
+
+            If count > 0 Then
+                MsgBox("Entered product code is " & txt_SearchProductCode.Text)
+            Else
+                MsgBox("Product code not found")
+                txt_SearchProductCode.Clear()
+                Return
+            End If
+
+
+            cmd = New MySqlCommand("SELECT * FROM tblproduct WHERE procode LIKE @procode", conn)
+            cmd.Parameters.AddWithValue("@procode", txt_SearchProductCode.Text)
+
             dr = cmd.ExecuteReader
             While dr.Read
-                txt_procode.Text = dr.Item("procode")
-                txt_proname.Text = dr.Item("proname")
-                cbo_group.Text = dr.Item("progroup")
-                cbo_uom.Text = dr.Item("uom")
-                txt_location.Text = dr.Item("stock")
-                txt_rate_per.Text = dr.Item("Rate_per")
-                txt_purchase_price.Text = dr.Item("purchase_price")
-                txt_selling_price.Text = dr.Item("Selling_price")
-                cbo_tax.Text = dr.Item("tax")
-                txt_totalprice.Text = dr.Item("totalprice")
-            End While
+                    txt_proname.Text = dr.Item("proname")
+                    cbo_group.Text = dr.Item("progroup")
+                    cbo_uom.Text = dr.Item("uom")
+                    txt_qty.Text = dr.Item("stock")
+                    txt_rate_per.Text = dr.Item("Rate_per")
+                    txt_purchase_price.Text = dr.Item("purchase_price")
+                    cbo_tax.Text = dr.Item("tax")
+                    txt_totalprice.Text = dr.Item("totalprice")
+                End While
+
+
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+
+        txt_procode.ReadOnly = True
     End Sub
+
 
     Private Sub btn_edit_Click(sender As Object, e As EventArgs) Handles btn_edit.Click
         Try
+
+            If String.IsNullOrEmpty(txt_SearchProductCode.Text.Trim()) Then
+
+                MsgBox("Please enter a product code and click 'Search' before editing.", vbInformation)
+                Return
+            End If
 
             If conn.State = ConnectionState.Open Then
                 conn.Close()
@@ -215,11 +265,11 @@ Public Class frm_ManageProduct
             cmd.Parameters.AddWithValue("@progroup", cbo_group.Text)
             cmd.Parameters.AddWithValue("@uom", cbo_uom.Text)
             cmd.Parameters.AddWithValue("@mrp", txt_rate_per.Text)
-            cmd.Parameters.AddWithValue("@qty", CDec(txt_location.Text))
+            cmd.Parameters.AddWithValue("@qty", CDec(txt_qty.Text))
             cmd.Parameters.AddWithValue("@tax", CDec(cbo_tax.Text))
             cmd.Parameters.AddWithValue("@pp", CDec(txt_purchase_price.Text))
             cmd.Parameters.AddWithValue("@totalprice", CDec(txt_totalprice.Text))
-            cmd.Parameters.AddWithValue("@procode", txt_procode.Text)
+            cmd.Parameters.AddWithValue("@procode", txt_SearchProductCode.Text)
 
 
             i = cmd.ExecuteNonQuery
@@ -234,43 +284,50 @@ Public Class frm_ManageProduct
         End Try
         Clear()
         txt_SearchProductCode.Clear()
-        load_product()
-        frm_mainAdmin.Load_noOfProduct()
+        loadproduct()
+        frm_mainAdmin.NoOfProduct()
 
     End Sub
 
-    Private Sub btn_delete_Click(sender As Object, e As EventArgs) Handles btn_delete.Click
-        If MsgBox("Are you SUre Delete this Product", vbExclamation + vbYesNo) = vbYes Then
-            Try
 
+    Private Sub btn_delete_Click(sender As Object, e As EventArgs) Handles btn_delete.Click
+        Try
+            If String.IsNullOrEmpty(txt_SearchProductCode.Text.Trim()) Then
+
+                MsgBox("Please enter a product code and click 'Search' before deleting.", vbInformation)
+                Return
+            End If
+
+            If MsgBox("Are you sure you want to delete this product?", vbExclamation + vbYesNo) = vbYes Then
                 If conn.State = ConnectionState.Open Then
                     conn.Close()
                 End If
                 conn.Open()
+
                 cmd = New MySqlCommand("DELETE FROM `tblproduct` WHERE `procode`=@procode", conn)
-
                 cmd.Parameters.Clear()
-                cmd.Parameters.AddWithValue("@procode", txt_procode.Text)
-
+                cmd.Parameters.AddWithValue("@procode", txt_SearchProductCode.Text)
 
                 i = cmd.ExecuteNonQuery
+                MsgBox(i)
                 If i > 0 Then
-                    MsgBox("Delete  Success", vbExclamation)
+                    MsgBox("Delete Success", vbExclamation)
                 Else
-                    MsgBox("New Porudct Save Failed", vbExclamation)
-
+                    MsgBox("Delete Failed", vbExclamation)
                 End If
-            Catch ex As Exception
-                MsgBox(ex.Message)
-            End Try
-            Clear()
-            txt_SearchProductCode.Clear()
-            load_product()
-        Else
-            Return
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            conn.Close()
+        End Try
 
-        End If
+        Clear()
+        txt_SearchProductCode.Clear()
+        loadproduct()
     End Sub
+
+
 
     Private Sub btn_clear_Click(sender As Object, e As EventArgs) Handles btn_clear.Click
         Clear()
@@ -285,7 +342,7 @@ Public Class frm_ManageProduct
 
 
     Private Sub txt_rate_per_Leave(sender As Object, e As EventArgs) Handles cbo_tax.TextChanged
-        'UpdatePurchasePrice()
+        'updatepurchaseprice()
         updateGST()
     End Sub
     Public p_price As Decimal
@@ -299,51 +356,51 @@ Public Class frm_ManageProduct
                 MsgBox("Enter vailid purchase price", vbCritical)
                 Return
             End If
-            txt_totalprice.Text = Math.Round(CDec(txt_location.Text) * CDec(txt_purchase_price.Text), 2)
+            txt_totalprice.Text = Math.Round(CDec(txt_qty.Text) * CDec(txt_purchase_price.Text), 2)
         Else
-            MsgBox("Purchase price khaali reh gaya")
+            MsgBox("Please Enter purchase price")
         End If
     End Sub
 
 
     Sub updateGST()
         Try
-            Dim a, b, c As Decimal
-            Decimal.TryParse(txt_rate_per.Text, a)
+            Dim mrp, b, cbotax As Decimal
+            Decimal.TryParse(txt_rate_per.Text, mrp)
             'Decimal.TryParse(txt_rate_per.Text, b)
-            Decimal.TryParse(cbo_tax.Text, c)
-            b = 100 + c
-            gstAmount.Text = Math.Round(a / b * c, 2)
-            p_price = a - CDec(gstAmount.Text)
+            Decimal.TryParse(cbo_tax.Text, cbotax)
+            b = 100 + cbotax
+            gstAmount.Text = Math.Round(mrp / b * cbotax, 2)
+            p_price = mrp - CDec(gstAmount.Text)
             afterGST.Text = p_price
-            MsgBox(a & " " & c)
-            Dim d As Integer
-            Decimal.TryParse(txt_location.Text, d)
-            t_price = Math.Round(d * p_price, 2)
+            'MsgBox(a & " " & c)
+            Dim qty As Integer
+            Decimal.TryParse(txt_qty.Text, qty)
+            t_price = Math.Round(qty * p_price, 2)
         Catch ex As Exception
             MsgBox(ex)
         End Try
     End Sub
-    Private Sub UpdatePurchasePrice()
-        ' Check if the text in txt_location is a valid integer
+    Private Sub updatepurchaseprice()
+
         Dim qty As Integer
-        If Integer.TryParse(txt_location.Text, qty) Then
-            ' Check if the text in txt_rate_per is a valid integer
+        If Integer.TryParse(txt_qty.Text, qty) Then
+
             Dim rate As Integer
             If Integer.TryParse(txt_rate_per.Text, rate) Then
-                ' Calculate the purchase price and update txt_purchase_price
+
                 txt_purchase_price.Text = (qty * rate).ToString()
             Else
-                ' Handle the case where txt_rate_per contains non-numeric text
+
                 MessageBox.Show("Please enter a valid rate.")
             End If
         Else
-            ' Handle the case where txt_location contains non-numeric text
+
             MessageBox.Show("Please enter a valid quantity.")
         End If
     End Sub
 
-    Private Sub txt_rate_per_TextChanged(sender As Object, e As EventArgs) Handles txt_rate_per.TextChanged
 
-    End Sub
+
+
 End Class

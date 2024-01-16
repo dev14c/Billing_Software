@@ -1,6 +1,8 @@
 ﻿Imports System.Windows.Media
 Imports MySql.Data.MySqlClient
+Imports Org.BouncyCastle.Asn1.Cms
 Public Class frm_mainCashier
+
 
     Public Event MessageReceived(message As String)
     Private Sub frm_mainCashier_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -34,7 +36,7 @@ Public Class frm_mainCashier
             If row.Cells(1).Value IsNot Nothing AndAlso row.Cells(1).Value.ToString() = txt_SearchProduct.Text Then
                 exist = True
                 existingRowIndex = row.Index
-                Label17.Text = row.Index.ToString
+
                 existingQuantity = CInt(row.Cells(8).Value)
                 Exit For
             End If
@@ -72,6 +74,7 @@ Public Class frm_mainCashier
                     Dim progroup As String = dr("progroup").ToString()
                     Dim uom As String = dr("uom").ToString()
                     Dim stock As Integer = CInt(dr("stock"))
+                    Dim purchase As Integer = CInt(dr("purchase_price"))
                     If stock > 0 Then
                         Dim rate As Decimal
                         Dim tax As Decimal
@@ -80,11 +83,11 @@ Public Class frm_mainCashier
                         If Decimal.TryParse(dr("Rate_per").ToString(), rate) AndAlso Decimal.TryParse(dr("tax").ToString(), tax) Then
                             totalQtyPrice = Math.Round(rate / (tax + 100) * tax, 2)
                             gstAmount = Math.Round(rate - totalQtyPrice, 2)
-                            totalQtyPrice = totalQtyPrice * 1
+                            'totalQtyPrice = totalQtyPrice * 1
                         End If
 
                         'DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, procode, proname, progroup, uom, rate, tax, totalQtyPrice, 1, totalQtyPrice)
-                        DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, procode, proname, progroup, uom, gstAmount, tax, totalQtyPrice, 1, rate, rate)
+                        DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, procode, proname, progroup, uom, gstAmount, tax, totalQtyPrice, 1, rate, rate, purchase)
                         txt_SearchProduct.Clear()
                         txt_SearchProduct.Focus()
                     Else
@@ -97,8 +100,8 @@ Public Class frm_mainCashier
                 MsgBox("Error: " & ex.Message, MsgBoxStyle.Exclamation)
             Finally
                 conn.Close()
-                End Try
-            End If
+            End Try
+        End If
     End Sub
 
 
@@ -244,9 +247,33 @@ Public Class frm_mainCashier
         lbl_time.Text = Date.Now.ToString("hh:mm:ss tt")
         lbl_date.Text = Date.Now.ToString("dd:MMMM:yyyy dddd")
     End Sub
+    Private Sub btn_pay_Click(sender As Object, e As EventArgs) Handles btn_pay.Click
+
+        save_bill()
+        If isError = False Then
+            frm_billprint.ShowDialog()
+            frm_mainAdmin.monthSale()
+            frm_mainAdmin.todaysale()
+
+            Clear()
+            txt_billno.Text = GetbillNo()
+            txt_SearchProduct.Focus()
+        End If
+        If isError = True Then
+            frm_mainAdmin.monthSale()
+            frm_mainAdmin.todaysale()
+
+
+
+            txt_SearchProduct.Focus()
+        End If
+
+
+    End Sub
 
     Dim isError As Boolean = False
     Sub save_bill()
+        isError = False
 
         If txt_cus_name.Text = String.Empty Then
             MsgBox("Please enter customer name!", vbInformation)
@@ -284,51 +311,62 @@ Public Class frm_mainCashier
             Return
         End If
 
-        If Not isError Then ' Only proceed if no error has occurred
+        If Not isError Then
             Try
                 If conn.State = ConnectionState.Open Then
                     conn.Close()
                 End If
                 conn.Open()
-                ' Update product stock in tblproduct
+
                 For j As Integer = 0 To DataGridView1.Rows.Count - 1
                     Dim updateStockQuery As String = "UPDATE tblproduct SET stock = stock - @qty, totalprice = purchase_price * stock  WHERE procode = @procode"
                     cmd = New MySqlCommand(updateStockQuery, conn)
-                    cmd.Parameters.AddWithValue("@qty", CInt(DataGridView1.Rows(j).Cells(8).Value)) ' Assuming qty is in the eighth column
+                    cmd.Parameters.AddWithValue("@qty", CInt(DataGridView1.Rows(j).Cells(8).Value))
                     cmd.Parameters.AddWithValue("@procode", DataGridView1.Rows(j).Cells(1).Value.ToString())
 
                     ' Execute the update query
                     cmd.ExecuteNonQuery()
                 Next
                 For j As Integer = 0 To DataGridView1.Rows.Count - 1 Step +1
-                    cmd = New MySqlCommand("INSERT INTO tbi_pos (billno, billdate, bmonth, bmonthyear, procode, proname, progroup, uom, price, tax, totalproductprice, qty, totalpriceqty, subtotal, totaltax, totalprice, discount_per, discount_amount, grandtotal, paymode, recieveamount, balance,cashier_name,Customer_Name,Customer_Mobile,profit) VALUES " &
-                               "(@billno, @billdate, @bmonth, @bmonthyear, @procode, @proname, @progroup, @uom, @price, @tax, @totalproductprice, @qty, @totalpriceqty, @subtotal, @totaltax, @totalprice,@discount_per, @discount_amount, @grandtotal, @paymode, @recieveamount, @balance,@cashier_name,@Customer_Name,@Customer_Mobile,@profit)", conn)
+                    cmd = New MySqlCommand("INSERT INTO tbi_pos (billno, billdate, bmonth, bmonthyear, procode, proname, progroup, uom, price, tax, totalproductprice, qty, totalpriceqty, subtotal, totaltax, totalprice, discount_per, discount_amount, grandtotal, paymode, recieveamount, balance,cashier_name,Customer_Name,Customer_Mobile,profit,time) VALUES " &
+                               "(@billno, @billdate, @bmonth, @bmonthyear, @procode, @proname, @progroup, @uom, @price, @tax, @totalproductprice, @qty, @totalpriceqty, @subtotal, @totaltax, @totalprice,@discount_per, @discount_amount, @grandtotal, @paymode, @recieveamount, @balance,@cashier_name,@Customer_Name,@Customer_Mobile,@profit,@time)", conn)
                     cmd.Parameters.Clear()
                     cmd.Parameters.AddWithValue("@billno", txt_billno.Text)
-                    cmd.Parameters.AddWithValue("@billdate", CDate(btp_time.Text))
+
+                    Dim selectedDate As DateTime = DateTime.Today
+
+
+                    Dim mysqlDateFormat As String = selectedDate.ToString("yyyy-MM-dd")
+
+
+                    cmd.Parameters.AddWithValue("@billdate", mysqlDateFormat)
+
+                    'cmd.Parameters.AddWithValue("@billdate", CDate(btp_time.Value.Date))
                     cmd.Parameters.AddWithValue("@bmonth", Date.Now.ToString("MM"))
                     cmd.Parameters.AddWithValue("@bmonthyear", Date.Now.ToString("MMMM-yyyy"))
                     cmd.Parameters.AddWithValue("@procode", DataGridView1.Rows(j).Cells(1).Value)
-                    cmd.Parameters.AddWithValue("@proname", DataGridView1.Rows(j).Cells(2).Value) ' Assuming proname is in the second column
-                    cmd.Parameters.AddWithValue("@progroup", DataGridView1.Rows(j).Cells(3).Value) ' Assuming progroup is in the third column
-                    cmd.Parameters.AddWithValue("@uom", DataGridView1.Rows(j).Cells(4).Value) ' Assuming uom is in the fourth column
-                    cmd.Parameters.AddWithValue("@price", DataGridView1.Rows(j).Cells(5).Value) ' Assuming price is in the fifth column
-                    cmd.Parameters.AddWithValue("@tax", DataGridView1.Rows(j).Cells(6).Value) ' Assuming tax is in the sixth column
-                    cmd.Parameters.AddWithValue("@totalproductprice", DataGridView1.Rows(j).Cells(7).Value) ' Assuming totalproductprice is in the seventh column
-                    cmd.Parameters.AddWithValue("@qty", (DataGridView1.Rows(j).Cells(8).Value)) ' Assuming qty is in the eighth column
-                    cmd.Parameters.AddWithValue("@totalpriceqty", (DataGridView1.Rows(j).Cells(9).Value)) ' Assuming totalpriceqty is in the ninth column
+                    cmd.Parameters.AddWithValue("@proname", DataGridView1.Rows(j).Cells(2).Value)
+                    cmd.Parameters.AddWithValue("@progroup", DataGridView1.Rows(j).Cells(3).Value)
+                    cmd.Parameters.AddWithValue("@uom", DataGridView1.Rows(j).Cells(4).Value)
+                    cmd.Parameters.AddWithValue("@price", DataGridView1.Rows(j).Cells(5).Value)
+                    cmd.Parameters.AddWithValue("@tax", DataGridView1.Rows(j).Cells(6).Value)
+                    cmd.Parameters.AddWithValue("@totalproductprice", DataGridView1.Rows(j).Cells(7).Value)
+                    cmd.Parameters.AddWithValue("@qty", (DataGridView1.Rows(j).Cells(8).Value))
+                    cmd.Parameters.AddWithValue("@totalpriceqty", (DataGridView1.Rows(j).Cells(9).Value))
                     cmd.Parameters.AddWithValue("@subtotal", (txt_sub_total.Text))
                     cmd.Parameters.AddWithValue("@totaltax", (txt_totaltax.Text))
                     cmd.Parameters.AddWithValue("@totalprice", DataGridView1.Rows(j).Cells(10).Value)
                     cmd.Parameters.AddWithValue("@discount_per", (txt_discount.Text))
-                    cmd.Parameters.AddWithValue("@discount_amount", (lbl_discount.Text)) ' Please verify if 181_discount is the correct control
+                    cmd.Parameters.AddWithValue("@discount_amount", (lbl_discount.Text))
                     cmd.Parameters.AddWithValue("@grandtotal", (txt_grandtotal.Text))
                     cmd.Parameters.AddWithValue("@paymode", cbo_payMode.Text)
-                    cmd.Parameters.AddWithValue("@recieveamount", (txt_amtrec.Text)) ' Assuming txt_AmountReceived is the correct control
+                    cmd.Parameters.AddWithValue("@recieveamount", (txt_amtrec.Text))
                     cmd.Parameters.AddWithValue("@balance", (txt_change.Text))
                     cmd.Parameters.AddWithValue("@cashier_name", (UserSession.CurrentUser))
                     cmd.Parameters.AddWithValue("@Customer_name", (txt_cus_name.Text))
                     cmd.Parameters.AddWithValue("@Customer_Mobile", (txt_cus_num.Text))
+                    cmd.Parameters.AddWithValue("@time", DateTime.Now.ToString("hh:mm tt"))
+
                     Dim profit As Decimal
                     profit = CDec(DataGridView1.Rows(j).Cells(10).Value) - CDec(DataGridView1.Rows(j).Cells(11).Value) * CDec(DataGridView1.Rows(j).Cells(8).Value)
                     cmd.Parameters.AddWithValue("@profit", profit)
@@ -370,29 +408,6 @@ Public Class frm_mainCashier
         txt_cus_name.Clear()
     End Sub
 
-    Private Sub btn_pay_Click(sender As Object, e As EventArgs) Handles btn_pay.Click
-
-        save_bill()
-        If isError = False Then
-            frm_billprint.ShowDialog()
-            frm_mainAdmin.Load_monthSale()
-            frm_mainAdmin.Load_todaySale()
-
-            Clear()
-            txt_billno.Text = GetbillNo()
-            txt_SearchProduct.Focus()
-        End If
-        If isError = True Then
-            frm_mainAdmin.Load_monthSale()
-            frm_mainAdmin.Load_todaySale()
-
-
-
-            txt_SearchProduct.Focus()
-        End If
-
-
-    End Sub
 
     Private Sub btm_new_Click(sender As Object, e As EventArgs) Handles btm_new.Click
         Clear()
@@ -504,4 +519,6 @@ Public Class frm_mainCashier
         Dim form2Instance As New frm_qty_add(Me)
         form2Instance.ShowDialog()
     End Sub
+
+
 End Class

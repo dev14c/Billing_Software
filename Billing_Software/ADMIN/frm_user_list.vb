@@ -44,11 +44,11 @@ Public Class frm_user_list
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
         If e.RowIndex >= 0 Then
-            If e.ColumnIndex = 4 Then ' Assuming 4 is the column index for "Activate" button
+            If e.ColumnIndex = 5 Then 'activagtio code'
                 Dim result As DialogResult = MessageBox.Show("Do you want to Activate the user?", "Confirmation", MessageBoxButtons.YesNo)
                 If result = DialogResult.Yes Then
-                    ' Your activation logic here..
-                    '
+
+
                     Try
                         If conn.State = ConnectionState.Open Then
                             conn.Close()
@@ -61,6 +61,7 @@ Public Class frm_user_list
                         cmd.ExecuteNonQuery()
 
                         MsgBox("Activated successfully")
+                        load_user()
                         DataGridView1.Rows(e.RowIndex).Cells(5).ReadOnly = True
                         DataGridView1.Rows(e.RowIndex).Cells(5).Style.BackColor = Color.Gray
                         DataGridView1.Rows(e.RowIndex).Cells(4).Style.BackColor = Color.White
@@ -69,11 +70,10 @@ Public Class frm_user_list
                         MsgBox(ex.Message)
                     End Try
                 End If
-            ElseIf e.ColumnIndex = 5 Then ' Assuming 5 is the column index for "Deactivate" button
+            ElseIf e.ColumnIndex = 6 Then 'deacyivae code'
                 Dim result As DialogResult = MessageBox.Show("Do you want to Deactivate the user?", "Confirmation", MessageBoxButtons.YesNo)
                 If result = DialogResult.Yes Then
-                    ' Your deactivation logic here..
-                    '
+
                     Try
                         If conn.State = ConnectionState.Open Then
                             conn.Close()
@@ -86,6 +86,7 @@ Public Class frm_user_list
                         cmd.ExecuteNonQuery()
 
                         MsgBox("Deactivated successfully")
+                        load_user()
                         DataGridView1.Rows(e.RowIndex).Cells(4).ReadOnly = True
                         DataGridView1.Rows(e.RowIndex).Cells(4).Style.BackColor = Color.Gray
                         DataGridView1.Rows(e.RowIndex).Cells(5).Style.BackColor = Color.White

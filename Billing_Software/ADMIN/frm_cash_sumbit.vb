@@ -34,32 +34,32 @@ Public Class frm_cash_sumbit
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-        ' Check if the "Recieved" button is clicked
+        ' Check if recive btn is clicked oro not'
         If e.ColumnIndex = DataGridView1.Columns(6).Index AndAlso e.RowIndex >= 0 Then
-            ' Get the relevant data from the DataGridView
-            Dim dateValue As String = DataGridView1.Rows(e.RowIndex).Cells(1).Value.ToString()
-            Dim cashierName As String = DataGridView1.Rows(e.RowIndex).Cells(2).Value.ToString()
-            ' Convert dateValue to a DateTime and format it without the time
-            Dim parsedDate As DateTime
-            If DateTime.TryParse(dateValue, parsedDate) Then
-                dateValue = parsedDate.ToString("yyyy-MM-dd")
+            '
+            Dim datevalue As String = DataGridView1.Rows(e.RowIndex).Cells(1).Value.ToString()
+            Dim cashiername As String = DataGridView1.Rows(e.RowIndex).Cells(2).Value.ToString()
+
+            Dim convertDate As DateTime
+            If DateTime.TryParse(datevalue, convertDate) Then
+                datevalue = convertDate.ToString("yyyy-MM-dd")
             End If
             ' Display a confirmation message box
-            Dim result As DialogResult = MessageBox.Show($"Are you sure you have received cash from {cashierName} on {dateValue}?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            Dim result As DialogResult = MessageBox.Show($"Are you sure you have received cash from {cashiername} on {datevalue}?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
             ' Check the user's response
             If result = DialogResult.Yes Then
                 ' Update the 'Cashrec' column in the database to 'Yes'
-                UpdateCashRecInDatabase(cashierName, dateValue)
+                UpdateCashRecInDatabase(cashiername, datevalue)
             Else
                 ' User clicked No, do nothing or provide feedback as needed
                 ' ...
-                ShowMessageForm(cashierName, dateValue)
+                ShowMessageForm(cashiername, datevalue)
 
             End If
         End If
     End Sub
-    Private Sub ShowMessageForm(cashierName As String, dateValue As String)
+    Private Sub ShowMessageForm(cashiername As String, datevalue As String)
         ' Create an instance of the message form
         Dim sendMessageForm As New frm_mainCashier()
 
@@ -68,7 +68,7 @@ Public Class frm_cash_sumbit
 
     End Sub
 
-    Private Sub UpdateCashRecInDatabase(cashierName As String, dateValue As String)
+    Private Sub UpdateCashRecInDatabase(cashiername As String, datevalue As String)
         Try
             If conn.State = ConnectionState.Open Then
                 conn.Close()
@@ -76,20 +76,20 @@ Public Class frm_cash_sumbit
             conn.Open()
 
             ' Update the 'Cashrec' column in the database to 'Yes'
-            Dim updateQuery As String = "UPDATE cash_report SET Cashrec = 'Yes' WHERE Cashier_name = @cashierName AND Date = @dateValue"
+            Dim updateQuery As String = "UPDATE cash_report SET Cashrec = 'Yes' WHERE Cashier_name = @cashiername AND Date = @datevalue"
 
             Using cmd As New MySqlCommand(updateQuery, conn)
-                cmd.Parameters.AddWithValue("@cashierName", cashierName)
-                cmd.Parameters.AddWithValue("@dateValue", dateValue)
+                cmd.Parameters.AddWithValue("@cashiername", cashiername)
+                cmd.Parameters.AddWithValue("@datevalue", datevalue)
                 cmd.ExecuteNonQuery()
             End Using
 
             ' Display a message indicating successful update
-            MessageBox.Show($"Cash received from {cashierName} on {dateValue} has been updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show($"Cash received from {cashiername} on {datevalue} has been updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
             ' Optionally, refresh your DataGridView
             load_report_admin()
-        Catch ex As Exception
+        Catch ex As Exceptiond
             ' Handle any exceptions that may occur during the database update
             MessageBox.Show("Error updating the database: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally

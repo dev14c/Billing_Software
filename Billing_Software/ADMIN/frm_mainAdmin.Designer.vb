@@ -40,30 +40,30 @@ Partial Class frm_mainAdmin
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel11 = New System.Windows.Forms.Panel()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.lbl_noOfUser = New System.Windows.Forms.Label()
+        Me.label_noOfUser = New System.Windows.Forms.Label()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.lbl_noOfTodaySale = New System.Windows.Forms.Label()
+        Me.label_nooftodaysale = New System.Windows.Forms.Label()
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.lbl_noOfMonthlySale = New System.Windows.Forms.Label()
+        Me.labelnoofmonthlysale = New System.Windows.Forms.Label()
         Me.Panel13 = New System.Windows.Forms.Panel()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.monthProfit = New System.Windows.Forms.Label()
+        Me.monthprofit = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.lbl_noOfProduct = New System.Windows.Forms.Label()
+        Me.label_noofProduct = New System.Windows.Forms.Label()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.lbl_monthlySale = New System.Windows.Forms.Label()
+        Me.label_monthlysale = New System.Windows.Forms.Label()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.lbl_todaySale = New System.Windows.Forms.Label()
+        Me.label_todaysale = New System.Windows.Forms.Label()
         Me.Panel12 = New System.Windows.Forms.Panel()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.todayProfit = New System.Windows.Forms.Label()
+        Me.todayprofit = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
@@ -276,7 +276,7 @@ Partial Class frm_mainAdmin
         'Panel11
         '
         Me.Panel11.Controls.Add(Me.Label13)
-        Me.Panel11.Controls.Add(Me.lbl_noOfUser)
+        Me.Panel11.Controls.Add(Me.label_noOfUser)
         Me.Panel11.Location = New System.Drawing.Point(558, 3)
         Me.Panel11.Name = "Panel11"
         Me.Panel11.Size = New System.Drawing.Size(179, 94)
@@ -292,20 +292,20 @@ Partial Class frm_mainAdmin
         Me.Label13.TabIndex = 1
         Me.Label13.Text = "No of users"
         '
-        'lbl_noOfUser
+        'label_noOfUser
         '
-        Me.lbl_noOfUser.AutoSize = True
-        Me.lbl_noOfUser.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_noOfUser.Location = New System.Drawing.Point(27, 21)
-        Me.lbl_noOfUser.Name = "lbl_noOfUser"
-        Me.lbl_noOfUser.Size = New System.Drawing.Size(29, 35)
-        Me.lbl_noOfUser.TabIndex = 0
-        Me.lbl_noOfUser.Text = "0"
+        Me.label_noOfUser.AutoSize = True
+        Me.label_noOfUser.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.label_noOfUser.Location = New System.Drawing.Point(27, 21)
+        Me.label_noOfUser.Name = "label_noOfUser"
+        Me.label_noOfUser.Size = New System.Drawing.Size(29, 35)
+        Me.label_noOfUser.TabIndex = 0
+        Me.label_noOfUser.Text = "0"
         '
         'Panel9
         '
         Me.Panel9.Controls.Add(Me.Label9)
-        Me.Panel9.Controls.Add(Me.lbl_noOfTodaySale)
+        Me.Panel9.Controls.Add(Me.label_nooftodaysale)
         Me.Panel9.Location = New System.Drawing.Point(188, 3)
         Me.Panel9.Name = "Panel9"
         Me.Panel9.Size = New System.Drawing.Size(179, 94)
@@ -321,20 +321,20 @@ Partial Class frm_mainAdmin
         Me.Label9.TabIndex = 1
         Me.Label9.Text = "No of Today Sales"
         '
-        'lbl_noOfTodaySale
+        'label_nooftodaysale
         '
-        Me.lbl_noOfTodaySale.AutoSize = True
-        Me.lbl_noOfTodaySale.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_noOfTodaySale.Location = New System.Drawing.Point(27, 21)
-        Me.lbl_noOfTodaySale.Name = "lbl_noOfTodaySale"
-        Me.lbl_noOfTodaySale.Size = New System.Drawing.Size(64, 35)
-        Me.lbl_noOfTodaySale.TabIndex = 0
-        Me.lbl_noOfTodaySale.Text = "0.00"
+        Me.label_nooftodaysale.AutoSize = True
+        Me.label_nooftodaysale.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.label_nooftodaysale.Location = New System.Drawing.Point(27, 21)
+        Me.label_nooftodaysale.Name = "label_nooftodaysale"
+        Me.label_nooftodaysale.Size = New System.Drawing.Size(64, 35)
+        Me.label_nooftodaysale.TabIndex = 0
+        Me.label_nooftodaysale.Text = "0.00"
         '
         'Panel8
         '
         Me.Panel8.Controls.Add(Me.Label7)
-        Me.Panel8.Controls.Add(Me.lbl_noOfMonthlySale)
+        Me.Panel8.Controls.Add(Me.labelnoofmonthlysale)
         Me.Panel8.Location = New System.Drawing.Point(373, 3)
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(179, 94)
@@ -350,20 +350,20 @@ Partial Class frm_mainAdmin
         Me.Label7.TabIndex = 1
         Me.Label7.Text = "No of Monthly sales"
         '
-        'lbl_noOfMonthlySale
+        'labelnoofmonthlysale
         '
-        Me.lbl_noOfMonthlySale.AutoSize = True
-        Me.lbl_noOfMonthlySale.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_noOfMonthlySale.Location = New System.Drawing.Point(27, 21)
-        Me.lbl_noOfMonthlySale.Name = "lbl_noOfMonthlySale"
-        Me.lbl_noOfMonthlySale.Size = New System.Drawing.Size(64, 35)
-        Me.lbl_noOfMonthlySale.TabIndex = 0
-        Me.lbl_noOfMonthlySale.Text = "0.00"
+        Me.labelnoofmonthlysale.AutoSize = True
+        Me.labelnoofmonthlysale.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelnoofmonthlysale.Location = New System.Drawing.Point(27, 21)
+        Me.labelnoofmonthlysale.Name = "labelnoofmonthlysale"
+        Me.labelnoofmonthlysale.Size = New System.Drawing.Size(64, 35)
+        Me.labelnoofmonthlysale.TabIndex = 0
+        Me.labelnoofmonthlysale.Text = "0.00"
         '
         'Panel13
         '
         Me.Panel13.Controls.Add(Me.Label8)
-        Me.Panel13.Controls.Add(Me.monthProfit)
+        Me.Panel13.Controls.Add(Me.monthprofit)
         Me.Panel13.Location = New System.Drawing.Point(743, 3)
         Me.Panel13.Name = "Panel13"
         Me.Panel13.Size = New System.Drawing.Size(179, 94)
@@ -375,24 +375,19 @@ Partial Class frm_mainAdmin
         Me.Label8.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.Location = New System.Drawing.Point(30, 61)
         Me.Label8.Name = "Label8"
-
         Me.Label8.Size = New System.Drawing.Size(119, 23)
-
-        Me.Label8.Size = New System.Drawing.Size(99, 19)
         Me.Label8.TabIndex = 1
         Me.Label8.Text = "Month's Profit"
         '
-        'monthProfit
+        'monthprofit
         '
-        Me.monthProfit.AutoSize = True
-        Me.monthProfit.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.monthProfit.Location = New System.Drawing.Point(27, 21)
-        Me.monthProfit.Name = "monthProfit"
-        Me.monthProfit.Size = New System.Drawing.Size(64, 35)
-
-        Me.monthProfit.Size = New System.Drawing.Size(53, 28)
-        Me.monthProfit.TabIndex = 0
-        Me.monthProfit.Text = "0.00"
+        Me.monthprofit.AutoSize = True
+        Me.monthprofit.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.monthprofit.Location = New System.Drawing.Point(27, 21)
+        Me.monthprofit.Name = "monthprofit"
+        Me.monthprofit.Size = New System.Drawing.Size(64, 35)
+        Me.monthprofit.TabIndex = 0
+        Me.monthprofit.Text = "0.00"
         '
         'Panel5
         '
@@ -426,7 +421,7 @@ Partial Class frm_mainAdmin
         'Panel10
         '
         Me.Panel10.Controls.Add(Me.Label11)
-        Me.Panel10.Controls.Add(Me.lbl_noOfProduct)
+        Me.Panel10.Controls.Add(Me.label_noofProduct)
         Me.Panel10.Location = New System.Drawing.Point(558, 3)
         Me.Panel10.Name = "Panel10"
         Me.Panel10.Size = New System.Drawing.Size(179, 103)
@@ -442,20 +437,20 @@ Partial Class frm_mainAdmin
         Me.Label11.TabIndex = 1
         Me.Label11.Text = "No of Product"
         '
-        'lbl_noOfProduct
+        'label_noofProduct
         '
-        Me.lbl_noOfProduct.AutoSize = True
-        Me.lbl_noOfProduct.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_noOfProduct.Location = New System.Drawing.Point(27, 21)
-        Me.lbl_noOfProduct.Name = "lbl_noOfProduct"
-        Me.lbl_noOfProduct.Size = New System.Drawing.Size(29, 35)
-        Me.lbl_noOfProduct.TabIndex = 0
-        Me.lbl_noOfProduct.Text = "0"
+        Me.label_noofProduct.AutoSize = True
+        Me.label_noofProduct.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.label_noofProduct.Location = New System.Drawing.Point(27, 21)
+        Me.label_noofProduct.Name = "label_noofProduct"
+        Me.label_noofProduct.Size = New System.Drawing.Size(29, 35)
+        Me.label_noofProduct.TabIndex = 0
+        Me.label_noofProduct.Text = "0"
         '
         'Panel7
         '
         Me.Panel7.Controls.Add(Me.Label5)
-        Me.Panel7.Controls.Add(Me.lbl_monthlySale)
+        Me.Panel7.Controls.Add(Me.label_monthlysale)
         Me.Panel7.Location = New System.Drawing.Point(373, 3)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(179, 103)
@@ -471,20 +466,20 @@ Partial Class frm_mainAdmin
         Me.Label5.TabIndex = 1
         Me.Label5.Text = "Monthly Sales"
         '
-        'lbl_monthlySale
+        'label_monthlysale
         '
-        Me.lbl_monthlySale.AutoSize = True
-        Me.lbl_monthlySale.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_monthlySale.Location = New System.Drawing.Point(27, 21)
-        Me.lbl_monthlySale.Name = "lbl_monthlySale"
-        Me.lbl_monthlySale.Size = New System.Drawing.Size(64, 35)
-        Me.lbl_monthlySale.TabIndex = 0
-        Me.lbl_monthlySale.Text = "0.00"
+        Me.label_monthlysale.AutoSize = True
+        Me.label_monthlysale.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.label_monthlysale.Location = New System.Drawing.Point(27, 21)
+        Me.label_monthlysale.Name = "label_monthlysale"
+        Me.label_monthlysale.Size = New System.Drawing.Size(64, 35)
+        Me.label_monthlysale.TabIndex = 0
+        Me.label_monthlysale.Text = "0.00"
         '
         'Panel6
         '
         Me.Panel6.Controls.Add(Me.Label4)
-        Me.Panel6.Controls.Add(Me.lbl_todaySale)
+        Me.Panel6.Controls.Add(Me.label_todaysale)
         Me.Panel6.Location = New System.Drawing.Point(188, 3)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(179, 103)
@@ -500,20 +495,20 @@ Partial Class frm_mainAdmin
         Me.Label4.TabIndex = 1
         Me.Label4.Text = "Today Sales"
         '
-        'lbl_todaySale
+        'label_todaysale
         '
-        Me.lbl_todaySale.AutoSize = True
-        Me.lbl_todaySale.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_todaySale.Location = New System.Drawing.Point(27, 21)
-        Me.lbl_todaySale.Name = "lbl_todaySale"
-        Me.lbl_todaySale.Size = New System.Drawing.Size(64, 35)
-        Me.lbl_todaySale.TabIndex = 0
-        Me.lbl_todaySale.Text = "0.00"
+        Me.label_todaysale.AutoSize = True
+        Me.label_todaysale.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.label_todaysale.Location = New System.Drawing.Point(27, 21)
+        Me.label_todaysale.Name = "label_todaysale"
+        Me.label_todaysale.Size = New System.Drawing.Size(64, 35)
+        Me.label_todaysale.TabIndex = 0
+        Me.label_todaysale.Text = "0.00"
         '
         'Panel12
         '
         Me.Panel12.Controls.Add(Me.Label3)
-        Me.Panel12.Controls.Add(Me.todayProfit)
+        Me.Panel12.Controls.Add(Me.todayprofit)
         Me.Panel12.Location = New System.Drawing.Point(743, 3)
         Me.Panel12.Name = "Panel12"
         Me.Panel12.Size = New System.Drawing.Size(179, 103)
@@ -529,15 +524,15 @@ Partial Class frm_mainAdmin
         Me.Label3.TabIndex = 1
         Me.Label3.Text = "Today's Profit"
         '
-        'todayProfit
+        'todayprofit
         '
-        Me.todayProfit.AutoSize = True
-        Me.todayProfit.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.todayProfit.Location = New System.Drawing.Point(27, 21)
-        Me.todayProfit.Name = "todayProfit"
-        Me.todayProfit.Size = New System.Drawing.Size(64, 35)
-        Me.todayProfit.TabIndex = 0
-        Me.todayProfit.Text = "0.00"
+        Me.todayprofit.AutoSize = True
+        Me.todayprofit.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.todayprofit.Location = New System.Drawing.Point(27, 21)
+        Me.todayprofit.Name = "todayprofit"
+        Me.todayprofit.Size = New System.Drawing.Size(64, 35)
+        Me.todayprofit.TabIndex = 0
+        Me.todayprofit.Text = "0.00"
         '
         'Panel4
         '
@@ -606,31 +601,31 @@ Partial Class frm_mainAdmin
     Friend WithEvents Panel4 As Panel
     Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
     Friend WithEvents Panel6 As Panel
-    Friend WithEvents lbl_todaySale As Label
+    Friend WithEvents label_todaysale As Label
     Friend WithEvents Panel7 As Panel
     Friend WithEvents Panel8 As Panel
     Friend WithEvents Label7 As Label
-    Friend WithEvents lbl_noOfMonthlySale As Label
+    Friend WithEvents labelnoofmonthlysale As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents lbl_monthlySale As Label
+    Friend WithEvents label_monthlysale As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Panel11 As Panel
     Friend WithEvents Label13 As Label
-    Friend WithEvents lbl_noOfUser As Label
+    Friend WithEvents label_noOfUser As Label
     Friend WithEvents Panel9 As Panel
     Friend WithEvents Label9 As Label
-    Friend WithEvents lbl_noOfTodaySale As Label
+    Friend WithEvents label_nooftodaysale As Label
     Friend WithEvents Panel10 As Panel
     Friend WithEvents Label11 As Label
     Friend WithEvents cash_report_btn As Button
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Refreshbutton As Button
     Friend WithEvents Button1 As Button
-    Friend WithEvents lbl_noOfProduct As Label
+    Friend WithEvents label_noofProduct As Label
     Friend WithEvents Panel12 As Panel
     Friend WithEvents Label3 As Label
-    Friend WithEvents todayProfit As Label
+    Friend WithEvents todayprofit As Label
     Friend WithEvents Panel13 As Panel
     Friend WithEvents Label8 As Label
-    Friend WithEvents monthProfit As Label
+    Friend WithEvents monthprofit As Label
 End Class

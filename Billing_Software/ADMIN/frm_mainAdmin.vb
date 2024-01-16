@@ -19,18 +19,56 @@ Public Class frm_mainAdmin
 
     Private Sub frm_mainAdmin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dbconn()
-        Load_todaySale()
-        Load_noOfCashier()
-        Load_monthSale()
-        Load_noOfmonthSale()
-        Load_noOfProduct()
-        Load_noOfTodaySale()
-        Load_todayProfit()
-        Load_monthProfit()
+        loadstock()
+        todaysale()
+        noOfCashier()
+        monthSale()
+        NoOfmonthSale()
+        NoOfProduct()
+        NoOfTodaysale()
+        loadtodayProfit()
+        loadmonthProfit()
         'MsgBox("SELECT SUM(`grandtotal`),`billno` FROM `tbi_pos` WHERE `billdate` = '" & Date.Now.ToString("yyyy-MM-dd") & "' group by billno ")
     End Sub
+    Sub loadstock()
+        Try
+            Dim i As String = ""
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+            conn.Open()
 
-    Sub Load_todayProfit()
+            ' Assuming you have a table named 'tblproduct' with columns 'procode' and 'stock'
+            Dim cmd As New MySqlCommand("SELECT proname, stock FROM tblproduct", conn)
+            Dim reader As MySqlDataReader = cmd.ExecuteReader()
+
+            While reader.Read()
+                Dim productname As String = reader("proname").ToString()
+                Dim stock As Integer = Convert.ToInt32(reader("stock"))
+
+                ' Specify your threshold value here (e.g., 10)
+                Dim minqty As Integer = 5
+
+                If stock < minqty Then
+                    i = i & ", " & productname
+
+
+                End If
+            End While
+            If Not String.IsNullOrEmpty(i) Then
+                MsgBox($"The following products have stock below the threshold: {i}. Please refill!", vbInformation)
+            Else
+                MsgBox("All stocks are above the threshold. No refill needed.", vbInformation)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            conn.Close()
+        End Try
+    End Sub
+
+
+    Sub loadtodayProfit()
         Try
 
             If conn.State = ConnectionState.Open Then
@@ -39,19 +77,19 @@ Public Class frm_mainAdmin
             conn.Open()
 
             cmd = New MySqlCommand("SELECT SUM(`profit`) FROM `tbi_pos` WHERE `billdate` = '" & Date.Now.ToString("yyyy-MM-dd") & "'", conn)
-            'todayProfit.Text = cmd.ExecuteScalar.ToString
+
             Dim result As Object = cmd.ExecuteScalar()
             If result IsNot DBNull.Value AndAlso result IsNot Nothing Then
-                todayProfit.Text = result.ToString()
+                todayprofit.Text = result.ToString()
             Else
-                todayProfit.Text = "0" ' Set a default value if the result is null
+                todayprofit.Text = "0"
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
 
         End Try
     End Sub
-    Sub Load_monthProfit()
+    Sub loadmonthProfit()
         Try
 
             If conn.State = ConnectionState.Open Then
@@ -64,9 +102,9 @@ Public Class frm_mainAdmin
 
             Dim result As Object = cmd.ExecuteScalar()
             If result IsNot DBNull.Value AndAlso result IsNot Nothing Then
-                monthProfit.Text = result.ToString()
+                monthprofit.Text = result.ToString()
             Else
-                monthProfit.Text = "0" ' Set a default value if the result is null
+                monthprofit.Text = "0" '
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -78,7 +116,7 @@ Public Class frm_mainAdmin
         report_admin.ShowDialog()
     End Sub
 
-    Sub Load_noOfTodaySale()
+    Sub NoOfTodaysale()
         Try
 
             If conn.State = ConnectionState.Open Then
@@ -91,9 +129,9 @@ Public Class frm_mainAdmin
             'lbl_noOfTodaySale.Text = cmd.ExecuteScalar().ToString()
             Dim result As Object = cmd.ExecuteScalar()
             If result IsNot DBNull.Value AndAlso result IsNot Nothing Then
-                lbl_noOfTodaySale.Text = result.ToString()
+                label_nooftodaysale.Text = result.ToString()
             Else
-                lbl_noOfTodaySale.Text = "0" ' Set a default value if the result is null
+                label_nooftodaysale.Text = "0" ' 
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -101,7 +139,7 @@ Public Class frm_mainAdmin
 
 
     End Sub
-    Sub Load_noOfProduct()
+    Sub NoOfProduct()
         Try
 
             If conn.State = ConnectionState.Open Then
@@ -113,9 +151,9 @@ Public Class frm_mainAdmin
             'lbl_noOfProduct.Text = cmd.ExecuteScalar.ToString
             Dim result As Object = cmd.ExecuteScalar()
             If result IsNot DBNull.Value AndAlso result IsNot Nothing Then
-                lbl_noOfProduct.Text = result.ToString()
+                label_noofProduct.Text = result.ToString()
             Else
-                lbl_noOfProduct.Text = "0" ' Set a default value if the result is null
+                label_noofProduct.Text = "0" ' 
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -123,7 +161,7 @@ Public Class frm_mainAdmin
         End Try
 
     End Sub
-    Sub Load_monthSale()
+    Sub monthSale()
         Try
 
             If conn.State = ConnectionState.Open Then
@@ -135,9 +173,9 @@ Public Class frm_mainAdmin
             'lbl_monthlySale.Text = cmd.ExecuteScalar.ToString
             Dim result As Object = cmd.ExecuteScalar()
             If result IsNot DBNull.Value AndAlso result IsNot Nothing Then
-                lbl_monthlySale.Text = result.ToString()
+                label_monthlysale.Text = result.ToString()
             Else
-                lbl_monthlySale.Text = "0" ' Set a default value if the result is null
+                label_monthlysale.Text = "0"
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -146,7 +184,7 @@ Public Class frm_mainAdmin
 
     End Sub
 
-    Sub Load_todaySale()
+    Sub todaysale()
         ' If the product code doesn't exist, add a new row
         Try
 
@@ -159,9 +197,9 @@ Public Class frm_mainAdmin
             'lbl_todaySale.Text = cmd.ExecuteScalar.ToString
             Dim result As Object = cmd.ExecuteScalar()
             If result IsNot DBNull.Value AndAlso result IsNot Nothing Then
-                lbl_todaySale.Text = result.ToString()
+                label_todaysale.Text = result.ToString()
             Else
-                lbl_todaySale.Text = "0" ' Set a default value if the result is null
+                label_todaysale.Text = "0" ' Set a default value if the result is null
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -171,7 +209,7 @@ Public Class frm_mainAdmin
     End Sub
 
 
-    Sub Load_noOfCashier()
+    Sub NoOfCashier()
         Try
 
             If conn.State = ConnectionState.Open Then
@@ -184,9 +222,9 @@ WHERE role = 'Cashier'", conn)
             'lbl_noOfUser.Text = cmd.ExecuteScalar.ToString
             Dim result As Object = cmd.ExecuteScalar()
             If result IsNot DBNull.Value AndAlso result IsNot Nothing Then
-                lbl_noOfUser.Text = result.ToString()
+                label_noOfUser.Text = result.ToString()
             Else
-                lbl_noOfUser.Text = "0" ' Set a default value if the result is null
+                label_noOfUser.Text = "0" ' Set a default value if the result is null
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -194,7 +232,7 @@ WHERE role = 'Cashier'", conn)
         End Try
 
     End Sub
-    Sub Load_noOfmonthSale()
+    Sub NoOfmonthSale()
         Try
 
             If conn.State = ConnectionState.Open Then
@@ -205,18 +243,16 @@ WHERE role = 'Cashier'", conn)
             'lbl_noOfMonthlySale.Text = cmd.ExecuteScalar().ToString
             Dim result As Object = cmd.ExecuteScalar()
             If result IsNot DBNull.Value AndAlso result IsNot Nothing Then
-                lbl_noOfMonthlySale.Text = result.ToString()
+                labelnoofmonthlysale.Text = result.ToString()
             Else
-                lbl_noOfMonthlySale.Text = "0" ' Set a default value if the result is null
+                labelnoofmonthlysale.Text = "0" ' Set a default value if the result is null
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
 
-    Private Sub TableLayoutPanel1_Paint(sender As Object, e As PaintEventArgs) Handles TableLayoutPanel1.Paint
 
-    End Sub
 
     Private Sub cash_report_btn_Click(sender As Object, e As EventArgs) Handles cash_report_btn.Click
         frm_cash_sumbit.ShowDialog()
@@ -228,20 +264,15 @@ WHERE role = 'Cashier'", conn)
     End Sub
 
     Private Sub ReloadData()
-        ' Place the logic to reload your data here
-        ' For example, if you have a DataGridView, you can reload its data source
-        ' or if you have other controls, update their values accordingly
+        loadstock()
 
-        ' Call the methods or logic you use to load or display data
-        Load_todaySale()
-        Load_noOfCashier()
-        Load_monthSale()
-        Load_noOfmonthSale()
-        Load_noOfProduct()
-        Load_noOfTodaySale()
-        ' Add more methods as needed
+        todaysale()
+        NoOfCashier()
+        monthSale()
+        NoOfmonthSale()
+        NoOfProduct()
+        NoOfTodaysale()
 
-        ' Optionally, display a message or perform other actions after the refresh
         MessageBox.Show("Data refreshed successfully!", "Refresh", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
@@ -249,7 +280,5 @@ WHERE role = 'Cashier'", conn)
         frm_viewbill_admin.ShowDialog()
     End Sub
 
-    Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
 
-    End Sub
 End Class

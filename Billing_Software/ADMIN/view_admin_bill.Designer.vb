@@ -34,6 +34,7 @@ Partial Class view_admin_bill
         Me.txt_billno = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.SuspendLayout()
         '
         'txt_billdate
@@ -132,11 +133,21 @@ Partial Class view_admin_bill
         Me.Label1.TabIndex = 14
         Me.Label1.Text = "Bill no"
         '
+        'ListBox1
+        '
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.ItemHeight = 16
+        Me.ListBox1.Location = New System.Drawing.Point(400, 354)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(120, 84)
+        Me.ListBox1.TabIndex = 27
+        '
         'view_admin_bill
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.txt_billdate)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.txt_total)
@@ -168,4 +179,5 @@ Partial Class view_admin_bill
     Friend WithEvents txt_billno As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents ListBox1 As ListBox
 End Class

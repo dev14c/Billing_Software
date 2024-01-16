@@ -69,6 +69,7 @@ Public Class frm_cancelorder
             End If
             conn.Open()
             cmd = New MySqlCommand("select billno,Customer_Name,Customer_Mobile,paymode,billdate, grandtotal from tbi_pos where billno=@billno", conn)
+
             cmd.Parameters.AddWithValue("@billno", billno)
             dr = cmd.ExecuteReader
             If dr.Read() Then

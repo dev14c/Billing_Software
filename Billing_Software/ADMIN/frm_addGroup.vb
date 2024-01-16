@@ -28,7 +28,7 @@ Public Class frm_addGroup
             MsgBox(ex.Message)
         End Try
 
-        frm_ManageProduct.load_PorductGroup()
+        frm_ManageProduct.loadproductgroup()
 
     End Sub
 End Class

@@ -82,33 +82,43 @@ Public Class frm_viewbill_admin
         End If
     End Sub
     Private Sub DisplayBillDetails(billno As String)
-
         ' Instantiate and show the BillDetailsForm
-        Dim billDetailsForm As New view_bill()
+        Dim billDetailsForm As New view_admin_bill()
+
         Try
+
 
             If conn.State = ConnectionState.Open Then
                 conn.Close()
             End If
+
             conn.Open()
-            cmd = New MySqlCommand("select billno,Customer_Name,Customer_Mobile,paymode,billdate, grandtotal from tbi_pos where billno=@billno", conn)
+            billDetailsForm.ListBox1.Items.Clear()
+            cmd = New MySqlCommand("SELECT billno, Customer_Name, proname, Customer_Mobile, paymode, billdate, grandtotal FROM tbi_pos WHERE billno = @billno", conn)
             cmd.Parameters.AddWithValue("@billno", billno)
-            dr = cmd.ExecuteReader
-            If dr.Read() Then
-                ' Set the TextBox on the BillDetailsForm with the retrieved grandtotal
-                billDetailsForm.txt_billno.Text = dr("billno").ToString()
-                billDetailsForm.txt_billdate.Text = dr("billdate").ToString()
-                billDetailsForm.txt_cusname.Text = dr("Customer_Name").ToString()
-                billDetailsForm.txt_cusmob.Text = dr("Customer_Mobile").ToString()
-                billDetailsForm.txt_mod.Text = dr("paymode").ToString()
-                billDetailsForm.txt_total.Text = dr("grandtotal").ToString()
-            Else
-                MsgBox("No details found for the selected bill.", MsgBoxStyle.Information)
-            End If
+
+                dr = cmd.ExecuteReader
+
+                If dr.HasRows Then
+                    While dr.Read()
+                        ' Populate the TextBoxes on the BillDetailsForm with the retrieved values
+                        billDetailsForm.txt_billno.Text = dr("billno").ToString()
+                        billDetailsForm.txt_billdate.Text = dr("billdate").ToString()
+                        billDetailsForm.txt_cusname.Text = dr("Customer_Name").ToString()
+                        billDetailsForm.txt_cusmob.Text = dr("Customer_Mobile").ToString()
+                        billDetailsForm.txt_mod.Text = dr("paymode").ToString()
+                        billDetailsForm.txt_total.Text = dr("grandtotal").ToString()
+
+                        ' Add the proname to a ListBox or any other control that can display multiple values
+                        billDetailsForm.ListBox1.Items.Add(dr("proname").ToString())
+                    End While
+                Else
+                    MsgBox("No details found for the selected bill.", MsgBoxStyle.Information)
+                End If
+
 
         Catch ex As Exception
             MsgBox(ex.Message)
-
         End Try
 
         ' Show the BillDetailsForm

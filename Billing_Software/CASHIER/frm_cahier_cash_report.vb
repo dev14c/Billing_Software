@@ -71,35 +71,120 @@ Public Class frm_cahier_cash_report
                 End If
 
 
+                ' Check if a record for today's date already exists in the cash_report table
+                Dim recordExistsQuery As String = "SELECT COUNT(*) FROM cash_report WHERE Date = @currentDate1 AND Cash_subcashier = 'Yes'"
 
-                ' Insert a new record into the 'cash_s_report' table with parameters
-                Dim insertQuery As String = "INSERT INTO cash_report (Date, Cashier_name, Amount, Cash_subcashier) VALUES (@currentDate1, @cashierName, @grandtotal, 'Yes')"
+                Using cmdCheckRecord As New MySqlCommand(recordExistsQuery, conn)
+                    cmdCheckRecord.Parameters.AddWithValue("@currentDate1", currentDate1)
 
-                Using cmd As New MySqlCommand(insertQuery, conn)
-                    cmd.Parameters.AddWithValue("@cashierName", cashierName)
-                    cmd.Parameters.AddWithValue("@currentDate1", currentDate1)
-                    cmd.Parameters.AddWithValue("@grandtotal", grandtotal)
-                    cmd.ExecuteNonQuery()
+                    Dim recordCount As Integer = CInt(cmdCheckRecord.ExecuteScalar())
+
+                    If recordCount > 0 Then
+                        ' If a record for today already exists, update the existing record
+                        Dim updateQuery As String = "UPDATE cash_report SET Amount = @grandtotal WHERE Date = @currentDate1 AND Cash_subcashier = 'Yes'"
+
+                        Using cmdUpdate As New MySqlCommand(updateQuery, conn)
+                            cmdUpdate.Parameters.AddWithValue("@currentDate1", currentDate1)
+                            cmdUpdate.Parameters.AddWithValue("@grandtotal", grandtotal)
+                            cmdUpdate.ExecuteNonQuery()
+                        End Using
+
+                        MessageBox.Show("Cash updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Else
+                        ' If no record for today exists, insert a new record
+                        Dim insertQuery As String = "INSERT INTO cash_report (Date, Cashier_name, Amount, Cash_subcashier) VALUES (@currentDate1, @cashierName, @grandtotal, 'Yes')"
+
+                        Using cmdInsert As New MySqlCommand(insertQuery, conn)
+                            cmdInsert.Parameters.AddWithValue("@cashierName", cashierName)
+                            cmdInsert.Parameters.AddWithValue("@currentDate1", currentDate1)
+                            cmdInsert.Parameters.AddWithValue("@grandtotal", grandtotal)
+                            cmdInsert.ExecuteNonQuery()
+                        End Using
+
+                        MessageBox.Show("Cash submitted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
                 End Using
-
-                ' Display a message indicating successful submission
-                MessageBox.Show("Cash submitted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-                ' Disable the button after submission
-                btn_submit_cash.Enabled = False
-                load_report()
-
             Catch ex As Exception
-                ' Handle any exceptions that may occur during the database insert
-                MessageBox.Show("Error inserting into the database: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Finally
-                ' Close the database connection
-                conn.Close()
-
+                MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
-        Else
-            ' User clicked No, do nothing or provide feedback as needed
-            ' ...
+
         End If
+        ' Disable the button after submission
+        'btn_submit_cash.Enabled = False
+        load_report()
+
+    End Sub
+
+    Private Sub rbtn_today_CheckedChanged(sender As Object, e As EventArgs) Handles rbtn_today.CheckedChanged
+        DataGridView1.Rows.Clear()
+        Try
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+            conn.Open()
+
+            cmd = New MySqlCommand("SELECT Date, Cashier_name, Amount, Cash_subcashier, Cashrec FROM cash_report WHERE Cashier_name = @currentUser AND DATE(Date) = CURRENT_DATE", conn)
+            cmd.Parameters.AddWithValue("@CurrentUser", UserSession.CurrentUser)
+
+            dr = cmd.ExecuteReader
+            While dr.Read()
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr("Date"), dr("Amount"), dr("Cash_subcashier"), dr("Cashrec"))
+            End While
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+
+
+    Private Sub rbtn_currentMonth_CheckedChanged(sender As Object, e As EventArgs) Handles rbtn_currentMonth.CheckedChanged
+        DataGridView1.Rows.Clear()
+        Try
+
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+            conn.Open()
+
+            ' Use MONTH() function to filter by the current month
+            cmd = New MySqlCommand("SELECT Date, Cashier_name, Amount, Cash_subcashier, Cashrec FROM cash_report WHERE Cashier_name = @currentUser AND MONTH(Date) = MONTH(CURRENT_DATE)", conn)
+            cmd.Parameters.AddWithValue("@CurrentUser", UserSession.CurrentUser)
+
+                dr = cmd.ExecuteReader
+                While dr.Read()
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr("Date"), dr("Amount"), dr("Cash_subcashier"), dr("Cashrec"))
+            End While
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Private Sub btn_filter_Click(sender As Object, e As EventArgs) Handles btn_filter.Click
+        Dim date1 As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
+        Dim date2 As String = DateTimePicker2.Value.ToString("yyyy-MM-dd")
+
+        DataGridView1.Rows.Clear()
+        Try
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+
+            conn.Open()
+
+            cmd = New MySqlCommand("SELECT Date, Cashier_name, Amount, Cash_subcashier, Cashrec FROM cash_report WHERE Cashier_name = @currentUser AND Date BETWEEN @date1 AND @date2", conn)
+            cmd.Parameters.AddWithValue("@CurrentUser", UserSession.CurrentUser)
+            cmd.Parameters.AddWithValue("@date1", date1)
+            cmd.Parameters.AddWithValue("@date2", date2)
+
+            dr = cmd.ExecuteReader
+            While dr.Read()
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr("Date"), dr("Amount"), dr("Cash_subcashier"), dr("Cashrec"))
+            End While
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            conn.Close()
+        End Try
     End Sub
 End Class

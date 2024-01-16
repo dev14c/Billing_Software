@@ -14,11 +14,11 @@ Public Class frm_ManageStock
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT `ID`, `procode`, `proname`, `progroup`, `uom`, `location`, `price`, `tax`, `totalprice`, `stock` FROM `tblproduct`", conn)
+            cmd = New MySqlCommand("SELECT `ID`, `procode`, `proname`, `progroup`, `uom`, `Rate_per`,`tax`, `totalprice`, `stock` FROM `tblproduct`", conn)
             dr = cmd.ExecuteReader
             While dr.Read = True
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("procode"), dr.Item("proname"), dr.Item("progroup"), dr.Item("uom"), dr.Item("location"),
-                                       dr.Item("price"), dr.Item("tax"), dr.Item("totalprice"), dr.Item("stock"))
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("procode"), dr.Item("proname"), dr.Item("progroup"), dr.Item("uom"), dr.Item("Rate_per"),
+                                        dr.Item("tax"), dr.Item("totalprice"), dr.Item("stock"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -33,7 +33,7 @@ Public Class frm_ManageStock
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT `ID`, `procode`, `proname`, `progroup`, `uom`, `location`, `price`, `tax`, 
+            cmd = New MySqlCommand("SELECT `ID`, `procode`, `proname`, `progroup`, `uom`, `price`, `tax`, 
 `totalprice`, `stock` FROM `tblproduct` WHERE procode like '%" & txt_search.Text & "%' or progroup like '%" & txt_search.Text & "%' or proname like '%" & txt_search.Text & "%' ", conn)
             dr = cmd.ExecuteReader
             While dr.Read = True

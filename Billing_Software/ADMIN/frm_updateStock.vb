@@ -14,7 +14,7 @@ Public Class frm_updateStock
 
             cmd = New MySqlCommand("UPDATE tblproduct SET stock = stock + @newQuantity WHERE procode = @procode", conn)
             cmd.Parameters.Clear()
-            cmd.Parameters.AddWithValue("@newQuantity", CDec(txt_location.Text))
+            cmd.Parameters.AddWithValue("@newQuantity", CDec(txt_qty.Text))
             cmd.Parameters.AddWithValue("@procode", txt_procode.Text)
             i = cmd.ExecuteNonQuery()
 
@@ -22,7 +22,7 @@ Public Class frm_updateStock
                 MsgBox("Stock Update Success", vbInformation)
                 frm_ManageStock.Load_stock()
                 txt_procode.Text = ""
-                txt_location.Text = ""
+                txt_qty.Text = ""
 
 
             Else
@@ -34,6 +34,10 @@ Public Class frm_updateStock
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbExclamation)
         End Try
+
+    End Sub
+
+    Private Sub txt_location_TextChanged(sender As Object, e As EventArgs) Handles txt_qty.TextChanged
 
     End Sub
 End Class

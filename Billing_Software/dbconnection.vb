@@ -16,7 +16,7 @@ Module dbconnection
                 conn.Close()
             End If
 
-            conn.ConnectionString = "server=localhost;username=root;password=;port=3306;database=db_pos"
+            conn.ConnectionString = "server=localhost;username=root;password=;port=3306;database=db_pos;Convert Zero Datetime=True"
             conn.Open()
             result = True
             'MsgBox("Connected!", vbInformation)

@@ -37,16 +37,7 @@ Public Class frm_login
             dr.Read()
 
             If dr.HasRows Then
-                '
-                ''In the provided code, dr.Item("status").ToString().Equals("Activate", StringComparison.OrdinalIgnoreCase) checks if the status retrieved from the database for the current user Is equal to the string "Activate" (ignoring case differences).
 
-                'Here 's a breakdown of the code:
-
-                'dr.Item("status").ToString() : Retrieves the value of the "status" column from the database reader (dr) as a string.
-
-                '.Equals("Activate", StringComparison.OrdinalIgnoreCase) : Compares the retrieved status with the string "Activate" using a case-insensitive comparison (StringComparison.OrdinalIgnoreCase).
-                'This means that it will consider "activate," "Activate," "ACTIVATE," And so On, as equal.'
-                ' Check if the account is active
                 If dr.Item("status").ToString().Equals("Activate", StringComparison.OrdinalIgnoreCase) Then
                     UserSession.CurrentUser = txt_username.Text
 

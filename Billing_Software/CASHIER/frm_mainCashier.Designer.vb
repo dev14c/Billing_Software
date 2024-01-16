@@ -33,6 +33,7 @@ Partial Class frm_mainCashier
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.qtyUpdate = New System.Windows.Forms.Button()
         Me.txt_cus_num = New System.Windows.Forms.TextBox()
         Me.txt_cus_name = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -92,7 +93,6 @@ Partial Class frm_mainCashier
         Me.Column11 = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
-        Me.qtyUpdate = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -113,7 +113,7 @@ Partial Class frm_mainCashier
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1278, 82)
+        Me.Panel1.Size = New System.Drawing.Size(1448, 82)
         Me.Panel1.TabIndex = 0
         '
         'Label17
@@ -121,7 +121,7 @@ Partial Class frm_mainCashier
         Me.Label17.AutoSize = True
         Me.Label17.Location = New System.Drawing.Point(433, 30)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(44, 13)
+        Me.Label17.Size = New System.Drawing.Size(51, 17)
         Me.Label17.TabIndex = 33
         Me.Label17.Text = "Label17"
         '
@@ -130,7 +130,7 @@ Partial Class frm_mainCashier
         Me.lbl_username.AutoSize = True
         Me.lbl_username.Location = New System.Drawing.Point(585, 20)
         Me.lbl_username.Name = "lbl_username"
-        Me.lbl_username.Size = New System.Drawing.Size(40, 13)
+        Me.lbl_username.Size = New System.Drawing.Size(46, 17)
         Me.lbl_username.TabIndex = 32
         Me.lbl_username.Text = "Label6"
         '
@@ -139,7 +139,7 @@ Partial Class frm_mainCashier
         Me.lbl_time.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbl_time.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_time.ForeColor = System.Drawing.SystemColors.MenuHighlight
-        Me.lbl_time.Location = New System.Drawing.Point(1100, 17)
+        Me.lbl_time.Location = New System.Drawing.Point(1270, 17)
         Me.lbl_time.Name = "lbl_time"
         Me.lbl_time.Size = New System.Drawing.Size(165, 40)
         Me.lbl_time.TabIndex = 31
@@ -152,7 +152,7 @@ Partial Class frm_mainCashier
         Me.lbl_logintime.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_logintime.Location = New System.Drawing.Point(917, 43)
         Me.lbl_logintime.Name = "lbl_logintime"
-        Me.lbl_logintime.Size = New System.Drawing.Size(118, 19)
+        Me.lbl_logintime.Size = New System.Drawing.Size(145, 23)
         Me.lbl_logintime.TabIndex = 7
         Me.lbl_logintime.Text = "Inventory System"
         '
@@ -162,7 +162,7 @@ Partial Class frm_mainCashier
         Me.lbl_loginUser.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_loginUser.Location = New System.Drawing.Point(917, 9)
         Me.lbl_loginUser.Name = "lbl_loginUser"
-        Me.lbl_loginUser.Size = New System.Drawing.Size(118, 19)
+        Me.lbl_loginUser.Size = New System.Drawing.Size(145, 23)
         Me.lbl_loginUser.TabIndex = 6
         Me.lbl_loginUser.Text = "Inventory System"
         '
@@ -172,7 +172,7 @@ Partial Class frm_mainCashier
         Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(12, 33)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(118, 19)
+        Me.Label2.Size = New System.Drawing.Size(145, 23)
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "Inventory System"
         '
@@ -183,7 +183,7 @@ Partial Class frm_mainCashier
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Label1.Location = New System.Drawing.Point(42, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(37, 19)
+        Me.Label1.Size = New System.Drawing.Size(43, 23)
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "POS"
         '
@@ -205,21 +205,30 @@ Partial Class frm_mainCashier
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 82)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1278, 113)
+        Me.Panel2.Size = New System.Drawing.Size(1448, 113)
         Me.Panel2.TabIndex = 1
+        '
+        'qtyUpdate
+        '
+        Me.qtyUpdate.Location = New System.Drawing.Point(822, 77)
+        Me.qtyUpdate.Name = "qtyUpdate"
+        Me.qtyUpdate.Size = New System.Drawing.Size(75, 23)
+        Me.qtyUpdate.TabIndex = 37
+        Me.qtyUpdate.Text = "Update Qty"
+        Me.qtyUpdate.UseVisualStyleBackColor = True
         '
         'txt_cus_num
         '
         Me.txt_cus_num.Location = New System.Drawing.Point(463, 46)
         Me.txt_cus_num.Name = "txt_cus_num"
-        Me.txt_cus_num.Size = New System.Drawing.Size(168, 21)
+        Me.txt_cus_num.Size = New System.Drawing.Size(168, 25)
         Me.txt_cus_num.TabIndex = 36
         '
         'txt_cus_name
         '
         Me.txt_cus_name.Location = New System.Drawing.Point(146, 45)
         Me.txt_cus_name.Name = "txt_cus_name"
-        Me.txt_cus_name.Size = New System.Drawing.Size(209, 21)
+        Me.txt_cus_name.Size = New System.Drawing.Size(209, 25)
         Me.txt_cus_name.TabIndex = 35
         '
         'Label6
@@ -228,7 +237,7 @@ Partial Class frm_mainCashier
         Me.Label6.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(362, 46)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(79, 19)
+        Me.Label6.Size = New System.Drawing.Size(95, 23)
         Me.Label6.TabIndex = 33
         Me.Label6.Text = "Mobile No:"
         '
@@ -238,7 +247,7 @@ Partial Class frm_mainCashier
         Me.Label16.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.Location = New System.Drawing.Point(12, 44)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(113, 19)
+        Me.Label16.Size = New System.Drawing.Size(139, 23)
         Me.Label16.TabIndex = 34
         Me.Label16.Text = "Customer Name:"
         '
@@ -247,7 +256,7 @@ Partial Class frm_mainCashier
         Me.lbl_date.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbl_date.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_date.ForeColor = System.Drawing.SystemColors.MenuHighlight
-        Me.lbl_date.Location = New System.Drawing.Point(1151, 5)
+        Me.lbl_date.Location = New System.Drawing.Point(1321, 5)
         Me.lbl_date.Name = "lbl_date"
         Me.lbl_date.Size = New System.Drawing.Size(124, 40)
         Me.lbl_date.TabIndex = 32
@@ -256,25 +265,27 @@ Partial Class frm_mainCashier
         '
         'btp_time
         '
+        Me.btp_time.Checked = False
         Me.btp_time.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.btp_time.Location = New System.Drawing.Point(409, 13)
         Me.btp_time.Name = "btp_time"
-        Me.btp_time.Size = New System.Drawing.Size(131, 21)
+        Me.btp_time.Size = New System.Drawing.Size(131, 25)
         Me.btp_time.TabIndex = 12
+        Me.btp_time.Value = New Date(2023, 12, 30, 21, 0, 38, 0)
         '
         'txt_SearchProduct
         '
         Me.txt_SearchProduct.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.txt_SearchProduct.Location = New System.Drawing.Point(150, 77)
         Me.txt_SearchProduct.Name = "txt_SearchProduct"
-        Me.txt_SearchProduct.Size = New System.Drawing.Size(621, 21)
+        Me.txt_SearchProduct.Size = New System.Drawing.Size(621, 25)
         Me.txt_SearchProduct.TabIndex = 11
         '
         'txt_billno
         '
         Me.txt_billno.Location = New System.Drawing.Point(87, 13)
         Me.txt_billno.Name = "txt_billno"
-        Me.txt_billno.Size = New System.Drawing.Size(209, 21)
+        Me.txt_billno.Size = New System.Drawing.Size(209, 25)
         Me.txt_billno.TabIndex = 10
         '
         'Label5
@@ -283,7 +294,7 @@ Partial Class frm_mainCashier
         Me.Label5.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(12, 79)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(114, 19)
+        Me.Label5.Size = New System.Drawing.Size(139, 23)
         Me.Label5.TabIndex = 9
         Me.Label5.Text = "Product/Barcode"
         '
@@ -293,7 +304,7 @@ Partial Class frm_mainCashier
         Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(312, 15)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(67, 19)
+        Me.Label3.Size = New System.Drawing.Size(80, 23)
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Bill date :"
         '
@@ -303,7 +314,7 @@ Partial Class frm_mainCashier
         Me.Label4.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(12, 13)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(59, 19)
+        Me.Label4.Size = New System.Drawing.Size(69, 23)
         Me.Label4.TabIndex = 8
         Me.Label4.Text = "Bill No :"
         '
@@ -331,7 +342,7 @@ Partial Class frm_mainCashier
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1278, 70)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1448, 70)
         Me.TableLayoutPanel1.TabIndex = 2
         '
         'btn_logout
@@ -339,7 +350,7 @@ Partial Class frm_mainCashier
         Me.btn_logout.BackColor = System.Drawing.Color.Coral
         Me.btn_logout.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_logout.ForeColor = System.Drawing.Color.White
-        Me.btn_logout.Location = New System.Drawing.Point(1095, 3)
+        Me.btn_logout.Location = New System.Drawing.Point(1239, 3)
         Me.btn_logout.Name = "btn_logout"
         Me.btn_logout.Size = New System.Drawing.Size(170, 64)
         Me.btn_logout.TabIndex = 19
@@ -351,7 +362,7 @@ Partial Class frm_mainCashier
         Me.btn_change.BackColor = System.Drawing.Color.RoyalBlue
         Me.btn_change.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_change.ForeColor = System.Drawing.Color.White
-        Me.btn_change.Location = New System.Drawing.Point(913, 3)
+        Me.btn_change.Location = New System.Drawing.Point(1033, 3)
         Me.btn_change.Name = "btn_change"
         Me.btn_change.Size = New System.Drawing.Size(170, 64)
         Me.btn_change.TabIndex = 18
@@ -363,7 +374,7 @@ Partial Class frm_mainCashier
         Me.btn_remove.BackColor = System.Drawing.Color.RoyalBlue
         Me.btn_remove.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_remove.ForeColor = System.Drawing.Color.White
-        Me.btn_remove.Location = New System.Drawing.Point(731, 3)
+        Me.btn_remove.Location = New System.Drawing.Point(827, 3)
         Me.btn_remove.Name = "btn_remove"
         Me.btn_remove.Size = New System.Drawing.Size(170, 64)
         Me.btn_remove.TabIndex = 17
@@ -375,7 +386,7 @@ Partial Class frm_mainCashier
         Me.btn_report.BackColor = System.Drawing.Color.RoyalBlue
         Me.btn_report.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_report.ForeColor = System.Drawing.Color.White
-        Me.btn_report.Location = New System.Drawing.Point(549, 3)
+        Me.btn_report.Location = New System.Drawing.Point(621, 3)
         Me.btn_report.Name = "btn_report"
         Me.btn_report.Size = New System.Drawing.Size(170, 64)
         Me.btn_report.TabIndex = 16
@@ -387,7 +398,7 @@ Partial Class frm_mainCashier
         Me.btn_submit_cash1.BackColor = System.Drawing.Color.RoyalBlue
         Me.btn_submit_cash1.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_submit_cash1.ForeColor = System.Drawing.Color.White
-        Me.btn_submit_cash1.Location = New System.Drawing.Point(367, 3)
+        Me.btn_submit_cash1.Location = New System.Drawing.Point(415, 3)
         Me.btn_submit_cash1.Name = "btn_submit_cash1"
         Me.btn_submit_cash1.Size = New System.Drawing.Size(170, 64)
         Me.btn_submit_cash1.TabIndex = 15
@@ -399,7 +410,7 @@ Partial Class frm_mainCashier
         Me.btn_cancel.BackColor = System.Drawing.Color.RoyalBlue
         Me.btn_cancel.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_cancel.ForeColor = System.Drawing.Color.White
-        Me.btn_cancel.Location = New System.Drawing.Point(185, 3)
+        Me.btn_cancel.Location = New System.Drawing.Point(209, 3)
         Me.btn_cancel.Name = "btn_cancel"
         Me.btn_cancel.Size = New System.Drawing.Size(170, 64)
         Me.btn_cancel.TabIndex = 14
@@ -444,7 +455,7 @@ Partial Class frm_mainCashier
         Me.Panel3.Controls.Add(Me.Label7)
         Me.Panel3.Controls.Add(Me.txt_overallGrandTotal)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel3.Location = New System.Drawing.Point(851, 195)
+        Me.Panel3.Location = New System.Drawing.Point(1021, 195)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(427, 476)
         Me.Panel3.TabIndex = 3
@@ -467,7 +478,7 @@ Partial Class frm_mainCashier
         Me.txt_subtotal.Location = New System.Drawing.Point(72, 120)
         Me.txt_subtotal.Name = "txt_subtotal"
         Me.txt_subtotal.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txt_subtotal.Size = New System.Drawing.Size(68, 19)
+        Me.txt_subtotal.Size = New System.Drawing.Size(80, 23)
         Me.txt_subtotal.TabIndex = 29
         Me.txt_subtotal.Text = "Sub Total"
         '
@@ -488,14 +499,14 @@ Partial Class frm_mainCashier
         Me.cbo_payMode.Items.AddRange(New Object() {"CASH", "UPI", "CREDIT CARD", "DEBIT CARD"})
         Me.cbo_payMode.Location = New System.Drawing.Point(258, 302)
         Me.cbo_payMode.Name = "cbo_payMode"
-        Me.cbo_payMode.Size = New System.Drawing.Size(146, 20)
+        Me.cbo_payMode.Size = New System.Drawing.Size(146, 25)
         Me.cbo_payMode.TabIndex = 27
         '
         'txt_amtrec
         '
         Me.txt_amtrec.Location = New System.Drawing.Point(253, 339)
         Me.txt_amtrec.Name = "txt_amtrec"
-        Me.txt_amtrec.Size = New System.Drawing.Size(151, 21)
+        Me.txt_amtrec.Size = New System.Drawing.Size(151, 25)
         Me.txt_amtrec.TabIndex = 13
         '
         'txt_grandtotal
@@ -560,7 +571,7 @@ Partial Class frm_mainCashier
         Me.Label15.Location = New System.Drawing.Point(72, 378)
         Me.Label15.Name = "Label15"
         Me.Label15.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label15.Size = New System.Drawing.Size(56, 19)
+        Me.Label15.Size = New System.Drawing.Size(69, 23)
         Me.Label15.TabIndex = 21
         Me.Label15.Text = "Change"
         '
@@ -583,7 +594,7 @@ Partial Class frm_mainCashier
         Me.Label14.Location = New System.Drawing.Point(71, 364)
         Me.Label14.Name = "Label14"
         Me.Label14.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label14.Size = New System.Drawing.Size(0, 19)
+        Me.Label14.Size = New System.Drawing.Size(0, 23)
         Me.Label14.TabIndex = 20
         '
         'Label13
@@ -593,7 +604,7 @@ Partial Class frm_mainCashier
         Me.Label13.Location = New System.Drawing.Point(71, 341)
         Me.Label13.Name = "Label13"
         Me.Label13.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label13.Size = New System.Drawing.Size(119, 19)
+        Me.Label13.Size = New System.Drawing.Size(146, 23)
         Me.Label13.TabIndex = 19
         Me.Label13.Text = "Amount Received"
         '
@@ -604,7 +615,7 @@ Partial Class frm_mainCashier
         Me.Label12.Location = New System.Drawing.Point(71, 262)
         Me.Label12.Name = "Label12"
         Me.Label12.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label12.Size = New System.Drawing.Size(82, 19)
+        Me.Label12.Size = New System.Drawing.Size(98, 23)
         Me.Label12.TabIndex = 18
         Me.Label12.Text = "Grand Total"
         '
@@ -615,7 +626,7 @@ Partial Class frm_mainCashier
         Me.Label11.Location = New System.Drawing.Point(72, 304)
         Me.Label11.Name = "Label11"
         Me.Label11.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label11.Size = New System.Drawing.Size(103, 19)
+        Me.Label11.Size = New System.Drawing.Size(128, 23)
         Me.Label11.TabIndex = 17
         Me.Label11.Text = "Payment Mode"
         '
@@ -624,7 +635,7 @@ Partial Class frm_mainCashier
         Me.txt_discount.Location = New System.Drawing.Point(154, 226)
         Me.txt_discount.Name = "txt_discount"
         Me.txt_discount.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txt_discount.Size = New System.Drawing.Size(45, 21)
+        Me.txt_discount.Size = New System.Drawing.Size(45, 25)
         Me.txt_discount.TabIndex = 13
         '
         'Label10
@@ -634,7 +645,7 @@ Partial Class frm_mainCashier
         Me.Label10.Location = New System.Drawing.Point(71, 228)
         Me.Label10.Name = "Label10"
         Me.Label10.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label10.Size = New System.Drawing.Size(65, 19)
+        Me.Label10.Size = New System.Drawing.Size(77, 23)
         Me.Label10.TabIndex = 16
         Me.Label10.Text = "Discount"
         '
@@ -645,7 +656,7 @@ Partial Class frm_mainCashier
         Me.Label9.Location = New System.Drawing.Point(72, 153)
         Me.Label9.Name = "Label9"
         Me.Label9.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label9.Size = New System.Drawing.Size(65, 19)
+        Me.Label9.Size = New System.Drawing.Size(76, 23)
         Me.Label9.TabIndex = 15
         Me.Label9.Text = "Total Tax"
         '
@@ -656,7 +667,7 @@ Partial Class frm_mainCashier
         Me.Label8.Location = New System.Drawing.Point(72, 186)
         Me.Label8.Name = "Label8"
         Me.Label8.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label8.Size = New System.Drawing.Size(75, 19)
+        Me.Label8.Size = New System.Drawing.Size(88, 23)
         Me.Label8.TabIndex = 14
         Me.Label8.Text = "Total Price"
         '
@@ -667,7 +678,7 @@ Partial Class frm_mainCashier
         Me.Label7.Location = New System.Drawing.Point(71, 82)
         Me.Label7.Name = "Label7"
         Me.Label7.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label7.Size = New System.Drawing.Size(83, 19)
+        Me.Label7.Size = New System.Drawing.Size(101, 23)
         Me.Label7.TabIndex = 13
         Me.Label7.Text = "No of Items"
         '
@@ -701,7 +712,7 @@ Partial Class frm_mainCashier
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(851, 476)
+        Me.DataGridView1.Size = New System.Drawing.Size(1021, 476)
         Me.DataGridView1.TabIndex = 4
         '
         'Column1
@@ -711,7 +722,7 @@ Partial Class frm_mainCashier
         Me.Column1.MinimumWidth = 6
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = True
-        Me.Column1.Width = 39
+        Me.Column1.Width = 45
         '
         'Column2
         '
@@ -720,7 +731,7 @@ Partial Class frm_mainCashier
         Me.Column2.MinimumWidth = 6
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
-        Me.Column2.Width = 93
+        Me.Column2.Width = 120
         '
         'Column3
         '
@@ -737,7 +748,7 @@ Partial Class frm_mainCashier
         Me.Column4.MinimumWidth = 6
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
-        Me.Column4.Width = 97
+        Me.Column4.Width = 127
         '
         'Column5
         '
@@ -746,7 +757,7 @@ Partial Class frm_mainCashier
         Me.Column5.MinimumWidth = 6
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
-        Me.Column5.Width = 58
+        Me.Column5.Width = 68
         '
         'Column6
         '
@@ -755,7 +766,7 @@ Partial Class frm_mainCashier
         Me.Column6.MinimumWidth = 6
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
-        Me.Column6.Width = 56
+        Me.Column6.Width = 66
         '
         'Column7
         '
@@ -764,7 +775,7 @@ Partial Class frm_mainCashier
         Me.Column7.MinimumWidth = 6
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
-        Me.Column7.Width = 49
+        Me.Column7.Width = 72
         '
         'Column8
         '
@@ -773,7 +784,7 @@ Partial Class frm_mainCashier
         Me.Column8.MinimumWidth = 6
         Me.Column8.Name = "Column8"
         Me.Column8.ReadOnly = True
-        Me.Column8.Width = 73
+        Me.Column8.Width = 93
         '
         'Column9
         '
@@ -782,7 +793,7 @@ Partial Class frm_mainCashier
         Me.Column9.MinimumWidth = 6
         Me.Column9.Name = "Column9"
         Me.Column9.ReadOnly = True
-        Me.Column9.Width = 50
+        Me.Column9.Width = 59
         '
         'Rate
         '
@@ -799,7 +810,7 @@ Partial Class frm_mainCashier
         Me.Column10.MinimumWidth = 6
         Me.Column10.Name = "Column10"
         Me.Column10.ReadOnly = True
-        Me.Column10.Width = 57
+        Me.Column10.Width = 66
         '
         'Column12
         '
@@ -816,6 +827,7 @@ Partial Class frm_mainCashier
         Me.btnDeductQty.MinimumWidth = 6
         Me.btnDeductQty.Name = "btnDeductQty"
         Me.btnDeductQty.ReadOnly = True
+        Me.btnDeductQty.Text = "-"
         Me.btnDeductQty.UseColumnTextForButtonValue = True
         Me.btnDeductQty.Width = 50
         '
@@ -837,20 +849,11 @@ Partial Class frm_mainCashier
         '
         Me.Timer2.Enabled = True
         '
-        'qtyUpdate
-        '
-        Me.qtyUpdate.Location = New System.Drawing.Point(822, 77)
-        Me.qtyUpdate.Name = "qtyUpdate"
-        Me.qtyUpdate.Size = New System.Drawing.Size(75, 23)
-        Me.qtyUpdate.TabIndex = 37
-        Me.qtyUpdate.Text = "Update Qty"
-        Me.qtyUpdate.UseVisualStyleBackColor = True
-        '
         'frm_mainCashier
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1278, 741)
+        Me.ClientSize = New System.Drawing.Size(1448, 741)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.TableLayoutPanel1)
@@ -925,6 +928,8 @@ Partial Class frm_mainCashier
     Friend WithEvents Label6 As Label
     Friend WithEvents Label16 As Label
     Friend WithEvents txt_cus_num As TextBox
+    Friend WithEvents Label17 As Label
+    Friend WithEvents qtyUpdate As Button
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
@@ -939,6 +944,4 @@ Partial Class frm_mainCashier
     Friend WithEvents Column12 As DataGridViewTextBoxColumn
     Friend WithEvents btnDeductQty As DataGridViewButtonColumn
     Friend WithEvents Column11 As DataGridViewButtonColumn
-    Friend WithEvents Label17 As Label
-    Friend WithEvents qtyUpdate As Button
 End Class
