@@ -775,7 +775,7 @@ Partial Class frm_mainCashier
         Me.Column7.MinimumWidth = 6
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
-        Me.Column7.Width = 72
+        Me.Column7.Width = 57
         '
         'Column8
         '
@@ -784,7 +784,7 @@ Partial Class frm_mainCashier
         Me.Column8.MinimumWidth = 6
         Me.Column8.Name = "Column8"
         Me.Column8.ReadOnly = True
-        Me.Column8.Width = 93
+        Me.Column8.Width = 86
         '
         'Column9
         '

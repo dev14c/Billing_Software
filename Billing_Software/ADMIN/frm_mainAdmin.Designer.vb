@@ -108,7 +108,7 @@ Partial Class frm_mainAdmin
         '
         Me.Refreshbutton.Location = New System.Drawing.Point(275, 26)
         Me.Refreshbutton.Name = "Refreshbutton"
-        Me.Refreshbutton.Size = New System.Drawing.Size(75, 23)
+        Me.Refreshbutton.Size = New System.Drawing.Size(75, 42)
         Me.Refreshbutton.TabIndex = 4
         Me.Refreshbutton.Text = "Refresh"
         Me.Refreshbutton.UseVisualStyleBackColor = True
@@ -133,13 +133,13 @@ Partial Class frm_mainAdmin
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
-        Me.TableLayoutPanel1.Controls.Add(Me.Button1, 6, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.btn_manageUsers, 2, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.btn_manageProduct, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.btn_ManageStock, 1, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.btn_logout, 5, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.btn_Reports, 3, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.cash_report_btn, 1, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.Button1, 5, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.btn_Reports, 4, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.btn_logout, 6, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.btn_ManageStock, 3, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.btn_manageUsers, 2, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(409, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -153,9 +153,9 @@ Partial Class frm_mainAdmin
         Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Location = New System.Drawing.Point(603, 3)
+        Me.Button1.Location = New System.Drawing.Point(503, 3)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(100, 76)
+        Me.Button1.Size = New System.Drawing.Size(94, 76)
         Me.Button1.TabIndex = 5
         Me.Button1.Text = "View Bills"
         Me.Button1.UseVisualStyleBackColor = True
@@ -165,7 +165,7 @@ Partial Class frm_mainAdmin
         Me.btn_manageUsers.FlatAppearance.BorderSize = 0
         Me.btn_manageUsers.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack
         Me.btn_manageUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_manageUsers.Location = New System.Drawing.Point(303, 3)
+        Me.btn_manageUsers.Location = New System.Drawing.Point(203, 3)
         Me.btn_manageUsers.Name = "btn_manageUsers"
         Me.btn_manageUsers.Size = New System.Drawing.Size(94, 76)
         Me.btn_manageUsers.TabIndex = 2
@@ -189,7 +189,7 @@ Partial Class frm_mainAdmin
         Me.btn_ManageStock.FlatAppearance.BorderSize = 0
         Me.btn_ManageStock.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack
         Me.btn_ManageStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_ManageStock.Location = New System.Drawing.Point(203, 3)
+        Me.btn_ManageStock.Location = New System.Drawing.Point(303, 3)
         Me.btn_ManageStock.Name = "btn_ManageStock"
         Me.btn_ManageStock.Size = New System.Drawing.Size(94, 68)
         Me.btn_ManageStock.TabIndex = 1
@@ -201,7 +201,7 @@ Partial Class frm_mainAdmin
         Me.btn_logout.FlatAppearance.BorderSize = 0
         Me.btn_logout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red
         Me.btn_logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_logout.Location = New System.Drawing.Point(503, 3)
+        Me.btn_logout.Location = New System.Drawing.Point(603, 3)
         Me.btn_logout.Name = "btn_logout"
         Me.btn_logout.Size = New System.Drawing.Size(94, 76)
         Me.btn_logout.TabIndex = 4

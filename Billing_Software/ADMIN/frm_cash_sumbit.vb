@@ -89,7 +89,7 @@ Public Class frm_cash_sumbit
 
             ' Optionally, refresh your DataGridView
             load_report_admin()
-        Catch ex As Exceptiond
+        Catch ex As Exception
             ' Handle any exceptions that may occur during the database update
             MessageBox.Show("Error updating the database: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally

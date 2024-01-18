@@ -367,6 +367,7 @@ Public Class frm_mainCashier
                     cmd.Parameters.AddWithValue("@Customer_Mobile", (txt_cus_num.Text))
                     cmd.Parameters.AddWithValue("@time", DateTime.Now.ToString("hh:mm tt"))
 
+
                     Dim profit As Decimal
                     profit = CDec(DataGridView1.Rows(j).Cells(10).Value) - CDec(DataGridView1.Rows(j).Cells(11).Value) * CDec(DataGridView1.Rows(j).Cells(8).Value)
                     cmd.Parameters.AddWithValue("@profit", profit)

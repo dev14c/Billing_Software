@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.IO
+Imports MySql.Data.MySqlClient
 Public Class frm_cancelorder
     Private Sub frm_cancelorder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dbconn()
@@ -49,15 +50,29 @@ Public Class frm_cancelorder
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-        ' Check if the clicked cell is in the "View Bill" column
-        If e.ColumnIndex = DataGridView1.Columns(4).Index AndAlso e.RowIndex >= 0 Then
-            ' Retrieve the procode from the selected row
-            Dim billno As String = DataGridView1.Rows(e.RowIndex).Cells(1).Value.ToString()
 
-            ' Call a function to display the bill details based on the procode
-            DisplayBillDetails(billno)
-        End If
+        Try
+            ' Specify the directory path
+            Dim directoryPath As String = Path.Combine(Application.StartupPath, "Reports")
+
+            ' Specify the full file path based on the selected bill number
+            Dim selectedBillNo As String = DataGridView1.Rows(e.RowIndex).Cells(1).Value.ToString()
+            ' Replace with the actual selected bill number
+            Dim pdfFilePath As String = Path.Combine(directoryPath, $"Bill No_{selectedBillNo}.pdf")
+
+            ' Check if the PDF file exists
+            If File.Exists(pdfFilePath) Then
+                ' Open the PDF file using the default PDF viewer
+                Process.Start(pdfFilePath)
+            Else
+                MsgBox("PDF file not found for the selected bill number.", MsgBoxStyle.Information)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
+
+
     Private Sub DisplayBillDetails(billno As String)
 
         ' Instantiate and show the BillDetailsForm

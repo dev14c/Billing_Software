@@ -38,7 +38,7 @@ Public Class frm_mainAdmin
             End If
             conn.Open()
 
-            ' Assuming you have a table named 'tblproduct' with columns 'procode' and 'stock'
+
             Dim cmd As New MySqlCommand("SELECT proname, stock FROM tblproduct", conn)
             Dim reader As MySqlDataReader = cmd.ExecuteReader()
 
@@ -46,7 +46,7 @@ Public Class frm_mainAdmin
                 Dim productname As String = reader("proname").ToString()
                 Dim stock As Integer = Convert.ToInt32(reader("stock"))
 
-                ' Specify your threshold value here (e.g., 10)
+
                 Dim minqty As Integer = 5
 
                 If stock < minqty Then
