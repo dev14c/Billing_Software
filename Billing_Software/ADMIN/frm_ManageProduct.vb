@@ -92,10 +92,10 @@ Public Class frm_ManageProduct
             Dim count As Integer = CInt(cmd.ExecuteScalar())
 
 
-            If count > 1 Then
+            If count >= 1 Then
                 MsgBox("Product code already exists in the product table", vbInformation)
                 txt_procode.Clear()
-
+                txt_procode.Focus()
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -159,8 +159,8 @@ Public Class frm_ManageProduct
 
             'cmd = New MySqlCommand("INSERT INTO `tblproduct`(`procode`, `proname`, `progroup`, `uom`, `Rate_per`, `stock`, `purchase_price`, `Selling_price`, `tax`, `totalprice`, `barcode`)
             'VALUES (@procode, @proname,@progroup, @uom, @rate_per, @stock, @purchase_price, @selling_price, @tax, @totalprice, @barcode)", conn)
-            cmd = New MySqlCommand("INSERT INTO `tblproduct`(`procode`, `proname`, `progroup`, `uom`, `Rate_per`, `stock`, `purchase_price`, `tax`, `totalprice`, `barcode`)
-    VALUES (@procode, @proname,@progroup, @uom, @rate_per, @stock, @purchase_price, @tax, @totalprice, @barcode)", conn)
+            cmd = New MySqlCommand("INSERT INTO `tblproduct`(`procode`, `proname`, `progroup`, `uom`, `Rate_per`, `stock`, `purchase_price`, `tax`, `totalprice`, `barcode` , `discount_percent`, `discount_amt`,`selling_price`)
+    VALUES (@procode, @proname,@progroup, @uom, @rate_per, @stock, @purchase_price, @tax, @totalprice, @barcode, @discount_per, @discount_amt, @selling_price)", conn)
 
             cmd.Parameters.Clear()
             cmd.Parameters.AddWithValue("@procode", txt_procode.Text)
@@ -171,8 +171,11 @@ Public Class frm_ManageProduct
             cmd.Parameters.AddWithValue("@Rate_per", CDec(txt_rate_per.Text))
             cmd.Parameters.AddWithValue("@purchase_price", CDec(txt_purchase_price.Text))
 
+            cmd.Parameters.AddWithValue("@selling_price", CDec(txt_selling_price.Text))
             cmd.Parameters.AddWithValue("@tax", CDec(cbo_tax.Text))
             cmd.Parameters.AddWithValue("@totalprice", CDec(txt_totalprice.Text))
+            cmd.Parameters.AddWithValue("@discount_amt", CDec(txt_discount_amt.Text))
+            cmd.Parameters.AddWithValue("@discount_per", CDec(txt_discount.Text))
             cmd.Parameters.AddWithValue("@barcode", arrImage)
 
             i = cmd.ExecuteNonQuery
@@ -401,6 +404,36 @@ Public Class frm_ManageProduct
     End Sub
 
 
+    Private Sub txt_search_TextChanged(sender As Object, e As EventArgs) Handles txt_search.TextChanged
+        DataGridView1.Rows.Clear()
+        Try
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+            conn.Open()
+            cmd = New MySqlCommand("SELECT * FROM `tblproduct` WHERE procode like '%" & txt_search.Text & "%' or progroup like '%" & txt_search.Text & "%' or proname like '%" & txt_search.Text & "%' ", conn)
+            dr = cmd.ExecuteReader
+            While dr.Read = True
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("procode"), dr.Item("proname"), dr.Item("progroup"), dr.Item("uom"), dr.Item("stock"), dr.Item("Rate_per"),
+                dr.Item("purchase_price"), dr.Item("tax"), dr.Item("totalprice"), dr.Item("barcode"))
+            End While
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
 
-
+    Private Sub txt_discount_TextChanged(sender As Object, e As EventArgs) Handles txt_discount.TextChanged
+        Try
+            Dim mrp, dis_per, dis_amt As Decimal
+            Decimal.TryParse(txt_rate_per.Text, mrp)
+            'Decimal.TryParse(txt_rate_per.Text, b)
+            Decimal.TryParse(txt_discount.Text, dis_per)
+            dis_amt = Math.Round(dis_per / 100 * mrp, 2)
+            txt_selling_price.Text = mrp - dis_amt
+            txt_discount_amt.Text = dis_amt
+            'MsgBox(a & " " & c)
+        Catch ex As Exception
+            MsgBox(ex)
+        End Try
+    End Sub
 End Class

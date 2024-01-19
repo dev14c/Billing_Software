@@ -37,10 +37,10 @@ Partial Class report_admin
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.rbtn_currentMonth = New System.Windows.Forms.RadioButton()
+        Me.rbtn_all = New System.Windows.Forms.RadioButton()
         Me.rbtn_today = New System.Windows.Forms.RadioButton()
         Me.txt_search = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -51,6 +51,7 @@ Partial Class report_admin
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -66,9 +67,9 @@ Partial Class report_admin
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1245, 100)
+        Me.Panel1.Size = New System.Drawing.Size(934, 81)
         Me.Panel1.TabIndex = 1
         '
         'Label4
@@ -76,9 +77,10 @@ Partial Class report_admin
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(870, 9)
+        Me.Label4.Location = New System.Drawing.Point(652, 7)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(119, 28)
+        Me.Label4.Size = New System.Drawing.Size(95, 21)
         Me.Label4.TabIndex = 4
         Me.Label4.Text = "Total Profit"
         '
@@ -87,9 +89,10 @@ Partial Class report_admin
         Me.label_profit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.label_profit.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.label_profit.ForeColor = System.Drawing.Color.White
-        Me.label_profit.Location = New System.Drawing.Point(881, 41)
+        Me.label_profit.Location = New System.Drawing.Point(661, 33)
+        Me.label_profit.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.label_profit.Name = "label_profit"
-        Me.label_profit.Size = New System.Drawing.Size(121, 41)
+        Me.label_profit.Size = New System.Drawing.Size(91, 33)
         Me.label_profit.TabIndex = 3
         Me.label_profit.Text = "0.00"
         Me.label_profit.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -99,9 +102,10 @@ Partial Class report_admin
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(1071, 9)
+        Me.Label3.Location = New System.Drawing.Point(803, 7)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(122, 28)
+        Me.Label3.Size = New System.Drawing.Size(98, 21)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Grand Total"
         '
@@ -110,9 +114,10 @@ Partial Class report_admin
         Me.label_totaldisplay.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.label_totaldisplay.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.label_totaldisplay.ForeColor = System.Drawing.Color.White
-        Me.label_totaldisplay.Location = New System.Drawing.Point(1036, 41)
+        Me.label_totaldisplay.Location = New System.Drawing.Point(777, 33)
+        Me.label_totaldisplay.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.label_totaldisplay.Name = "label_totaldisplay"
-        Me.label_totaldisplay.Size = New System.Drawing.Size(161, 41)
+        Me.label_totaldisplay.Size = New System.Drawing.Size(121, 33)
         Me.label_totaldisplay.TabIndex = 1
         Me.label_totaldisplay.Text = "0.00"
         Me.label_totaldisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -122,9 +127,10 @@ Partial Class report_admin
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(29, 41)
+        Me.Label1.Location = New System.Drawing.Point(22, 33)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(180, 38)
+        Me.Label1.Size = New System.Drawing.Size(142, 30)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Sales Report"
         '
@@ -135,30 +141,32 @@ Partial Class report_admin
         Me.Panel2.Controls.Add(Me.DateTimePicker2)
         Me.Panel2.Controls.Add(Me.DateTimePicker1)
         Me.Panel2.Controls.Add(Me.rbtn_currentMonth)
+        Me.Panel2.Controls.Add(Me.rbtn_all)
         Me.Panel2.Controls.Add(Me.rbtn_today)
         Me.Panel2.Controls.Add(Me.txt_search)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 100)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Panel2.Location = New System.Drawing.Point(0, 81)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1245, 57)
+        Me.Panel2.Size = New System.Drawing.Size(934, 46)
         Me.Panel2.TabIndex = 2
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 16)
+        Me.Label2.Location = New System.Drawing.Point(9, 13)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(108, 16)
+        Me.Label2.Size = New System.Drawing.Size(87, 13)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Search By Bill no"
         '
         'btn_filter
         '
-        Me.btn_filter.Location = New System.Drawing.Point(909, 16)
-        Me.btn_filter.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btn_filter.Location = New System.Drawing.Point(827, 10)
+        Me.btn_filter.Margin = New System.Windows.Forms.Padding(2)
         Me.btn_filter.Name = "btn_filter"
-        Me.btn_filter.Size = New System.Drawing.Size(75, 30)
+        Me.btn_filter.Size = New System.Drawing.Size(56, 24)
         Me.btn_filter.TabIndex = 6
         Me.btn_filter.Text = "Filter"
         Me.btn_filter.UseVisualStyleBackColor = True
@@ -166,40 +174,55 @@ Partial Class report_admin
         'DateTimePicker2
         '
         Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker2.Location = New System.Drawing.Point(760, 16)
-        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(715, 10)
+        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(2)
         Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(131, 22)
+        Me.DateTimePicker2.Size = New System.Drawing.Size(99, 20)
         Me.DateTimePicker2.TabIndex = 5
         '
         'DateTimePicker1
         '
         Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(611, 16)
-        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(603, 10)
+        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(2)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(131, 22)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(99, 20)
         Me.DateTimePicker1.TabIndex = 4
         '
         'rbtn_currentMonth
         '
         Me.rbtn_currentMonth.AutoSize = True
-        Me.rbtn_currentMonth.Location = New System.Drawing.Point(449, 16)
-        Me.rbtn_currentMonth.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.rbtn_currentMonth.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rbtn_currentMonth.Location = New System.Drawing.Point(453, 11)
+        Me.rbtn_currentMonth.Margin = New System.Windows.Forms.Padding(2)
         Me.rbtn_currentMonth.Name = "rbtn_currentMonth"
-        Me.rbtn_currentMonth.Size = New System.Drawing.Size(109, 20)
+        Me.rbtn_currentMonth.Size = New System.Drawing.Size(106, 20)
         Me.rbtn_currentMonth.TabIndex = 3
         Me.rbtn_currentMonth.TabStop = True
         Me.rbtn_currentMonth.Text = "Current Month"
         Me.rbtn_currentMonth.UseVisualStyleBackColor = True
         '
+        'rbtn_all
+        '
+        Me.rbtn_all.AutoSize = True
+        Me.rbtn_all.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rbtn_all.Location = New System.Drawing.Point(342, 11)
+        Me.rbtn_all.Margin = New System.Windows.Forms.Padding(2)
+        Me.rbtn_all.Name = "rbtn_all"
+        Me.rbtn_all.Size = New System.Drawing.Size(40, 20)
+        Me.rbtn_all.TabIndex = 2
+        Me.rbtn_all.TabStop = True
+        Me.rbtn_all.Text = "All"
+        Me.rbtn_all.UseVisualStyleBackColor = True
+        '
         'rbtn_today
         '
         Me.rbtn_today.AutoSize = True
-        Me.rbtn_today.Location = New System.Drawing.Point(367, 16)
-        Me.rbtn_today.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.rbtn_today.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rbtn_today.Location = New System.Drawing.Point(386, 11)
+        Me.rbtn_today.Margin = New System.Windows.Forms.Padding(2)
         Me.rbtn_today.Name = "rbtn_today"
-        Me.rbtn_today.Size = New System.Drawing.Size(68, 20)
+        Me.rbtn_today.Size = New System.Drawing.Size(65, 20)
         Me.rbtn_today.TabIndex = 2
         Me.rbtn_today.TabStop = True
         Me.rbtn_today.Text = "Today"
@@ -207,10 +230,10 @@ Partial Class report_admin
         '
         'txt_search
         '
-        Me.txt_search.Location = New System.Drawing.Point(132, 12)
-        Me.txt_search.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txt_search.Location = New System.Drawing.Point(99, 10)
+        Me.txt_search.Margin = New System.Windows.Forms.Padding(2)
         Me.txt_search.Name = "txt_search"
-        Me.txt_search.Size = New System.Drawing.Size(199, 22)
+        Me.txt_search.Size = New System.Drawing.Size(150, 20)
         Me.txt_search.TabIndex = 1
         '
         'DataGridView1
@@ -230,19 +253,15 @@ Partial Class report_admin
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column6, Me.Proname, Me.Qty, Me.Column7, Me.Column5, Me.Column8})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.GridColor = System.Drawing.Color.White
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 157)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.DataGridView1.Location = New System.Drawing.Point(0, 127)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(2)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidth = 51
         Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(1245, 490)
+        Me.DataGridView1.Size = New System.Drawing.Size(934, 399)
         Me.DataGridView1.TabIndex = 3
-        '
-        'Timer1
-        '
-        Me.Timer1.Enabled = True
         '
         'Column1
         '
@@ -251,7 +270,7 @@ Partial Class report_admin
         Me.Column1.MinimumWidth = 6
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = True
-        Me.Column1.Width = 52
+        Me.Column1.Width = 43
         '
         'Column2
         '
@@ -271,7 +290,7 @@ Partial Class report_admin
         Me.Column3.MinimumWidth = 6
         Me.Column3.Name = "Column3"
         Me.Column3.ReadOnly = True
-        Me.Column3.Width = 80
+        Me.Column3.Width = 66
         '
         'Column4
         '
@@ -280,7 +299,7 @@ Partial Class report_admin
         Me.Column4.MinimumWidth = 6
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
-        Me.Column4.Width = 97
+        Me.Column4.Width = 80
         '
         'Column6
         '
@@ -297,7 +316,7 @@ Partial Class report_admin
         Me.Proname.MinimumWidth = 6
         Me.Proname.Name = "Proname"
         Me.Proname.ReadOnly = True
-        Me.Proname.Width = 107
+        Me.Proname.Width = 88
         '
         'Qty
         '
@@ -306,7 +325,7 @@ Partial Class report_admin
         Me.Qty.MinimumWidth = 6
         Me.Qty.Name = "Qty"
         Me.Qty.ReadOnly = True
-        Me.Qty.Width = 71
+        Me.Qty.Width = 58
         '
         'Column7
         '
@@ -323,7 +342,7 @@ Partial Class report_admin
         Me.Column5.MinimumWidth = 6
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
-        Me.Column5.Width = 142
+        Me.Column5.Width = 118
         '
         'Column8
         '
@@ -333,15 +352,19 @@ Partial Class report_admin
         Me.Column8.ReadOnly = True
         Me.Column8.Width = 125
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        '
         'report_admin
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1245, 647)
+        Me.ClientSize = New System.Drawing.Size(934, 526)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "report_admin"
         Me.Text = "report_admin"
         Me.Panel1.ResumeLayout(False)
@@ -379,4 +402,5 @@ Partial Class report_admin
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column8 As DataGridViewTextBoxColumn
+    Friend WithEvents rbtn_all As RadioButton
 End Class

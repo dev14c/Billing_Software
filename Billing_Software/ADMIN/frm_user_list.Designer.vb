@@ -45,8 +45,9 @@ Partial Class frm_user_list
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(936, 100)
+        Me.Panel1.Size = New System.Drawing.Size(785, 81)
         Me.Panel1.TabIndex = 2
         '
         'btn_add_user
@@ -54,9 +55,10 @@ Partial Class frm_user_list
         Me.btn_add_user.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_add_user.BackColor = System.Drawing.SystemColors.HotTrack
         Me.btn_add_user.ForeColor = System.Drawing.SystemColors.InactiveBorder
-        Me.btn_add_user.Location = New System.Drawing.Point(779, 45)
+        Me.btn_add_user.Location = New System.Drawing.Point(667, 37)
+        Me.btn_add_user.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btn_add_user.Name = "btn_add_user"
-        Me.btn_add_user.Size = New System.Drawing.Size(132, 42)
+        Me.btn_add_user.Size = New System.Drawing.Size(99, 34)
         Me.btn_add_user.TabIndex = 4
         Me.btn_add_user.Text = "ADD USER"
         Me.btn_add_user.UseVisualStyleBackColor = False
@@ -66,9 +68,10 @@ Partial Class frm_user_list
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(30, 41)
+        Me.Label1.Location = New System.Drawing.Point(22, 33)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(128, 38)
+        Me.Label1.Size = New System.Drawing.Size(102, 30)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "User List"
         '
@@ -89,13 +92,14 @@ Partial Class frm_user_list
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column7, Me.Column6, Me.Column5})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.GridColor = System.Drawing.Color.White
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 100)
+        Me.DataGridView1.Location = New System.Drawing.Point(0, 81)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidth = 51
         Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(936, 483)
+        Me.DataGridView1.Size = New System.Drawing.Size(785, 393)
         Me.DataGridView1.TabIndex = 4
         '
         'Column1
@@ -105,7 +109,7 @@ Partial Class frm_user_list
         Me.Column1.MinimumWidth = 6
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = True
-        Me.Column1.Width = 52
+        Me.Column1.Width = 43
         '
         'Column2
         '
@@ -165,11 +169,12 @@ Partial Class frm_user_list
         '
         'frm_user_list
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(936, 583)
+        Me.ClientSize = New System.Drawing.Size(785, 474)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Panel1)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "frm_user_list"
         Me.Text = "frm_user_list"
         Me.Panel1.ResumeLayout(False)

@@ -11,7 +11,6 @@ Public Class frm_cash_sumbit
         DataGridView1.Rows.Clear()
 
 
-
         Try
             If conn.State = ConnectionState.Open Then
                 conn.Close()
@@ -98,7 +97,74 @@ Public Class frm_cash_sumbit
         End Try
     End Sub
 
+    Private Sub rbtn_all_CheckedChanged(sender As Object, e As EventArgs) Handles rbtn_all.CheckedChanged
+        load_report_admin()
+    End Sub
+
+    Private Sub rbtn_today_CheckedChanged(sender As Object, e As EventArgs) Handles rbtn_today.CheckedChanged
+        DataGridView1.Rows.Clear()
+        Try
+
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+            conn.Open()
+            cmd = New MySqlCommand("SELECT * FROM `cash_report` WHERE Date Like '%" & Date.Now.ToString("yyyy-MM-dd") & "%' ", conn)
+            dr = cmd.ExecuteReader
+            While dr.Read = True
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("Date"), dr.Item("Cashier_name"), dr.Item("Amount"), dr.Item("Cash_subcashier"), dr.Item("Cashrec"))
+            End While
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
+        End Try
+    End Sub
+
+    Private Sub rbtn_currentMonth_CheckedChanged(sender As Object, e As EventArgs) Handles rbtn_currentMonth.CheckedChanged
+        DataGridView1.Rows.Clear()
+        Try
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+            conn.Open()
+            cmd = New MySqlCommand("SELECT * FROM `cash_report`  WHERE  Date like '%" & Date.Now.ToString("yyyy-MM") & "%' ", conn)
+            dr = cmd.ExecuteReader
+            While dr.Read = True
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("Date"), dr.Item("Cashier_name"), dr.Item("Amount"), dr.Item("Cash_subcashier"), dr.Item("Cashrec"))
+            End While
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub btn_filter_Click(sender As Object, e As EventArgs) Handles btn_filter.Click
+        Dim date1 As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
+        Dim date2 As String = DateTimePicker2.Value.ToString("yyyy-MM-dd")
+
+        DataGridView1.Rows.Clear()
+        Try
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+
+            conn.Open()
 
 
+            cmd = New MySqlCommand("SELECT * FROM `cash_report` WHERE Date BETWEEN @date1 AND @date2 ", conn)
 
+
+            cmd.Parameters.AddWithValue("@date1", date1)
+            cmd.Parameters.AddWithValue("@date2", date2)
+
+            dr = cmd.ExecuteReader()
+
+            While dr.Read()
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("Date"), dr.Item("Cashier_name"), dr.Item("Amount"), dr.Item("Cash_subcashier"), dr.Item("Cashrec"))
+            End While
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            conn.Close()
+        End Try
+    End Sub
 End Class

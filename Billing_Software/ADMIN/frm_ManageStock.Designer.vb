@@ -36,6 +36,7 @@ Partial Class frm_ManageStock
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -62,7 +63,7 @@ Partial Class frm_ManageStock
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label1.Location = New System.Drawing.Point(12, 23)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(203, 38)
+        Me.Label1.Size = New System.Drawing.Size(159, 30)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Manage Stock"
         '
@@ -93,7 +94,7 @@ Partial Class frm_ManageStock
         '
         Me.txt_search.Location = New System.Drawing.Point(90, 36)
         Me.txt_search.Name = "txt_search"
-        Me.txt_search.Size = New System.Drawing.Size(313, 27)
+        Me.txt_search.Size = New System.Drawing.Size(313, 23)
         Me.txt_search.TabIndex = 4
         '
         'Label11
@@ -101,7 +102,7 @@ Partial Class frm_ManageStock
         Me.Label11.AutoSize = True
         Me.Label11.Location = New System.Drawing.Point(29, 39)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(55, 20)
+        Me.Label11.Size = New System.Drawing.Size(43, 15)
         Me.Label11.TabIndex = 3
         Me.Label11.Text = "Search"
         '
@@ -111,7 +112,7 @@ Partial Class frm_ManageStock
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.ColumnHeadersHeight = 47
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column9, Me.Column10, Me.Column11, Me.Column7, Me.Column8})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column9, Me.Column6, Me.Column10, Me.Column11, Me.Column7, Me.Column8})
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -137,7 +138,7 @@ Partial Class frm_ManageStock
         Me.Column1.MinimumWidth = 6
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = True
-        Me.Column1.Width = 47
+        Me.Column1.Width = 39
         '
         'Column2
         '
@@ -146,7 +147,7 @@ Partial Class frm_ManageStock
         Me.Column2.MinimumWidth = 6
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
-        Me.Column2.Width = 101
+        Me.Column2.Width = 82
         '
         'Column3
         '
@@ -163,7 +164,7 @@ Partial Class frm_ManageStock
         Me.Column4.MinimumWidth = 6
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
-        Me.Column4.Width = 88
+        Me.Column4.Width = 71
         '
         'Column5
         '
@@ -172,16 +173,22 @@ Partial Class frm_ManageStock
         Me.Column5.MinimumWidth = 6
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
-        Me.Column5.Width = 74
+        Me.Column5.Width = 60
         '
         'Column9
         '
         Me.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column9.HeaderText = "Rate Per Qty"
+        Me.Column9.HeaderText = "MRP"
         Me.Column9.MinimumWidth = 6
         Me.Column9.Name = "Column9"
         Me.Column9.ReadOnly = True
-        Me.Column9.Width = 91
+        Me.Column9.Width = 57
+        '
+        'Column6
+        '
+        Me.Column6.HeaderText = "PURCHASE PRICE"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
         '
         'Column10
         '
@@ -190,16 +197,16 @@ Partial Class frm_ManageStock
         Me.Column10.MinimumWidth = 6
         Me.Column10.Name = "Column10"
         Me.Column10.ReadOnly = True
-        Me.Column10.Width = 64
+        Me.Column10.Width = 61
         '
         'Column11
         '
         Me.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column11.HeaderText = "TOTAL PRICE"
+        Me.Column11.HeaderText = "TOTAL PURCHASE PRICE"
         Me.Column11.MinimumWidth = 6
         Me.Column11.Name = "Column11"
         Me.Column11.ReadOnly = True
-        Me.Column11.Width = 112
+        Me.Column11.Width = 149
         '
         'Column7
         '
@@ -208,7 +215,7 @@ Partial Class frm_ManageStock
         Me.Column7.MinimumWidth = 6
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
-        Me.Column7.Width = 82
+        Me.Column7.Width = 69
         '
         'Column8
         '
@@ -220,11 +227,11 @@ Partial Class frm_ManageStock
         Me.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.Column8.Visible = False
-        Me.Column8.Width = 105
+        Me.Column8.Width = 85
         '
         'frm_ManageStock
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1232, 652)
         Me.Controls.Add(Me.DataGridView1)
@@ -257,6 +264,7 @@ Partial Class frm_ManageStock
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column9 As DataGridViewTextBoxColumn
+    Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column10 As DataGridViewTextBoxColumn
     Friend WithEvents Column11 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn

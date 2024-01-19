@@ -187,4 +187,8 @@ Public Class frm_cahier_cash_report
             conn.Close()
         End Try
     End Sub
+
+    Private Sub rbtn_all_CheckedChanged(sender As Object, e As EventArgs) Handles rbtn_all.CheckedChanged
+        load_report()
+    End Sub
 End Class

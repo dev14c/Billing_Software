@@ -4,8 +4,6 @@ Public Class report_admin
     Private Sub report_admin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dbconn()
         DataGridView1.RowTemplate.Height = 30
-
-
         load_report()
         total()
     End Sub
@@ -135,5 +133,9 @@ Public Class report_admin
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         total()
 
+    End Sub
+
+    Private Sub rbtn_all_CheckedChanged(sender As Object, e As EventArgs) Handles rbtn_all.CheckedChanged
+        load_report()
     End Sub
 End Class

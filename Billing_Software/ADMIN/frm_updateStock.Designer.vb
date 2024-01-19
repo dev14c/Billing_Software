@@ -32,35 +32,39 @@ Partial Class frm_updateStock
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(52, 47)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(39, 38)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(89, 16)
+        Me.Label1.Size = New System.Drawing.Size(101, 16)
         Me.Label1.TabIndex = 14
         Me.Label1.Text = "Product Code"
         '
         'txt_procode
         '
-        Me.txt_procode.Location = New System.Drawing.Point(56, 70)
-        Me.txt_procode.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txt_procode.Location = New System.Drawing.Point(42, 57)
+        Me.txt_procode.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txt_procode.Name = "txt_procode"
-        Me.txt_procode.Size = New System.Drawing.Size(245, 22)
+        Me.txt_procode.Size = New System.Drawing.Size(185, 20)
         Me.txt_procode.TabIndex = 12
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(52, 114)
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(39, 93)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(27, 16)
+        Me.Label5.Size = New System.Drawing.Size(30, 16)
         Me.Label5.TabIndex = 17
         Me.Label5.Text = "Qty"
         '
         'txt_qty
         '
-        Me.txt_qty.Location = New System.Drawing.Point(56, 138)
-        Me.txt_qty.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txt_qty.Location = New System.Drawing.Point(42, 112)
+        Me.txt_qty.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txt_qty.Name = "txt_qty"
-        Me.txt_qty.Size = New System.Drawing.Size(245, 22)
+        Me.txt_qty.Size = New System.Drawing.Size(185, 20)
         Me.txt_qty.TabIndex = 16
         '
         'btn_updateStock
@@ -68,25 +72,25 @@ Partial Class frm_updateStock
         Me.btn_updateStock.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_updateStock.BackColor = System.Drawing.SystemColors.HotTrack
         Me.btn_updateStock.ForeColor = System.Drawing.SystemColors.InactiveBorder
-        Me.btn_updateStock.Location = New System.Drawing.Point(105, 193)
-        Me.btn_updateStock.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btn_updateStock.Location = New System.Drawing.Point(79, 157)
+        Me.btn_updateStock.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btn_updateStock.Name = "btn_updateStock"
-        Me.btn_updateStock.Size = New System.Drawing.Size(132, 33)
+        Me.btn_updateStock.Size = New System.Drawing.Size(99, 27)
         Me.btn_updateStock.TabIndex = 18
         Me.btn_updateStock.Text = "UPDATE STOCK"
         Me.btn_updateStock.UseVisualStyleBackColor = False
         '
         'frm_updateStock
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(403, 283)
+        Me.ClientSize = New System.Drawing.Size(302, 230)
         Me.Controls.Add(Me.btn_updateStock)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.txt_qty)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txt_procode)
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "frm_updateStock"
         Me.Text = "frm_updateStock"
         Me.ResumeLayout(False)
