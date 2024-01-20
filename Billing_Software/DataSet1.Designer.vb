@@ -617,7 +617,7 @@ Partial Public Class DataSet1
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Overloads Function AddDataTable1Row( _
                     ByVal billno As String,  _
-                    ByVal billdate As Decimal,  _
+                    ByVal billdate As Date,  _
                     ByVal bmonth As String,  _
                     ByVal bmonthyear As String,  _
                     ByVal procode As String,  _
@@ -699,7 +699,7 @@ Partial Public Class DataSet1
         Private Sub InitClass()
             Me.columnbillno = New Global.System.Data.DataColumn("billno", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnbillno)
-            Me.columnbilldate = New Global.System.Data.DataColumn("billdate", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnbilldate = New Global.System.Data.DataColumn("billdate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnbilldate)
             Me.columnbmonth = New Global.System.Data.DataColumn("bmonth", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnbmonth)
@@ -910,10 +910,10 @@ Partial Public Class DataSet1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property billdate() As Decimal
+        Public Property billdate() As Date
             Get
                 Try 
-                    Return CType(Me(Me.tableDataTable1.billdateColumn),Decimal)
+                    Return CType(Me(Me.tableDataTable1.billdateColumn),Date)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'billdate' in table 'DataTable1' is DBNull.", e)
                 End Try
