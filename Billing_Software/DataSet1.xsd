@@ -16,7 +16,7 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="billno" msprop:Generator_ColumnPropNameInTable="billnoColumn" msprop:Generator_ColumnPropNameInRow="billno" msprop:Generator_UserColumnName="billno" msprop:Generator_ColumnVarNameInTable="columnbillno" type="xs:string" minOccurs="0" />
-              <xs:element name="billdate" msprop:Generator_ColumnPropNameInTable="billdateColumn" msprop:Generator_ColumnPropNameInRow="billdate" msprop:Generator_UserColumnName="billdate" msprop:Generator_ColumnVarNameInTable="columnbilldate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="billdate" msprop:Generator_ColumnPropNameInTable="billdateColumn" msprop:Generator_ColumnPropNameInRow="billdate" msprop:Generator_UserColumnName="billdate" msprop:Generator_ColumnVarNameInTable="columnbilldate" type="xs:decimal" minOccurs="0" />
               <xs:element name="bmonth" msprop:Generator_ColumnPropNameInTable="bmonthColumn" msprop:Generator_ColumnPropNameInRow="bmonth" msprop:Generator_UserColumnName="bmonth" msprop:Generator_ColumnVarNameInTable="columnbmonth" type="xs:string" minOccurs="0" />
               <xs:element name="bmonthyear" msprop:Generator_ColumnPropNameInTable="bmonthyearColumn" msprop:Generator_ColumnPropNameInRow="bmonthyear" msprop:Generator_UserColumnName="bmonthyear" msprop:Generator_ColumnVarNameInTable="columnbmonthyear" type="xs:string" minOccurs="0" />
               <xs:element name="procode" msprop:Generator_ColumnPropNameInTable="procodeColumn" msprop:Generator_ColumnPropNameInRow="procode" msprop:Generator_UserColumnName="procode" msprop:Generator_ColumnVarNameInTable="columnprocode" type="xs:string" minOccurs="0" />
@@ -38,8 +38,9 @@
               <xs:element name="recieveamount" msprop:Generator_ColumnPropNameInTable="recieveamountColumn" msprop:Generator_ColumnPropNameInRow="recieveamount" msprop:Generator_UserColumnName="recieveamount" msprop:Generator_ColumnVarNameInTable="columnrecieveamount" type="xs:string" minOccurs="0" />
               <xs:element name="balance" msprop:Generator_ColumnPropNameInTable="balanceColumn" msprop:Generator_ColumnPropNameInRow="balance" msprop:Generator_UserColumnName="balance" msprop:Generator_ColumnVarNameInTable="columnbalance" type="xs:string" minOccurs="0" />
               <xs:element name="Customer_Name" msprop:Generator_ColumnPropNameInTable="Customer_NameColumn" msprop:Generator_ColumnPropNameInRow="Customer_Name" msprop:Generator_UserColumnName="Customer_Name" msprop:Generator_ColumnVarNameInTable="columnCustomer_Name" type="xs:string" minOccurs="0" />
-              <xs:element name="Customer_Mobile" msprop:Generator_UserColumnName="Customer_Mobile" msprop:Generator_ColumnPropNameInTable="Customer_MobileColumn" msprop:Generator_ColumnPropNameInRow="Customer_Mobile" msprop:Generator_ColumnVarNameInTable="columnCustomer_Mobile" type="xs:string" minOccurs="0" />
-              <xs:element name="time" msprop:Generator_ColumnPropNameInRow="time" msprop:Generator_ColumnPropNameInTable="timeColumn" msprop:Generator_ColumnVarNameInTable="columntime" msprop:Generator_UserColumnName="time" type="xs:string" minOccurs="0" />
+              <xs:element name="Customer_Mobile" msprop:Generator_ColumnPropNameInTable="Customer_MobileColumn" msprop:Generator_ColumnPropNameInRow="Customer_Mobile" msprop:Generator_UserColumnName="Customer_Mobile" msprop:Generator_ColumnVarNameInTable="columnCustomer_Mobile" type="xs:string" minOccurs="0" />
+              <xs:element name="time" msprop:Generator_ColumnPropNameInTable="timeColumn" msprop:Generator_ColumnPropNameInRow="time" msprop:Generator_UserColumnName="time" msprop:Generator_ColumnVarNameInTable="columntime" type="xs:string" minOccurs="0" />
+              <xs:element name="selling_price" msprop:Generator_UserColumnName="selling_price" msprop:Generator_ColumnPropNameInTable="selling_priceColumn" msprop:Generator_ColumnPropNameInRow="selling_price" msprop:Generator_ColumnVarNameInTable="columnselling_price" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

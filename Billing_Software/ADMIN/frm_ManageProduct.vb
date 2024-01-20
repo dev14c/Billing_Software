@@ -44,11 +44,11 @@ Public Class frm_ManageProduct
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT  `procode`, `proname`, `progroup`, `uom`, `stock`,`Rate_per`,`purchase_price`, `tax`, `totalprice`,`barcode` FROM `tblproduct` ", conn)
+            cmd = New MySqlCommand("SELECT  * FROM `tblproduct` ", conn)
             dr = cmd.ExecuteReader
             While dr.Read
                 DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("procode"), dr.Item("proname"), dr.Item("progroup"), dr.Item("uom"), dr.Item("stock"), dr.Item("Rate_per"),
-                dr.Item("purchase_price"), dr.Item("tax"), dr.Item("totalprice"), dr.Item("barcode"))
+                dr.Item("purchase_price"), dr.Item("selling_price"), dr.Item("discount_percent"), dr.Item("tax"), dr.Item("totalprice"), dr.Item("barcode"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message & "2")
@@ -68,6 +68,9 @@ Public Class frm_ManageProduct
         cbo_tax.Text = Nothing
         gstAmount.Clear()
         afterGST.Clear()
+        txt_selling_price.Clear()
+        txt_discount.Clear()
+        txt_discount_amt.Clear()
         cbo_uom.SelectedIndex = -1
 
         pic_barcode.Image = Nothing
@@ -180,7 +183,7 @@ Public Class frm_ManageProduct
 
             i = cmd.ExecuteNonQuery
             If i > 0 Then
-                MsgBox("New Porudct Save Success", vbExclamation)
+                MsgBox("New Porudct Save Success", vbInformation)
             Else
                 MsgBox("New Porudct Save Failed", vbExclamation)
             End If
@@ -216,7 +219,7 @@ Public Class frm_ManageProduct
             If count > 0 Then
                 MsgBox("Entered product code is " & txt_SearchProductCode.Text)
             Else
-                MsgBox("Product code not found")
+                MsgBox("Product code not found", vbExclamation)
                 txt_SearchProductCode.Clear()
                 Return
             End If
@@ -227,15 +230,18 @@ Public Class frm_ManageProduct
 
             dr = cmd.ExecuteReader
             While dr.Read
-                    txt_proname.Text = dr.Item("proname")
-                    cbo_group.Text = dr.Item("progroup")
-                    cbo_uom.Text = dr.Item("uom")
-                    txt_qty.Text = dr.Item("stock")
-                    txt_rate_per.Text = dr.Item("Rate_per")
-                    txt_purchase_price.Text = dr.Item("purchase_price")
-                    cbo_tax.Text = dr.Item("tax")
-                    txt_totalprice.Text = dr.Item("totalprice")
-                End While
+                txt_proname.Text = dr.Item("proname")
+                cbo_group.Text = dr.Item("progroup")
+                cbo_uom.Text = dr.Item("uom")
+                txt_qty.Text = dr.Item("stock")
+                txt_rate_per.Text = dr.Item("Rate_per")
+                txt_purchase_price.Text = dr.Item("purchase_price")
+                cbo_tax.Text = dr.Item("tax")
+                txt_selling_price.Text = dr.Item("selling_price")
+                txt_discount.Text = dr.Item("discount_percent")
+                txt_discount_amt.Text = dr.Item("discount_amt")
+                txt_totalprice.Text = dr.Item("totalprice")
+            End While
 
 
         Catch ex As Exception
@@ -260,7 +266,7 @@ Public Class frm_ManageProduct
             End If
             conn.Open()
             'cmd = New MySqlCommand("UPDATE `tblproduct` SET `proname`=@proname,`progroup`=@progroup,`uom`=@uom,`location`=@location,`price`=@price,`tax`=@tax,`totalprice`=@totalprice WHERE `procode`=@procode", conn)
-            cmd = New MySqlCommand("UPDATE `tblproduct` SET `proname`=@proname, `progroup`=@progroup, `uom`=@uom, `Rate_per` = @mrp, `stock` = @qty, `purchase_price`=@pp, `tax`=@tax, `totalprice`=@totalprice where `procode`=@procode ", conn)
+            cmd = New MySqlCommand("UPDATE `tblproduct` SET `proname`=@proname, `progroup`=@progroup, `uom`=@uom, `Rate_per` = @mrp, `stock` = @qty, `purchase_price`=@pp, `tax`=@tax, `totalprice`=@totalprice ,`discount_percent`=@discount_per,`discount_amt`=@discount_amt,`selling_price`=@sp  where `procode`=@procode ", conn)
 
             cmd.Parameters.Clear()
 
@@ -273,13 +279,16 @@ Public Class frm_ManageProduct
             cmd.Parameters.AddWithValue("@pp", CDec(txt_purchase_price.Text))
             cmd.Parameters.AddWithValue("@totalprice", CDec(txt_totalprice.Text))
             cmd.Parameters.AddWithValue("@procode", txt_SearchProductCode.Text)
+            cmd.Parameters.AddWithValue("@discount_per", txt_discount.Text)
+            cmd.Parameters.AddWithValue("@sp", txt_selling_price.Text)
+            cmd.Parameters.AddWithValue("@discount_amt", txt_discount_amt.Text)
 
 
             i = cmd.ExecuteNonQuery
             If i > 0 Then
-                MsgBox("Porudct Update Success", vbExclamation)
+                MsgBox("Product Update Success", vbInformation)
             Else
-                MsgBox("New Porudct Save Failed", vbExclamation)
+                MsgBox("New Product Save Failed", vbExclamation)
 
             End If
         Catch ex As Exception
@@ -314,7 +323,7 @@ Public Class frm_ManageProduct
                 i = cmd.ExecuteNonQuery
                 MsgBox(i)
                 If i > 0 Then
-                    MsgBox("Delete Success", vbExclamation)
+                    MsgBox("Delete Success", vbInformation)
                 Else
                     MsgBox("Delete Failed", vbExclamation)
                 End If

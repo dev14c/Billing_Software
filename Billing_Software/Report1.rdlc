@@ -20,6 +20,9 @@
             <TablixColumn>
               <Width>2.5cm</Width>
             </TablixColumn>
+            <TablixColumn>
+              <Width>2.5cm</Width>
+            </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
@@ -142,7 +145,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Rate</Value>
+                              <Value>MRP</Value>
                               <Style>
                                 <FontFamily>calibri</FontFamily>
                                 <FontSize>11pt</FontSize>
@@ -156,6 +159,42 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox9</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Rate</Value>
+                              <Style>
+                                <FontFamily>calibri</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox2</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -348,6 +387,40 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="selling_price">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!selling_price.Value</Value>
+                              <Style>
+                                <FontFamily>calibri</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>selling_price</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="totalprice">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -391,6 +464,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -405,9 +479,9 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Top>5.22747cm</Top>
-        <Left>2.06825cm</Left>
+        <Left>1.07809cm</Left>
         <Height>1.2cm</Height>
-        <Width>12.7619cm</Width>
+        <Width>15.2619cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -519,7 +593,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Pos And Inevntory Managment Sysyme</Value>
+                <Value>POS And Inevntory Management System</Value>
                 <Style>
                   <FontFamily>calibri</FontFamily>
                   <FontSize>12pt</FontSize>
@@ -533,7 +607,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>0.5207cm</Top>
+        <Top>0.56402cm</Top>
         <Left>1.38853cm</Left>
         <Height>0.6cm</Height>
         <Width>14.35333cm</Width>
@@ -657,7 +731,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Discount</Value>
+                <Value>You Saved </Value>
                 <Style>
                   <FontFamily>calibri</FontFamily>
                   <FontWeight>Bold</FontWeight>
@@ -668,10 +742,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>8.36775cm</Top>
-        <Left>9.62377cm</Left>
+        <Top>9.60219cm</Top>
+        <Left>5.26789cm</Left>
         <Height>0.6cm</Height>
-        <Width>1.94028cm</Width>
+        <Width>1.78153cm</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
@@ -701,8 +775,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>9.14414cm</Top>
-        <Left>9.62378cm</Left>
+        <Top>8.36775cm</Top>
+        <Left>9.62377cm</Left>
         <Height>0.6cm</Height>
         <Width>1.94028cm</Width>
         <ZIndex>9</ZIndex>
@@ -806,10 +880,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>discount_amount</rd:DefaultName>
-        <Top>8.35237cm</Top>
-        <Left>12.08471cm</Left>
+        <Top>9.60219cm</Top>
+        <Left>7.04942cm</Left>
         <Height>0.6cm</Height>
-        <Width>2.5cm</Width>
+        <Width>1.11297cm</Width>
         <ZIndex>12</ZIndex>
         <Style>
           <Border>
@@ -841,8 +915,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>grandtotal</rd:DefaultName>
-        <Top>9.19903cm</Top>
-        <Left>12.08471cm</Left>
+        <Top>8.42264cm</Top>
+        <Left>12.0847cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>13</ZIndex>
@@ -960,6 +1034,39 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox17">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Rs On This Purchase</Value>
+                <Style>
+                  <FontFamily>calibri</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox6</rd:DefaultName>
+        <Top>9.60219cm</Top>
+        <Left>8.16239cm</Left>
+        <Height>0.6cm</Height>
+        <Width>4.16776cm</Width>
+        <ZIndex>17</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
       <Textbox Name="billdate">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -975,11 +1082,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>billdate</rd:DefaultName>
-        <Top>3.6322cm</Top>
+        <Top>3.49109cm</Top>
         <Left>12.08471cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
-        <ZIndex>17</ZIndex>
+        <ZIndex>18</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1028,7 +1135,7 @@
         </Field>
         <Field Name="billdate">
           <DataField>billdate</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="bmonth">
           <DataField>bmonth</DataField>
@@ -1122,10 +1229,14 @@
           <DataField>time</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="selling_price">
+          <DataField>selling_price</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSet1</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\devda\Source\Repos\dev14c\Billing_Software\Billing_Software\DataSet1.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\Udenia\source\repos\dev14c\Billing_Software\Billing_Software\DataSet1.xsd</rd:SchemaPath>
         <rd:TableName>DataTable1</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />

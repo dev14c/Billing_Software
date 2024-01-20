@@ -18,7 +18,7 @@ Public Class frm_ManageStock
             dr = cmd.ExecuteReader
             While dr.Read = True
                 DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("procode"), dr.Item("proname"), dr.Item("progroup"), dr.Item("uom"), dr.Item("Rate_per"), dr.Item("purchase_price"),
-                dr.Item("tax"), dr.Item("totalprice"), dr.Item("stock"))
+                dr.Item("selling_price"), dr.Item("discount_percent"), dr.Item("tax"), dr.Item("totalprice"), dr.Item("stock"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -37,7 +37,8 @@ Public Class frm_ManageStock
             dr = cmd.ExecuteReader
             While dr.Read = True
                 DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("procode"), dr.Item("proname"), dr.Item("progroup"), dr.Item("uom"), dr.Item("Rate_per"), dr.Item("purchase_price"),
-                dr.Item("tax"), dr.Item("totalprice"), dr.Item("stock"))
+                dr.Item("selling_price"), dr.Item("discount_percent"), dr.Item("tax"), dr.Item("totalprice"), dr.Item("stock"))
+
             End While
         Catch ex As Exception
             MsgBox(ex.Message)

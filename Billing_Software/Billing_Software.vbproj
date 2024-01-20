@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9D4AC028-5B55-4156-A60C-BA981A833D46}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Billing_Software.frm_ManageProduct</StartupObject>
+    <StartupObject>Billing_Software.frm_login</StartupObject>
     <RootNamespace>Billing_Software</RootNamespace>
     <AssemblyName>Billing_Software</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -420,6 +420,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\kisspng-login-google-account-computer-icons-user-activity-5ac6bbe74aa7f1.6157264215229736713058.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

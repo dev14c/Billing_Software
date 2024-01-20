@@ -333,6 +333,8 @@ Partial Public Class DataSet1
         
         Private columntime As Global.System.Data.DataColumn
         
+        Private columnselling_price As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -569,6 +571,14 @@ Partial Public Class DataSet1
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property selling_priceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnselling_price
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -607,7 +617,7 @@ Partial Public Class DataSet1
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Overloads Function AddDataTable1Row( _
                     ByVal billno As String,  _
-                    ByVal billdate As Date,  _
+                    ByVal billdate As Decimal,  _
                     ByVal bmonth As String,  _
                     ByVal bmonthyear As String,  _
                     ByVal procode As String,  _
@@ -630,9 +640,10 @@ Partial Public Class DataSet1
                     ByVal balance As String,  _
                     ByVal Customer_Name As String,  _
                     ByVal Customer_Mobile As String,  _
-                    ByVal time As String) As DataTable1Row
+                    ByVal time As String,  _
+                    ByVal selling_price As String) As DataTable1Row
             Dim rowDataTable1Row As DataTable1Row = CType(Me.NewRow,DataTable1Row)
-            Dim columnValuesArray() As Object = New Object() {billno, billdate, bmonth, bmonthyear, procode, proname, progroup, uom, price, tax, totalproductprice, qty, totalpriceqty, subtotal, totaltax, totalprice, discount_per, discount_amount, grandtotal, paymode, recieveamount, balance, Customer_Name, Customer_Mobile, time}
+            Dim columnValuesArray() As Object = New Object() {billno, billdate, bmonth, bmonthyear, procode, proname, progroup, uom, price, tax, totalproductprice, qty, totalpriceqty, subtotal, totaltax, totalprice, discount_per, discount_amount, grandtotal, paymode, recieveamount, balance, Customer_Name, Customer_Mobile, time, selling_price}
             rowDataTable1Row.ItemArray = columnValuesArray
             Me.Rows.Add(rowDataTable1Row)
             Return rowDataTable1Row
@@ -680,6 +691,7 @@ Partial Public Class DataSet1
             Me.columnCustomer_Name = MyBase.Columns("Customer_Name")
             Me.columnCustomer_Mobile = MyBase.Columns("Customer_Mobile")
             Me.columntime = MyBase.Columns("time")
+            Me.columnselling_price = MyBase.Columns("selling_price")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -687,7 +699,7 @@ Partial Public Class DataSet1
         Private Sub InitClass()
             Me.columnbillno = New Global.System.Data.DataColumn("billno", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnbillno)
-            Me.columnbilldate = New Global.System.Data.DataColumn("billdate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnbilldate = New Global.System.Data.DataColumn("billdate", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnbilldate)
             Me.columnbmonth = New Global.System.Data.DataColumn("bmonth", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnbmonth)
@@ -735,6 +747,8 @@ Partial Public Class DataSet1
             MyBase.Columns.Add(Me.columnCustomer_Mobile)
             Me.columntime = New Global.System.Data.DataColumn("time", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntime)
+            Me.columnselling_price = New Global.System.Data.DataColumn("selling_price", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnselling_price)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -896,10 +910,10 @@ Partial Public Class DataSet1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property billdate() As Date
+        Public Property billdate() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDataTable1.billdateColumn),Date)
+                    Return CType(Me(Me.tableDataTable1.billdateColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'billdate' in table 'DataTable1' is DBNull.", e)
                 End Try
@@ -1256,6 +1270,21 @@ Partial Public Class DataSet1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property selling_price() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDataTable1.selling_priceColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'selling_price' in table 'DataTable1' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDataTable1.selling_priceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsbillnoNull() As Boolean
             Return Me.IsNull(Me.tableDataTable1.billnoColumn)
         End Function
@@ -1552,6 +1581,18 @@ Partial Public Class DataSet1
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SettimeNull()
             Me(Me.tableDataTable1.timeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function Isselling_priceNull() As Boolean
+            Return Me.IsNull(Me.tableDataTable1.selling_priceColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub Setselling_priceNull()
+            Me(Me.tableDataTable1.selling_priceColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

@@ -67,6 +67,8 @@ Public Class frm_qty_add
                     Dim progroup As String = dr("progroup").ToString()
                     Dim uom As String = dr("uom").ToString()
                     Dim stock As Integer = CInt(dr("stock"))
+                    Dim purchase As Integer = CInt(dr("purchase_price"))
+                    Dim mrp As Integer = CInt(dr("Rate_per"))
                     Dim x As Integer
                     x = stock - CInt(update_qty.Text) + 1
                     If x > 0 Then
@@ -75,14 +77,14 @@ Public Class frm_qty_add
                         Dim totalQtyPrice As Double
                         Dim gstAmount As Double
                         Dim rate_x_qty As Decimal
-                        If Decimal.TryParse(dr("Rate_per").ToString(), rate) AndAlso Decimal.TryParse(dr("tax").ToString(), tax) Then
+                        If Decimal.TryParse(dr("selling_price").ToString(), rate) AndAlso Decimal.TryParse(dr("tax").ToString(), tax) Then
                             rate_x_qty = rate * CInt(update_qty.Text)
                             totalQtyPrice = Math.Round(rate_x_qty / (tax + 100) * tax, 2)
                             gstAmount = Math.Round(rate_x_qty - totalQtyPrice, 2)
                         End If
 
                         'dgv.Rows.Add(dgv.Rows.Count + 1, procode, proname, progroup, uom, rate, tax, totalQtyPrice, 1, totalQtyPrice)
-                        dgv.Rows.Add(dgv.Rows.Count + 1, procode, proname, progroup, uom, gstAmount, tax, totalQtyPrice, update_qty.Text, rate, rate_x_qty)
+                        dgv.Rows.Add(dgv.Rows.Count + 1, procode, proname, progroup, uom, gstAmount, tax, totalQtyPrice, update_qty.Text, mrp, rate, rate_x_qty, purchase)
                         update_pid.Clear()
                         update_qty.Clear()
                         update_qty.Focus()
