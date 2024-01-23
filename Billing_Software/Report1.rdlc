@@ -478,7 +478,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>5.22747cm</Top>
+        <Top>5.86247cm</Top>
         <Left>1.07809cm</Left>
         <Height>1.2cm</Height>
         <Width>15.2619cm</Width>
@@ -676,7 +676,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>6.81497cm</Top>
+        <Top>7.44997cm</Top>
         <Left>9.62378cm</Left>
         <Height>0.6cm</Height>
         <Width>1.94027cm</Width>
@@ -709,7 +709,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>7.59136cm</Top>
+        <Top>8.22636cm</Top>
         <Left>9.62378cm</Left>
         <Height>0.6cm</Height>
         <Width>1.94028cm</Width>
@@ -742,7 +742,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>9.60219cm</Top>
+        <Top>9.91969cm</Top>
         <Left>5.26789cm</Left>
         <Height>0.6cm</Height>
         <Width>1.78153cm</Width>
@@ -775,7 +775,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>8.36775cm</Top>
+        <Top>9.00275cm</Top>
         <Left>9.62377cm</Left>
         <Height>0.6cm</Height>
         <Width>1.94028cm</Width>
@@ -810,7 +810,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>subtotal</rd:DefaultName>
-        <Top>6.81497cm</Top>
+        <Top>7.44997cm</Top>
         <Left>12.08471cm</Left>
         <Height>0.6cm</Height>
         <Width>2.49999cm</Width>
@@ -845,7 +845,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>totaltax</rd:DefaultName>
-        <Top>7.55608cm</Top>
+        <Top>8.19108cm</Top>
         <Left>12.08471cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
@@ -880,7 +880,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>discount_amount</rd:DefaultName>
-        <Top>9.60219cm</Top>
+        <Top>9.91969cm</Top>
         <Left>7.04942cm</Left>
         <Height>0.6cm</Height>
         <Width>1.11297cm</Width>
@@ -915,7 +915,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>grandtotal</rd:DefaultName>
-        <Top>8.42264cm</Top>
+        <Top>9.05764cm</Top>
         <Left>12.0847cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
@@ -951,7 +951,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>10.37858cm</Top>
+        <Top>10.69608cm</Top>
         <Left>1.39584cm</Left>
         <Height>0.6cm</Height>
         <Width>14.35333cm</Width>
@@ -1052,7 +1052,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>9.60219cm</Top>
+        <Top>9.91969cm</Top>
         <Left>8.16239cm</Left>
         <Height>0.6cm</Height>
         <Width>4.16776cm</Width>
@@ -1087,6 +1087,132 @@
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>18</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox18">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Customer Name:</Value>
+                <Style>
+                  <FontFamily>calibri</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox6</rd:DefaultName>
+        <Top>4.09109cm</Top>
+        <Left>1.70074cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.73579cm</Width>
+        <ZIndex>19</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox19">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Cusotmer Mobile:</Value>
+                <Style>
+                  <FontFamily>calibri</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox6</rd:DefaultName>
+        <Top>4.94497cm</Top>
+        <Left>1.70074cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.87691cm</Width>
+        <ZIndex>20</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Customer_Name">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Customer_Name.Value, "DataSet1")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Customer_Name</rd:DefaultName>
+        <Top>4.05581cm</Top>
+        <Left>4.43653cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>21</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Customer_Mobile">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Customer_Mobile.Value, "DataSet1")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Customer_Mobile</rd:DefaultName>
+        <Top>4.94497cm</Top>
+        <Left>4.43653cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>22</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>

@@ -225,7 +225,7 @@ Public Class frm_mainCashier
     End Sub
 
     Private Sub txt_amtrec_TextChanged(sender As Object, e As EventArgs) Handles txt_amtrec.TextChanged
-        ' Try to parse the text in txt_grandtotal to a Decimal
+
         Dim grandTotal As Decimal
         If Decimal.TryParse(txt_grandtotal.Text, grandTotal) Then
             ' Try to parse the text in txt_amtrec to a Decimal
@@ -249,7 +249,18 @@ Public Class frm_mainCashier
         lbl_date.Text = Date.Now.ToString("dd:MMMM:yyyy dddd")
     End Sub
     Private Sub btn_pay_Click(sender As Object, e As EventArgs) Handles btn_pay.Click
+        Dim customerName As String = InputBox("Enter customer name:", "Customer Information")
+        Dim customerMobile As String = InputBox("Enter customer mobile number:", "Customer Information")
 
+        ' Check if the user canceled the input
+        If String.IsNullOrEmpty(customerName) OrElse String.IsNullOrEmpty(customerMobile) Then
+            MessageBox.Show("Payment canceled. Customer information is required.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return
+        End If
+
+        ' Set the customer information in your form (you may need to have variables to store this information)
+        txt_cus_name.Text = customerName
+        txt_cus_num.Text = customerMobile
         save_bill()
         If isError = False Then
             frm_billprint.ShowDialog()
@@ -438,12 +449,12 @@ Public Class frm_mainCashier
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-        ' Check if the clicked cell is the "Remove" button (assuming it's in the 10th column, adjust accordingly)
+
         If e.ColumnIndex = 14 AndAlso e.RowIndex >= 0 Then
-            ' Remove the clicked row
+
             DataGridView1.Rows.RemoveAt(e.RowIndex)
 
-            ' Renumber the rows
+
             For i As Integer = 0 To DataGridView1.Rows.Count - 1
                 DataGridView1.Rows(i).Cells(0).Value = i + 1
             Next
