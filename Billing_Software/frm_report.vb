@@ -42,11 +42,11 @@ Public Class frm_report
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`, `grandtotal` FROM `tbi_pos` WHERE cashier_name = @CurrentUser AND billno LIKE '%" & txt_search.Text & "%' GROUP BY billno", conn)
+            cmd = New MySqlCommand("SELECT `billno`, `billdate`, `bmonth`, `bmonthyear`, `grandtotal`,`Customer_Name` FROM `tbi_pos` WHERE  billno like '%" & txt_search.Text & "%'GROUP BY `billno`", conn)
             cmd.Parameters.AddWithValue("@CurrentUser", UserSession.CurrentUser)
             dr = cmd.ExecuteReader
             While dr.Read = True
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"))
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"), dr.Item("Customer_Name"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -62,11 +62,11 @@ Public Class frm_report
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT `billno` ,`billdate` ,`bmonth`,`bmonthyear`,`grandtotal` FROM `tbi_pos` WHERE cashier_name = @CurrentUser AND  billdate like '%" & Date.Now.ToString("yyyy-MM-dd") & "%' group by billno", conn)
+            cmd = New MySqlCommand("SELECT `billno` ,`billdate` ,`bmonth`,`bmonthyear`,`grandtotal`,`Customer_Name` FROM `tbi_pos` WHERE cashier_name = @CurrentUser AND  billdate like '%" & Date.Now.ToString("yyyy-MM-dd") & "%' group by billno", conn)
             cmd.Parameters.AddWithValue("@CurrentUser", UserSession.CurrentUser)
             dr = cmd.ExecuteReader
             While dr.Read = True
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"))
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("billno"), dr.Item("billdate"), dr.Item("bmonth"), dr.Item("bmonthyear"), dr.Item("grandtotal"), dr.Item("Customer_Name"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -134,6 +134,11 @@ Public Class frm_report
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         total()
+
+    End Sub
+
+    Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.CheckedChanged
+        load_report()
 
     End Sub
 End Class

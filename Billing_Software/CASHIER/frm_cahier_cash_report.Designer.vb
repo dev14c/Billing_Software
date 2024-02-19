@@ -53,9 +53,9 @@ Partial Class frm_cahier_cash_report
         Me.Panel1.Controls.Add(Me.cashier_name)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(764, 81)
+        Me.Panel1.Size = New System.Drawing.Size(1019, 100)
         Me.Panel1.TabIndex = 3
         '
         'btn_submit_cash
@@ -63,10 +63,10 @@ Partial Class frm_cahier_cash_report
         Me.btn_submit_cash.BackColor = System.Drawing.Color.RoyalBlue
         Me.btn_submit_cash.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_submit_cash.ForeColor = System.Drawing.Color.White
-        Me.btn_submit_cash.Location = New System.Drawing.Point(541, 24)
-        Me.btn_submit_cash.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn_submit_cash.Location = New System.Drawing.Point(721, 30)
+        Me.btn_submit_cash.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btn_submit_cash.Name = "btn_submit_cash"
-        Me.btn_submit_cash.Size = New System.Drawing.Size(128, 52)
+        Me.btn_submit_cash.Size = New System.Drawing.Size(171, 64)
         Me.btn_submit_cash.TabIndex = 16
         Me.btn_submit_cash.Text = "[F3-SUBMIT THE CASH]"
         Me.btn_submit_cash.UseVisualStyleBackColor = False
@@ -76,10 +76,9 @@ Partial Class frm_cahier_cash_report
         Me.cashier_name.AutoSize = True
         Me.cashier_name.Font = New System.Drawing.Font("Segoe UI", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cashier_name.ForeColor = System.Drawing.Color.White
-        Me.cashier_name.Location = New System.Drawing.Point(22, 33)
-        Me.cashier_name.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.cashier_name.Location = New System.Drawing.Point(29, 41)
         Me.cashier_name.Name = "cashier_name"
-        Me.cashier_name.Size = New System.Drawing.Size(139, 30)
+        Me.cashier_name.Size = New System.Drawing.Size(175, 38)
         Me.cashier_name.TabIndex = 0
         Me.cashier_name.Text = "Cash Report"
         '
@@ -94,28 +93,27 @@ Partial Class frm_cahier_cash_report
         Me.Panel2.Controls.Add(Me.rbtn_today)
         Me.Panel2.Controls.Add(Me.txt_search)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 81)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
+        Me.Panel2.Location = New System.Drawing.Point(0, 100)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(764, 46)
+        Me.Panel2.Size = New System.Drawing.Size(1019, 57)
         Me.Panel2.TabIndex = 4
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(4, 10)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label2.Location = New System.Drawing.Point(5, 12)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(41, 13)
+        Me.Label2.Size = New System.Drawing.Size(50, 16)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Search"
         '
         'btn_filter
         '
-        Me.btn_filter.Location = New System.Drawing.Point(682, 13)
-        Me.btn_filter.Margin = New System.Windows.Forms.Padding(2)
+        Me.btn_filter.Location = New System.Drawing.Point(909, 16)
+        Me.btn_filter.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btn_filter.Name = "btn_filter"
-        Me.btn_filter.Size = New System.Drawing.Size(56, 24)
+        Me.btn_filter.Size = New System.Drawing.Size(75, 30)
         Me.btn_filter.TabIndex = 6
         Me.btn_filter.Text = "Filter"
         Me.btn_filter.UseVisualStyleBackColor = True
@@ -123,28 +121,28 @@ Partial Class frm_cahier_cash_report
         'DateTimePicker2
         '
         Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker2.Location = New System.Drawing.Point(570, 13)
-        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(2)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(760, 16)
+        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(99, 20)
+        Me.DateTimePicker2.Size = New System.Drawing.Size(131, 22)
         Me.DateTimePicker2.TabIndex = 5
         '
         'DateTimePicker1
         '
         Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(458, 13)
-        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(2)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(611, 16)
+        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(99, 20)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(131, 22)
         Me.DateTimePicker1.TabIndex = 4
         '
         'rbtn_currentMonth
         '
         Me.rbtn_currentMonth.AutoSize = True
-        Me.rbtn_currentMonth.Location = New System.Drawing.Point(352, 16)
-        Me.rbtn_currentMonth.Margin = New System.Windows.Forms.Padding(2)
+        Me.rbtn_currentMonth.Location = New System.Drawing.Point(469, 20)
+        Me.rbtn_currentMonth.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.rbtn_currentMonth.Name = "rbtn_currentMonth"
-        Me.rbtn_currentMonth.Size = New System.Drawing.Size(92, 17)
+        Me.rbtn_currentMonth.Size = New System.Drawing.Size(109, 20)
         Me.rbtn_currentMonth.TabIndex = 3
         Me.rbtn_currentMonth.TabStop = True
         Me.rbtn_currentMonth.Text = "Current Month"
@@ -153,10 +151,10 @@ Partial Class frm_cahier_cash_report
         'rbtn_all
         '
         Me.rbtn_all.AutoSize = True
-        Me.rbtn_all.Location = New System.Drawing.Point(234, 17)
-        Me.rbtn_all.Margin = New System.Windows.Forms.Padding(2)
+        Me.rbtn_all.Location = New System.Drawing.Point(312, 21)
+        Me.rbtn_all.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.rbtn_all.Name = "rbtn_all"
-        Me.rbtn_all.Size = New System.Drawing.Size(36, 17)
+        Me.rbtn_all.Size = New System.Drawing.Size(43, 20)
         Me.rbtn_all.TabIndex = 2
         Me.rbtn_all.TabStop = True
         Me.rbtn_all.Text = "All"
@@ -165,10 +163,10 @@ Partial Class frm_cahier_cash_report
         'rbtn_today
         '
         Me.rbtn_today.AutoSize = True
-        Me.rbtn_today.Location = New System.Drawing.Point(293, 16)
-        Me.rbtn_today.Margin = New System.Windows.Forms.Padding(2)
+        Me.rbtn_today.Location = New System.Drawing.Point(391, 20)
+        Me.rbtn_today.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.rbtn_today.Name = "rbtn_today"
-        Me.rbtn_today.Size = New System.Drawing.Size(55, 17)
+        Me.rbtn_today.Size = New System.Drawing.Size(68, 20)
         Me.rbtn_today.TabIndex = 2
         Me.rbtn_today.TabStop = True
         Me.rbtn_today.Text = "Today"
@@ -176,10 +174,10 @@ Partial Class frm_cahier_cash_report
         '
         'txt_search
         '
-        Me.txt_search.Location = New System.Drawing.Point(65, 10)
-        Me.txt_search.Margin = New System.Windows.Forms.Padding(2)
+        Me.txt_search.Location = New System.Drawing.Point(87, 12)
+        Me.txt_search.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txt_search.Name = "txt_search"
-        Me.txt_search.Size = New System.Drawing.Size(150, 20)
+        Me.txt_search.Size = New System.Drawing.Size(199, 22)
         Me.txt_search.TabIndex = 1
         '
         'DataGridView1
@@ -189,14 +187,14 @@ Partial Class frm_cahier_cash_report
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column7})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 127)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(2)
+        Me.DataGridView1.Location = New System.Drawing.Point(0, 157)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidth = 51
         Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(764, 356)
+        Me.DataGridView1.Size = New System.Drawing.Size(1019, 437)
         Me.DataGridView1.TabIndex = 5
         '
         'Column1
@@ -206,7 +204,7 @@ Partial Class frm_cahier_cash_report
         Me.Column1.MinimumWidth = 6
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = True
-        Me.Column1.Width = 39
+        Me.Column1.Width = 43
         '
         'Column2
         '
@@ -218,7 +216,7 @@ Partial Class frm_cahier_cash_report
         Me.Column2.MinimumWidth = 6
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
-        Me.Column2.Width = 55
+        Me.Column2.Width = 65
         '
         'Column3
         '
@@ -235,7 +233,7 @@ Partial Class frm_cahier_cash_report
         Me.Column4.MinimumWidth = 6
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
-        Me.Column4.Width = 75
+        Me.Column4.Width = 91
         '
         'Column7
         '
@@ -244,17 +242,17 @@ Partial Class frm_cahier_cash_report
         Me.Column7.MinimumWidth = 6
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
-        Me.Column7.Width = 88
+        Me.Column7.Width = 108
         '
         'frm_cahier_cash_report
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(764, 483)
+        Me.ClientSize = New System.Drawing.Size(1019, 594)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Margin = New System.Windows.Forms.Padding(2)
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "frm_cahier_cash_report"
         Me.Text = "frm_cahier_cash_report"
         Me.Panel1.ResumeLayout(False)

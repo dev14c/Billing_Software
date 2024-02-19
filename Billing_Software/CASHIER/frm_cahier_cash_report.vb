@@ -191,4 +191,8 @@ Public Class frm_cahier_cash_report
     Private Sub rbtn_all_CheckedChanged(sender As Object, e As EventArgs) Handles rbtn_all.CheckedChanged
         load_report()
     End Sub
+
+    Private Sub txt_search_TextChanged(sender As Object, e As EventArgs) Handles txt_search.TextChanged
+
+    End Sub
 End Class

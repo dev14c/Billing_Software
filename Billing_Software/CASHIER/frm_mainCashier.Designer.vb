@@ -23,7 +23,7 @@ Partial Class frm_mainCashier
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lbl_username = New System.Windows.Forms.Label()
         Me.lbl_time = New System.Windows.Forms.Label()
@@ -42,13 +42,13 @@ Partial Class frm_mainCashier
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.btn_logout = New System.Windows.Forms.Button()
-        Me.btn_change = New System.Windows.Forms.Button()
         Me.btn_remove = New System.Windows.Forms.Button()
         Me.btn_report = New System.Windows.Forms.Button()
         Me.btn_submit_cash1 = New System.Windows.Forms.Button()
         Me.btn_cancel = New System.Windows.Forms.Button()
         Me.btm_new = New System.Windows.Forms.Button()
+        Me.btn_change = New System.Windows.Forms.Button()
+        Me.btn_logout = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.txt_sub_total = New System.Windows.Forms.Label()
         Me.txt_subtotal = New System.Windows.Forms.Label()
@@ -285,13 +285,13 @@ Partial Class frm_mainCashier
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
-        Me.TableLayoutPanel1.Controls.Add(Me.btn_logout, 6, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.btn_change, 5, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.btn_remove, 4, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.btn_report, 3, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.btn_submit_cash1, 2, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.btn_cancel, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.btm_new, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.btn_change, 6, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.btn_logout, 5, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 671)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -300,30 +300,6 @@ Partial Class frm_mainCashier
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(1448, 70)
         Me.TableLayoutPanel1.TabIndex = 2
-        '
-        'btn_logout
-        '
-        Me.btn_logout.BackColor = System.Drawing.Color.Coral
-        Me.btn_logout.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_logout.ForeColor = System.Drawing.Color.White
-        Me.btn_logout.Location = New System.Drawing.Point(1239, 3)
-        Me.btn_logout.Name = "btn_logout"
-        Me.btn_logout.Size = New System.Drawing.Size(170, 64)
-        Me.btn_logout.TabIndex = 19
-        Me.btn_logout.Text = "[F7-LOGOUT]"
-        Me.btn_logout.UseVisualStyleBackColor = False
-        '
-        'btn_change
-        '
-        Me.btn_change.BackColor = System.Drawing.Color.RoyalBlue
-        Me.btn_change.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_change.ForeColor = System.Drawing.Color.White
-        Me.btn_change.Location = New System.Drawing.Point(1033, 3)
-        Me.btn_change.Name = "btn_change"
-        Me.btn_change.Size = New System.Drawing.Size(170, 64)
-        Me.btn_change.TabIndex = 18
-        Me.btn_change.Text = "[F6-CHANGE PASSWORD]"
-        Me.btn_change.UseVisualStyleBackColor = False
         '
         'btn_remove
         '
@@ -334,7 +310,7 @@ Partial Class frm_mainCashier
         Me.btn_remove.Name = "btn_remove"
         Me.btn_remove.Size = New System.Drawing.Size(170, 64)
         Me.btn_remove.TabIndex = 17
-        Me.btn_remove.Text = "[F5-REMOVE]"
+        Me.btn_remove.Text = "[CLEAR ALL]"
         Me.btn_remove.UseVisualStyleBackColor = False
         '
         'btn_report
@@ -346,7 +322,7 @@ Partial Class frm_mainCashier
         Me.btn_report.Name = "btn_report"
         Me.btn_report.Size = New System.Drawing.Size(170, 64)
         Me.btn_report.TabIndex = 16
-        Me.btn_report.Text = "[F4-REPORT]"
+        Me.btn_report.Text = "[REPORT]"
         Me.btn_report.UseVisualStyleBackColor = False
         '
         'btn_submit_cash1
@@ -358,7 +334,7 @@ Partial Class frm_mainCashier
         Me.btn_submit_cash1.Name = "btn_submit_cash1"
         Me.btn_submit_cash1.Size = New System.Drawing.Size(170, 64)
         Me.btn_submit_cash1.TabIndex = 15
-        Me.btn_submit_cash1.Text = "[F3-SUBMIT THE CASH]"
+        Me.btn_submit_cash1.Text = "[SUBMIT THE CASH]"
         Me.btn_submit_cash1.UseVisualStyleBackColor = False
         '
         'btn_cancel
@@ -370,7 +346,7 @@ Partial Class frm_mainCashier
         Me.btn_cancel.Name = "btn_cancel"
         Me.btn_cancel.Size = New System.Drawing.Size(170, 64)
         Me.btn_cancel.TabIndex = 14
-        Me.btn_cancel.Text = "[F2-View Bills]"
+        Me.btn_cancel.Text = "[View Bills]"
         Me.btn_cancel.UseVisualStyleBackColor = False
         '
         'btm_new
@@ -382,8 +358,33 @@ Partial Class frm_mainCashier
         Me.btm_new.Name = "btm_new"
         Me.btm_new.Size = New System.Drawing.Size(170, 64)
         Me.btm_new.TabIndex = 13
-        Me.btm_new.Text = "[F1-NEW]"
+        Me.btm_new.Text = "[NEW]"
         Me.btm_new.UseVisualStyleBackColor = False
+        '
+        'btn_change
+        '
+        Me.btn_change.BackColor = System.Drawing.Color.RoyalBlue
+        Me.btn_change.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_change.ForeColor = System.Drawing.Color.White
+        Me.btn_change.Location = New System.Drawing.Point(1239, 3)
+        Me.btn_change.Name = "btn_change"
+        Me.btn_change.Size = New System.Drawing.Size(170, 64)
+        Me.btn_change.TabIndex = 18
+        Me.btn_change.Text = "[CHANGE PASSWORD]"
+        Me.btn_change.UseVisualStyleBackColor = False
+        Me.btn_change.Visible = False
+        '
+        'btn_logout
+        '
+        Me.btn_logout.BackColor = System.Drawing.Color.Coral
+        Me.btn_logout.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_logout.ForeColor = System.Drawing.Color.White
+        Me.btn_logout.Location = New System.Drawing.Point(1033, 3)
+        Me.btn_logout.Name = "btn_logout"
+        Me.btn_logout.Size = New System.Drawing.Size(170, 64)
+        Me.btn_logout.TabIndex = 19
+        Me.btn_logout.Text = "[LOGOUT]"
+        Me.btn_logout.UseVisualStyleBackColor = False
         '
         'Panel3
         '
@@ -663,11 +664,11 @@ Partial Class frm_mainCashier
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidth = 30
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Yellow
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Yellow
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.RowTemplate.Height = 24
         Me.DataGridView1.Size = New System.Drawing.Size(1021, 476)
         Me.DataGridView1.TabIndex = 4

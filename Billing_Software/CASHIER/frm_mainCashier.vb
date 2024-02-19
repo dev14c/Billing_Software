@@ -9,7 +9,7 @@ Public Class frm_mainCashier
         dbconn()
 
 
-        AddHandler Me.MessageReceived, AddressOf DisplayMessage
+
 
         DataGridView1.RowTemplate.Height = 30
         txt_SearchProduct.Focus()
@@ -31,7 +31,7 @@ Public Class frm_mainCashier
         Dim existingRowIndex As Integer = 0
         Dim existingQuantity As Integer = 0
 
-        ' Check if the product already exists in the DataGridView
+
         For Each row As DataGridViewRow In DataGridView1.Rows
             If row.Cells(1).Value IsNot Nothing AndAlso row.Cells(1).Value.ToString() = txt_SearchProduct.Text Then
                 exist = True
@@ -43,7 +43,7 @@ Public Class frm_mainCashier
         Next
 
         If exist Then
-            ' If the product already exists, check stock before incrementing the quantity
+
             Dim currentStock As Integer = GetStockLevel(txt_SearchProduct.Text)
 
             Dim x As Integer
@@ -51,9 +51,6 @@ Public Class frm_mainCashier
             If x > 0 Then
                 DataGridView1.Rows(existingRowIndex).Cells(8).Value = CInt(DataGridView1.Rows(existingRowIndex).Cells(8).Value) + 1
                 calculate_price(existingRowIndex)
-                'DataGridView1.Rows(existingRowIndex).Cells(8).Value = existingQuantity + 1
-                'Dim totalPrice As Decimal = CDec(DataGridView1.Rows(existingRowIndex).Cells(7).Value) * CInt(DataGridView1.Rows(existingRowIndex).Cells(8).Value)
-                'DataGridView1.Rows(existingRowIndex).Cells(9).Value = totalPrice
             Else
                 MsgBox("Insufficient stock for the selected product.", MsgBoxStyle.Exclamation)
             End If
@@ -79,14 +76,14 @@ Public Class frm_mainCashier
                     If stock > 0 Then
                         Dim rate As Decimal
                         Dim tax As Decimal
-                        Dim totalQtyPrice As Double
+                        Dim gstprice As Double
                         Dim gstAmount As Double
                         If Decimal.TryParse(dr("selling_price").ToString(), rate) AndAlso Decimal.TryParse(dr("tax").ToString(), tax) Then
-                            totalQtyPrice = Math.Round(rate / (tax + 100) * tax, 2)
-                            gstAmount = Math.Round(rate - totalQtyPrice, 2)
+                            gstprice = Math.Round(rate / (tax + 100) * tax, 2)
+                            gstAmount = Math.Round(rate - gstprice, 2)
                         End If
 
-                        DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, procode, proname, progroup, uom, gstAmount, tax, totalQtyPrice, 1, mrp, rate, rate, purchase)
+                        DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, procode, proname, progroup, uom, gstAmount, tax, gstprice, 1, mrp, rate, rate, purchase)
                         txt_SearchProduct.Clear()
                         txt_SearchProduct.Focus()
                     Else
@@ -107,7 +104,7 @@ Public Class frm_mainCashier
     Public Function GetStockLevel(productCode As String) As Integer
         Dim stockLevel As Integer = 0
 
-        ' Replace the following lines with your actual database query logic
+
         If conn.State = ConnectionState.Closed Then
             conn.Open()
         End If
@@ -165,10 +162,10 @@ Public Class frm_mainCashier
         Dim items As Integer = DataGridView1.Rows.Count()
         For i As Integer = 0 To DataGridView1.Rows.Count() - 1 Step +1
             sum = sum + DataGridView1.Rows(i).Cells(11).Value
-            'tax = tax + DataGridView1.Rows(i).Cells(5).Value * DataGridView1.Rows(i).Cells(6).Value / 100 * DataGridView1.Rows(i).Cells(8).Value
+
             dis = dis + (DataGridView1.Rows(i).Cells(9).Value - DataGridView1.Rows(i).Cells(10).Value) * DataGridView1.Rows(i).Cells(8).Value
             tax = tax + DataGridView1.Rows(i).Cells(7).Value
-            'subtotal = subtotal + DataGridView1.Rows(i).Cells(5).Value * DataGridView1.Rows(i).Cells(8).Value
+
             subtotal = subtotal + DataGridView1.Rows(i).Cells(5).Value
         Next
 
@@ -203,7 +200,7 @@ Public Class frm_mainCashier
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         total()
 
-        ' Or reload your data or perform any other refresh logic
+
 
 
     End Sub
@@ -231,15 +228,15 @@ Public Class frm_mainCashier
             ' Try to parse the text in txt_amtrec to a Decimal
             Dim amountReceived As Decimal
             If Decimal.TryParse(txt_amtrec.Text, amountReceived) Then
-                ' Both parsing operations were successful, update txt_change
+
                 txt_change.Text = Format(amountReceived - grandTotal, "#,##0.00")
                 btn_pay.Enabled = True
             Else
-                ' The parsing of txt_amtrec failed, handle the error (e.g., display a message)
+
                 txt_change.Text = "00.00"
             End If
         Else
-            ' The parsing of txt_grandtotal failed, handle the error (e.g., display a message)
+            '
             txt_change.Text = "00.00"
         End If
     End Sub
@@ -249,18 +246,38 @@ Public Class frm_mainCashier
         lbl_date.Text = Date.Now.ToString("dd:MMMM:yyyy dddd")
     End Sub
     Private Sub btn_pay_Click(sender As Object, e As EventArgs) Handles btn_pay.Click
-        Dim customerName As String = InputBox("Enter customer name:", "Customer Information")
+        ' Get the customer's mobile number
         Dim customerMobile As String = InputBox("Enter customer mobile number:", "Customer Information")
 
         ' Check if the user canceled the input
-        If String.IsNullOrEmpty(customerName) OrElse String.IsNullOrEmpty(customerMobile) Then
-            MessageBox.Show("Payment canceled. Customer information is required.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        If String.IsNullOrEmpty(customerMobile) Then
+            MessageBox.Show("Payment canceled. Customer mobile number is required.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return
         End If
 
-        ' Set the customer information in your form (you may need to have variables to store this information)
+
+        Dim customerName As String = GetCustomerNameFromDatabase(customerMobile)
+
+
+        If Not String.IsNullOrEmpty(customerName) Then
+            MessageBox.Show($"Customer found: {customerName}", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+
+            customerName = InputBox("Enter customer name:", "Customer Information")
+
+
+            If String.IsNullOrEmpty(customerName) Then
+                MessageBox.Show("Payment canceled. Customer name is required.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return
+            End If
+        End If
+
+
         txt_cus_name.Text = customerName
         txt_cus_num.Text = customerMobile
+
+
+
         save_bill()
         If isError = False Then
             frm_billprint.ShowDialog()
@@ -282,6 +299,29 @@ Public Class frm_mainCashier
 
 
     End Sub
+    Private Function GetCustomerNameFromDatabase(customerMobile As String) As String
+        Try
+            If conn.State = ConnectionState.Closed Then
+                conn.Open()
+            End If
+
+            Dim query As String = "SELECT Customer_Name FROM tbi_pos WHERE Customer_Mobile = @customerMobile"
+            Dim cmd As New MySqlCommand(query, conn)
+            cmd.Parameters.AddWithValue("@customerMobile", customerMobile)
+
+            Dim result As Object = cmd.ExecuteScalar()
+
+            If result IsNot Nothing AndAlso result IsNot DBNull.Value Then
+                Return result.ToString()
+            Else
+                Return String.Empty
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return String.Empty
+        End Try
+    End Function
+
 
     Dim isError As Boolean = False
     Sub save_bill()
@@ -430,11 +470,10 @@ Public Class frm_mainCashier
     End Sub
 
     Private Sub btn_remove_Click(sender As Object, e As EventArgs) Handles btn_remove.Click
-        If DataGridView1.SelectedRows.Count > 0 Then
-            DataGridView1.Rows.Remove(DataGridView1.SelectedRows.Item(1))
-        Else
-            MessageBox.Show("Please select a row to remove.", "No Row Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-        End If
+
+        DataGridView1.Rows.Clear()
+
+
     End Sub
 
 
@@ -460,9 +499,9 @@ Public Class frm_mainCashier
             Next
         End If
 
-        ' Check if the clicked cell is the button column and a valid row
+
         If e.RowIndex >= 0 AndAlso e.ColumnIndex = 13 Then
-            ' Get the selected row index
+
             Dim rowIndex As Integer = e.RowIndex
 
             ' Check if the quantity is greater than 1 before deducting
@@ -470,11 +509,9 @@ Public Class frm_mainCashier
                 ' Deduct the quantity by 1
                 DataGridView1.Rows(rowIndex).Cells(8).Value = CInt(DataGridView1.Rows(rowIndex).Cells(8).Value) - 1
                 calculate_price(rowIndex)
-                ' Recalculate total price for the row
-                'DataGridView1.Rows(rowIndex).Cells(9).Value = CInt(DataGridView1.Rows(rowIndex).Cells(5).Value) * CInt(DataGridView1.Rows(rowIndex).Cells(8).Value)
             Else
-                ' If the quantity is already 1, you may choose to remove the row or handle it accordingly
-                MsgBox("Qty is already 1 you cannot deduct the qty now ")
+
+                MsgBox("Qty is already 1 you cannot deduct the qty now  you can remove the qty ")
             End If
         End If
     End Sub
@@ -487,22 +524,7 @@ Public Class frm_mainCashier
         frm_report.ShowDialog()
     End Sub
 
-    Private Sub frm_mainCashier_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
-        If (e.KeyCode = Keys.F1) Then
-            btm_new_Click(sender, e)
-        ElseIf (e.KeyCode = Keys.F2) Then
-            btn_cancel_Click(sender, e)
 
-        ElseIf (e.KeyCode = Keys.F4) Then
-            btn_report_Click(sender, e)
-        ElseIf (e.KeyCode = Keys.F6) Then
-            btn_change_Click(sender, e)
-        ElseIf (e.KeyCode = Keys.F7) Then
-            btn_logout_Click(sender, e)
-        End If
-
-
-    End Sub
 
     Private Sub btn_setdiscount_Click(sender As Object, e As EventArgs) Handles btn_submit_cash1.Click
         frm_cahier_cash_report.ShowDialog()
@@ -512,27 +534,29 @@ Public Class frm_mainCashier
         Dim qty As Integer = DataGridView1.Rows(numrow).Cells(8).Value
         Dim rate As Integer = DataGridView1.Rows(numrow).Cells(10).Value
         Dim tax As Integer = DataGridView1.Rows(numrow).Cells(6).Value
-        Dim totalqtyprice As Decimal
+        Dim taxprice As Decimal
         Dim rate_x_qty As Decimal = rate * qty
         Dim gstAmount As Decimal
-        totalqtyprice = Math.Round((rate_x_qty / (tax + 100)) * tax, 2)
-        gstAmount = Math.Round(rate_x_qty - totalqtyprice, 2)
-        DataGridView1.Rows(numrow).Cells(7).Value = totalqtyprice
+        taxprice = Math.Round((rate_x_qty / (tax + 100)) * tax, 2)
+
+        gstAmount = Math.Round(rate_x_qty - taxprice, 2)
+
+        DataGridView1.Rows(numrow).Cells(7).Value = taxprice
         DataGridView1.Rows(numrow).Cells(5).Value = gstAmount
         DataGridView1.Rows(numrow).Cells(11).Value = rate_x_qty
     End Sub
 
-    Private Sub Label17_Click(sender As Object, e As EventArgs)
 
-    End Sub
 
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
-    End Sub
 
     Private Sub qtyUpdate_Click(sender As Object, e As EventArgs) Handles qtyUpdate.Click
         Dim form2Instance As New frm_qty_add(Me)
         form2Instance.ShowDialog()
+    End Sub
+
+    Private Sub txt_billno_TextChanged(sender As Object, e As EventArgs) Handles txt_billno.TextChanged
+
     End Sub
 
 

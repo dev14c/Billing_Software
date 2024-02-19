@@ -250,12 +250,6 @@
     <Compile Include="ADMIN\frm_cash_sumbit.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CASHIER\frm_discount.Designer.vb">
-      <DependentUpon>frm_discount.vb</DependentUpon>
-    </Compile>
-    <Compile Include="CASHIER\frm_discount.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="CASHIER\frm_mainCashier.Designer.vb">
       <DependentUpon>frm_mainCashier.vb</DependentUpon>
     </Compile>
@@ -369,9 +363,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ADMIN\frm_cash_sumbit.resx">
       <DependentUpon>frm_cash_sumbit.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CASHIER\frm_discount.resx">
-      <DependentUpon>frm_discount.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CASHIER\frm_mainCashier.resx">
       <DependentUpon>frm_mainCashier.vb</DependentUpon>

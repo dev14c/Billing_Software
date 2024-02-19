@@ -52,17 +52,18 @@ Public Class frm_cancelorder
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
 
         Try
-            ' Specify the directory path
+
             Dim directoryPath As String = Path.Combine(Application.StartupPath, "Reports")
 
-            ' Specify the full file path based on the selected bill number
-            Dim selectedBillNo As String = DataGridView1.Rows(e.RowIndex).Cells(1).Value.ToString()
-            ' Replace with the actual selected bill number
-            Dim pdfFilePath As String = Path.Combine(directoryPath, $"Bill No_{selectedBillNo}.pdf")
 
-            ' Check if the PDF file exists
+            Dim selectedBillNo As String = DataGridView1.Rows(e.RowIndex).Cells(1).Value.ToString()
+
+            Dim pdfFilePath As String = Path.Combine(directoryPath, $"Bill No_{selectedBillNo}.pdf")
+            'this is to view the bill'
+            ''
+
             If File.Exists(pdfFilePath) Then
-                ' Open the PDF file using the default PDF viewer
+
                 Process.Start(pdfFilePath)
             Else
                 MsgBox("PDF file not found for the selected bill number.", MsgBoxStyle.Information)
@@ -73,39 +74,6 @@ Public Class frm_cancelorder
     End Sub
 
 
-    Private Sub DisplayBillDetails(billno As String)
 
-        ' Instantiate and show the BillDetailsForm
-        Dim billDetailsForm As New view_bill()
-        Try
-
-            If conn.State = ConnectionState.Open Then
-                conn.Close()
-            End If
-            conn.Open()
-            cmd = New MySqlCommand("select billno,Customer_Name,Customer_Mobile,paymode,billdate, grandtotal from tbi_pos where billno=@billno", conn)
-
-            cmd.Parameters.AddWithValue("@billno", billno)
-            dr = cmd.ExecuteReader
-            If dr.Read() Then
-                ' Set the TextBox on the BillDetailsForm with the retrieved grandtotal
-                billDetailsForm.txt_billno.Text = dr("billno").ToString()
-                billDetailsForm.txt_billdate.Text = dr("billdate").ToString()
-                billDetailsForm.txt_cusname.Text = dr("Customer_Name").ToString()
-                billDetailsForm.txt_cusmob.Text = dr("Customer_Mobile").ToString()
-                billDetailsForm.txt_mod.Text = dr("paymode").ToString()
-                billDetailsForm.txt_total.Text = dr("grandtotal").ToString()
-            Else
-                MsgBox("No details found for the selected bill.", MsgBoxStyle.Information)
-            End If
-
-        Catch ex As Exception
-            MsgBox(ex.Message)
-
-        End Try
-
-        ' Show the BillDetailsForm
-        billDetailsForm.Show()
-    End Sub
 
 End Class

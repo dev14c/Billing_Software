@@ -56,9 +56,9 @@ Public Class frm_mainAdmin
                 End If
             End While
             If Not String.IsNullOrEmpty(i) Then
-                MsgBox($"The following products have stock below the threshold: {i}. Please refill!", vbInformation)
+                MsgBox($"The following products have stock below the 5 qty: {i}. Please refill!", vbInformation)
             Else
-                MsgBox("All stocks are above the threshold. No refill needed.", vbInformation)
+                MsgBox("All stocks are above the fullfilled. No refill needed.", vbInformation)
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -279,8 +279,7 @@ WHERE role = 'Cashier'", conn)
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         frm_viewbill_admin.ShowDialog()
     End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
 
     End Sub
 End Class

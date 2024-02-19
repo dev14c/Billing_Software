@@ -66,7 +66,6 @@ Partial Class frm_mainAdmin
         Me.todayprofit = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -130,7 +129,7 @@ Partial Class frm_mainAdmin
         '
         'TableLayoutPanel1
         '
-        Me.TableLayoutPanel1.ColumnCount = 8
+        Me.TableLayoutPanel1.ColumnCount = 7
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
@@ -138,8 +137,6 @@ Partial Class frm_mainAdmin
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel1.Controls.Add(Me.Button2, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.btn_manageProduct, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.cash_report_btn, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Button1, 5, 0)
@@ -162,7 +159,7 @@ Partial Class frm_mainAdmin
         Me.btn_manageProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_manageProduct.Location = New System.Drawing.Point(3, 3)
         Me.btn_manageProduct.Name = "btn_manageProduct"
-        Me.btn_manageProduct.Size = New System.Drawing.Size(82, 76)
+        Me.btn_manageProduct.Size = New System.Drawing.Size(94, 76)
         Me.btn_manageProduct.TabIndex = 0
         Me.btn_manageProduct.Text = "Manage Product"
         Me.btn_manageProduct.UseVisualStyleBackColor = True
@@ -170,12 +167,12 @@ Partial Class frm_mainAdmin
         'cash_report_btn
         '
         Me.cash_report_btn.FlatAppearance.BorderSize = 0
-        Me.cash_report_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack
+        Me.cash_report_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.cash_report_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cash_report_btn.ForeColor = System.Drawing.Color.White
-        Me.cash_report_btn.Location = New System.Drawing.Point(179, 3)
+        Me.cash_report_btn.Location = New System.Drawing.Point(103, 3)
         Me.cash_report_btn.Name = "cash_report_btn"
-        Me.cash_report_btn.Size = New System.Drawing.Size(82, 76)
+        Me.cash_report_btn.Size = New System.Drawing.Size(94, 76)
         Me.cash_report_btn.TabIndex = 5
         Me.cash_report_btn.Text = "Cash Reports"
         Me.cash_report_btn.UseVisualStyleBackColor = True
@@ -187,9 +184,9 @@ Partial Class frm_mainAdmin
         Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(531, 3)
+        Me.Button1.Location = New System.Drawing.Point(503, 3)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(82, 76)
+        Me.Button1.Size = New System.Drawing.Size(94, 76)
         Me.Button1.TabIndex = 5
         Me.Button1.Text = "View Bills"
         Me.Button1.UseVisualStyleBackColor = False
@@ -197,11 +194,11 @@ Partial Class frm_mainAdmin
         'btn_Reports
         '
         Me.btn_Reports.FlatAppearance.BorderSize = 0
-        Me.btn_Reports.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack
+        Me.btn_Reports.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.btn_Reports.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_Reports.Location = New System.Drawing.Point(443, 3)
+        Me.btn_Reports.Location = New System.Drawing.Point(403, 3)
         Me.btn_Reports.Name = "btn_Reports"
-        Me.btn_Reports.Size = New System.Drawing.Size(82, 76)
+        Me.btn_Reports.Size = New System.Drawing.Size(94, 76)
         Me.btn_Reports.TabIndex = 3
         Me.btn_Reports.Text = "Reports"
         Me.btn_Reports.UseVisualStyleBackColor = True
@@ -211,9 +208,9 @@ Partial Class frm_mainAdmin
         Me.btn_logout.FlatAppearance.BorderSize = 0
         Me.btn_logout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red
         Me.btn_logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_logout.Location = New System.Drawing.Point(619, 3)
+        Me.btn_logout.Location = New System.Drawing.Point(603, 3)
         Me.btn_logout.Name = "btn_logout"
-        Me.btn_logout.Size = New System.Drawing.Size(84, 76)
+        Me.btn_logout.Size = New System.Drawing.Size(94, 76)
         Me.btn_logout.TabIndex = 4
         Me.btn_logout.Text = "Logout"
         Me.btn_logout.UseVisualStyleBackColor = True
@@ -221,11 +218,11 @@ Partial Class frm_mainAdmin
         'btn_ManageStock
         '
         Me.btn_ManageStock.FlatAppearance.BorderSize = 0
-        Me.btn_ManageStock.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack
+        Me.btn_ManageStock.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.btn_ManageStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_ManageStock.Location = New System.Drawing.Point(355, 3)
+        Me.btn_ManageStock.Location = New System.Drawing.Point(303, 3)
         Me.btn_ManageStock.Name = "btn_ManageStock"
-        Me.btn_ManageStock.Size = New System.Drawing.Size(82, 68)
+        Me.btn_ManageStock.Size = New System.Drawing.Size(94, 68)
         Me.btn_ManageStock.TabIndex = 1
         Me.btn_ManageStock.Text = "Manage Stock"
         Me.btn_ManageStock.UseVisualStyleBackColor = True
@@ -233,11 +230,11 @@ Partial Class frm_mainAdmin
         'btn_manageUsers
         '
         Me.btn_manageUsers.FlatAppearance.BorderSize = 0
-        Me.btn_manageUsers.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack
+        Me.btn_manageUsers.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.btn_manageUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_manageUsers.Location = New System.Drawing.Point(267, 3)
+        Me.btn_manageUsers.Location = New System.Drawing.Point(203, 3)
         Me.btn_manageUsers.Name = "btn_manageUsers"
-        Me.btn_manageUsers.Size = New System.Drawing.Size(82, 76)
+        Me.btn_manageUsers.Size = New System.Drawing.Size(94, 76)
         Me.btn_manageUsers.TabIndex = 2
         Me.btn_manageUsers.Text = "Manage Users"
         Me.btn_manageUsers.UseVisualStyleBackColor = True
@@ -556,18 +553,6 @@ Partial Class frm_mainAdmin
         '
         Me.Timer1.Enabled = True
         '
-        'Button2
-        '
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Location = New System.Drawing.Point(91, 3)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(82, 76)
-        Me.Button2.TabIndex = 6
-        Me.Button2.Text = "Logout"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
         'frm_mainAdmin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 21.0!)
@@ -653,5 +638,4 @@ Partial Class frm_mainAdmin
     Friend WithEvents Panel13 As Panel
     Friend WithEvents Label8 As Label
     Friend WithEvents monthprofit As Label
-    Friend WithEvents Button2 As Button
 End Class

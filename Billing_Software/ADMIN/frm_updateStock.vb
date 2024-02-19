@@ -28,8 +28,7 @@ Public Class frm_updateStock
             Else
                 MsgBox("Stock Update Failed", vbInformation)
 
-                ' Output the error message to help identify the issue
-                Console.WriteLine("Error Message: " & cmd.Parameters.ToString())
+
             End If
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbExclamation)

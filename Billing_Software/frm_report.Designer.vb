@@ -36,7 +36,6 @@ Partial Class frm_report
         Me.rbtn_today = New System.Windows.Forms.RadioButton()
         Me.txt_search = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -44,6 +43,8 @@ Partial Class frm_report
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -85,6 +86,7 @@ Partial Class frm_report
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.RadioButton1)
         Me.Panel2.Controls.Add(Me.Label2)
         Me.Panel2.Controls.Add(Me.btn_filter)
         Me.Panel2.Controls.Add(Me.DateTimePicker2)
@@ -101,7 +103,7 @@ Partial Class frm_report
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(50, 12)
+        Me.Label2.Location = New System.Drawing.Point(23, 15)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(61, 23)
         Me.Label2.TabIndex = 2
@@ -156,7 +158,7 @@ Partial Class frm_report
         '
         'txt_search
         '
-        Me.txt_search.Location = New System.Drawing.Point(132, 12)
+        Me.txt_search.Location = New System.Drawing.Point(107, 12)
         Me.txt_search.Name = "txt_search"
         Me.txt_search.Size = New System.Drawing.Size(199, 30)
         Me.txt_search.TabIndex = 1
@@ -178,10 +180,6 @@ Partial Class frm_report
         Me.DataGridView1.RowTemplate.Height = 24
         Me.DataGridView1.Size = New System.Drawing.Size(1048, 490)
         Me.DataGridView1.TabIndex = 2
-        '
-        'Timer1
-        '
-        Me.Timer1.Enabled = True
         '
         'Column1
         '
@@ -236,7 +234,7 @@ Partial Class frm_report
         Me.Column5.MinimumWidth = 6
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
-        Me.Column5.Width = 148
+        Me.Column5.Width = 162
         '
         'Column7
         '
@@ -245,6 +243,21 @@ Partial Class frm_report
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
         Me.Column7.Width = 125
+        '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        '
+        'RadioButton1
+        '
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Location = New System.Drawing.Point(312, 13)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(50, 27)
+        Me.RadioButton1.TabIndex = 7
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.Text = "All"
+        Me.RadioButton1.UseVisualStyleBackColor = True
         '
         'frm_report
         '
@@ -288,4 +301,5 @@ Partial Class frm_report
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
+    Friend WithEvents RadioButton1 As RadioButton
 End Class

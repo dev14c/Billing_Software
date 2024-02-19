@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Windows.Interop
+Imports MySql.Data.MySqlClient
 
 Public Class frm_cash_sumbit
     Private Sub frm_cash_sumbit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -33,31 +34,51 @@ Public Class frm_cash_sumbit
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-        ' Check if recive btn is clicked oro not'
-        If e.ColumnIndex = DataGridView1.Columns(6).Index AndAlso e.RowIndex >= 0 Then
-            '
-            Dim datevalue As String = DataGridView1.Rows(e.RowIndex).Cells(1).Value.ToString()
-            Dim cashiername As String = DataGridView1.Rows(e.RowIndex).Cells(2).Value.ToString()
+        If e.RowIndex < 0 Then
+            Return
+        End If
 
-            Dim convertDate As DateTime
-            If DateTime.TryParse(datevalue, convertDate) Then
-                datevalue = convertDate.ToString("yyyy-MM-dd")
-            End If
-            ' Display a confirmation message box
-            Dim result As DialogResult = MessageBox.Show($"Are you sure you have received cash from {cashiername} on {datevalue}?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        Dim dateValue As String = DataGridView1.Rows(e.RowIndex).Cells(1).Value.ToString()
+        Dim cashiername As String = DataGridView1.Rows(e.RowIndex).Cells(2).Value.ToString()
 
-            ' Check the user's response
-            If result = DialogResult.Yes Then
-                ' Update the 'Cashrec' column in the database to 'Yes'
-                UpdateCashRecInDatabase(cashiername, datevalue)
-            Else
-                ' User clicked No, do nothing or provide feedback as needed
-                ' ...
-                ShowMessageForm(cashiername, datevalue)
+        Dim convertDate As DateTime
+        If DateTime.TryParse(dateValue, convertDate) Then
+            dateValue = convertDate.ToString("yyyy-MM-dd")
+        End If
 
-            End If
+        If e.ColumnIndex = DataGridView1.Columns(6).Index Then
+
+            ShowConfirmationAndUpdateDatabase($"Are you sure you have received cash from {cashiername} on {dateValue}?", cashiername, dateValue)
+        ElseIf e.ColumnIndex = DataGridView1.Columns(7).Index Then
+
+            ShowConfirmationAndFeedback($"Are you sure you have not received cash from {cashiername} on {dateValue}?", cashiername, dateValue)
         End If
     End Sub
+
+    Private Sub ShowConfirmationAndUpdateDatabase(message As String, cashiername As String, dateValue As String)
+        Dim result As DialogResult = MessageBox.Show(message, "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If result = DialogResult.Yes Then
+            UpdateCashRecInDatabase(cashiername, dateValue)
+        Else
+            ' User clicked No, do nothing or provide feedback as needed
+            ' ...
+            ShowMessageForm(cashiername, dateValue)
+        End If
+    End Sub
+
+    Private Sub ShowConfirmationAndFeedback(message As String, cashiername As String, dateValue As String)
+        Dim result As DialogResult = MessageBox.Show(message, "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If result = DialogResult.Yes Then
+
+            updateNorec(cashiername, dateValue)
+        Else
+
+            ShowMessageForm(cashiername, dateValue)
+        End If
+    End Sub
+
     Private Sub ShowMessageForm(cashiername As String, datevalue As String)
         ' Create an instance of the message form
         Dim sendMessageForm As New frm_mainCashier()
@@ -66,6 +87,36 @@ Public Class frm_cash_sumbit
 
 
     End Sub
+    Sub updateNorec(cashiername As String, datevalue As String)
+        Try
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+            conn.Open()
+
+            ' Update the 'Cashrec' column in the database to 'Yes'
+            Dim updateQuery As String = "UPDATE cash_report SET Cashrec = 'No' WHERE Cashier_name = @cashiername AND Date = @datevalue"
+
+            Using cmd As New MySqlCommand(updateQuery, conn)
+                cmd.Parameters.AddWithValue("@cashiername", cashiername)
+                cmd.Parameters.AddWithValue("@datevalue", datevalue)
+                cmd.ExecuteNonQuery()
+            End Using
+
+            ' Display a message indicating successful update
+            MsgBox("ok done")
+
+            ' Optionally, refresh your DataGridView
+            load_report_admin()
+        Catch ex As Exception
+            ' Handle any exceptions that may occur during the database update
+            MessageBox.Show("Error updating the database: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            ' Close the database connection
+            conn.Close()
+        End Try
+    End Sub
+
 
     Private Sub UpdateCashRecInDatabase(cashiername As String, datevalue As String)
         Try

@@ -15,7 +15,7 @@ Public Class frm_viewbill_admin
                 conn.Close()
             End If
             conn.Open()
-            cmd = New MySqlCommand("SELECT * FROM `tbi_pos`  GROUP BY billno", conn)
+            cmd = New MySqlCommand("SELECT * FROM `tbi_pos` GROUP BY billno ", conn)
 
             dr = cmd.ExecuteReader
             While dr.Read
@@ -117,53 +117,7 @@ Public Class frm_viewbill_admin
 
         End If
     End Sub
-    Private Sub Display_Bill(billno As String)
-        ' Instantiate and show the BillDetailsForm
-        Dim billDetailsForm As New view_admin_bill()
 
-        Try
-
-
-            If conn.State = ConnectionState.Open Then
-                conn.Close()
-            End If
-
-            conn.Open()
-            billDetailsForm.ListBox1.Items.Clear()
-            cmd = New MySqlCommand("SELECT billno, Customer_Name, proname,qty,Customer_Mobile,cashier_name,totalpriceqty,paymode, billdate, grandtotal FROM tbi_pos WHERE billno = @billno", conn)
-            cmd.Parameters.AddWithValue("@billno", billno)
-
-            dr = cmd.ExecuteReader
-
-            If dr.HasRows Then
-                While dr.Read()
-
-                    billDetailsForm.txt_billno.Text = dr("billno").ToString()
-                    billDetailsForm.txt_billdate.Text = dr("billdate").ToString()
-                    billDetailsForm.txt_cusname.Text = dr("Customer_Name").ToString()
-                    billDetailsForm.txt_cusmob.Text = dr("Customer_Mobile").ToString()
-                    billDetailsForm.txt_mod.Text = dr("paymode").ToString()
-                    billDetailsForm.txt_total.Text = dr("grandtotal").ToString()
-                    billDetailsForm.txt_cashier.Text = dr("cashier_name").ToString()
-
-
-                    Dim combinedItem As String = dr("proname").ToString() & " - " & dr("qty").ToString() & "  " & "(Qty)"
-                    billDetailsForm.ListBox1.Items.Add(combinedItem)
-                    Dim combinedItem2 As String = dr("proname").ToString() & " - " & dr("totalpriceqty").ToString() & " " & "(Each Qty Price)"
-                    billDetailsForm.ListBox2.Items.Add(combinedItem2)
-                End While
-            Else
-                MsgBox("No details found for the selected bill.", MsgBoxStyle.Information)
-            End If
-
-
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-
-
-        billDetailsForm.Show()
-    End Sub
 
 
 

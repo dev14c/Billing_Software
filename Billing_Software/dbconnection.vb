@@ -39,13 +39,7 @@ Module dbconnection
             cmd = New MySqlCommand("SELECT MAX(billno) AS latestBillNo FROM tbi_pos", conn)
 
             Dim result As Object = cmd.ExecuteScalar()
-            'If dr.HasRows AndAlso dr.Read() Then
-            ' If there are records, get the latest billno
-            '   GetbillNo = (Convert.ToInt64(dr("latestBillNo")) + 1).ToString()
-            'Else
-            ' If no records, set the billno to the current year + 1
-            '   GetbillNo = Date.Now.ToString("yyyy") & "1"
-            'End If
+
             If result IsNot DBNull.Value AndAlso result IsNot Nothing Then
                 GetbillNo = (Convert.ToInt64(result) + 1).ToString()
             Else

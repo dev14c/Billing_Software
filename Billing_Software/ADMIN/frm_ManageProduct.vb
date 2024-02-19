@@ -152,7 +152,7 @@ Public Class frm_ManageProduct
                 conn.Close()
             End If
             conn.Open()
-            'image comnvered to binaryformate'
+
             Dim FileSize As UInt32
             Dim mstream As New System.IO.MemoryStream
             pic_barcode.Image.Save(mstream, System.Drawing.Imaging.ImageFormat.Jpeg)
@@ -162,8 +162,8 @@ Public Class frm_ManageProduct
 
             'cmd = New MySqlCommand("INSERT INTO `tblproduct`(`procode`, `proname`, `progroup`, `uom`, `Rate_per`, `stock`, `purchase_price`, `Selling_price`, `tax`, `totalprice`, `barcode`)
             'VALUES (@procode, @proname,@progroup, @uom, @rate_per, @stock, @purchase_price, @selling_price, @tax, @totalprice, @barcode)", conn)
-            cmd = New MySqlCommand("INSERT INTO `tblproduct`(`procode`, `proname`, `progroup`, `uom`, `Rate_per`, `stock`, `purchase_price`, `tax`, `totalprice`, `barcode` , `discount_percent`, `discount_amt`,`selling_price`)
-    VALUES (@procode, @proname,@progroup, @uom, @rate_per, @stock, @purchase_price, @tax, @totalprice, @barcode, @discount_per, @discount_amt, @selling_price)", conn)
+            cmd = New MySqlCommand("INSERT INTO `tblproduct`(`procode`, `proname`, `progroup`, `uom`, `Rate_per`, `stock`, `purchase_price`, `tax`, `totalprice`, `barcode` , `discount_percent`, `discount_amt`,`selling_price`,`aftergst`,`gstamount`)
+    VALUES (@procode, @proname,@progroup, @uom, @rate_per, @stock, @purchase_price, @tax, @totalprice, @barcode, @discount_per, @discount_amt, @selling_price,@aftergst,@gstamount)", conn)
 
             cmd.Parameters.Clear()
             cmd.Parameters.AddWithValue("@procode", txt_procode.Text)
@@ -179,11 +179,15 @@ Public Class frm_ManageProduct
             cmd.Parameters.AddWithValue("@totalprice", CDec(txt_totalprice.Text))
             cmd.Parameters.AddWithValue("@discount_amt", CDec(txt_discount_amt.Text))
             cmd.Parameters.AddWithValue("@discount_per", CDec(txt_discount.Text))
+            cmd.Parameters.AddWithValue("@aftergst", CDec(afterGST.Text))
+            cmd.Parameters.AddWithValue("@gstamount", CDec(gstAmount.Text))
             cmd.Parameters.AddWithValue("@barcode", arrImage)
 
             i = cmd.ExecuteNonQuery
             If i > 0 Then
                 MsgBox("New Porudct Save Success", vbInformation)
+                loadproduct()
+
             Else
                 MsgBox("New Porudct Save Failed", vbExclamation)
             End If
@@ -218,6 +222,8 @@ Public Class frm_ManageProduct
 
             If count > 0 Then
                 MsgBox("Entered product code is " & txt_SearchProductCode.Text)
+                txt_procode.Clear()
+
             Else
                 MsgBox("Product code not found", vbExclamation)
                 txt_SearchProductCode.Clear()
@@ -225,7 +231,7 @@ Public Class frm_ManageProduct
             End If
 
 
-            cmd = New MySqlCommand("SELECT * FROM tblproduct WHERE procode LIKE @procode", conn)
+            cmd = New MySqlCommand("SELECT * FROM tblproduct WHERE procode = @procode", conn)
             cmd.Parameters.AddWithValue("@procode", txt_SearchProductCode.Text)
 
             dr = cmd.ExecuteReader
@@ -241,6 +247,8 @@ Public Class frm_ManageProduct
                 txt_discount.Text = dr.Item("discount_percent")
                 txt_discount_amt.Text = dr.Item("discount_amt")
                 txt_totalprice.Text = dr.Item("totalprice")
+                gstAmount.Text = dr.Item("gstamount")
+                afterGST.Text = dr.Item("aftergst")
             End While
 
 
@@ -261,12 +269,14 @@ Public Class frm_ManageProduct
                 Return
             End If
 
+
+
             If conn.State = ConnectionState.Open Then
                 conn.Close()
             End If
             conn.Open()
             'cmd = New MySqlCommand("UPDATE `tblproduct` SET `proname`=@proname,`progroup`=@progroup,`uom`=@uom,`location`=@location,`price`=@price,`tax`=@tax,`totalprice`=@totalprice WHERE `procode`=@procode", conn)
-            cmd = New MySqlCommand("UPDATE `tblproduct` SET `proname`=@proname, `progroup`=@progroup, `uom`=@uom, `Rate_per` = @mrp, `stock` = @qty, `purchase_price`=@pp, `tax`=@tax, `totalprice`=@totalprice ,`discount_percent`=@discount_per,`discount_amt`=@discount_amt,`selling_price`=@sp  where `procode`=@procode ", conn)
+            cmd = New MySqlCommand("UPDATE `tblproduct` SET `proname`=@proname, `progroup`=@progroup, `uom`=@uom, `Rate_per` = @mrp, `stock` = @qty, `purchase_price`=@pp, `tax`=@tax, `totalprice`=@totalprice ,`discount_percent`=@discount_per,`discount_amt`=@discount_amt,`selling_price`=@sp,`gstamount`=@gstamount,`aftergst`=@aftergst  where `procode`=@procode ", conn)
 
             cmd.Parameters.Clear()
 
@@ -282,6 +292,8 @@ Public Class frm_ManageProduct
             cmd.Parameters.AddWithValue("@discount_per", txt_discount.Text)
             cmd.Parameters.AddWithValue("@sp", txt_selling_price.Text)
             cmd.Parameters.AddWithValue("@discount_amt", txt_discount_amt.Text)
+            cmd.Parameters.AddWithValue("@aftergst", CDec(afterGST.Text))
+            cmd.Parameters.AddWithValue("@gstamount", CDec(gstAmount.Text))
 
 
             i = cmd.ExecuteNonQuery
@@ -362,7 +374,7 @@ Public Class frm_ManageProduct
     Private Sub txt_purchase_price_Leave(sender As Object, e As EventArgs) Handles txt_purchase_price.Leave
 
         If txt_purchase_price.Text <> "" Then
-            If CDec(txt_purchase_price.Text) > p_price Then
+            If CDec(txt_purchase_price.Text) > p_price Then 'if pruchase price is less than after gst price'
                 txt_purchase_price.Clear()
                 txt_purchase_price.Focus()
                 MsgBox("Enter vailid purchase price", vbCritical)
@@ -378,7 +390,7 @@ Public Class frm_ManageProduct
     Sub updateGST()
         Try
             Dim mrp, b, cbotax As Decimal
-            Decimal.TryParse(txt_rate_per.Text, mrp)
+            Decimal.TryParse(txt_selling_price.Text, mrp)
             'Decimal.TryParse(txt_rate_per.Text, b)
             Decimal.TryParse(cbo_tax.Text, cbotax)
             b = 100 + cbotax
@@ -392,24 +404,6 @@ Public Class frm_ManageProduct
         Catch ex As Exception
             MsgBox(ex)
         End Try
-    End Sub
-    Private Sub updatepurchaseprice()
-
-        Dim qty As Integer
-        If Integer.TryParse(txt_qty.Text, qty) Then
-
-            Dim rate As Integer
-            If Integer.TryParse(txt_rate_per.Text, rate) Then
-
-                txt_purchase_price.Text = (qty * rate).ToString()
-            Else
-
-                MessageBox.Show("Please enter a valid rate.")
-            End If
-        Else
-
-            MessageBox.Show("Please enter a valid quantity.")
-        End If
     End Sub
 
 
@@ -433,16 +427,19 @@ Public Class frm_ManageProduct
 
     Private Sub txt_discount_TextChanged(sender As Object, e As EventArgs) Handles txt_discount.TextChanged
         Try
-            Dim mrp, dis_per, dis_amt As Decimal
+            Dim mrp, dis_per, dis_amt, m, p As Decimal
             Decimal.TryParse(txt_rate_per.Text, mrp)
             'Decimal.TryParse(txt_rate_per.Text, b)
             Decimal.TryParse(txt_discount.Text, dis_per)
             dis_amt = Math.Round(dis_per / 100 * mrp, 2)
             txt_selling_price.Text = mrp - dis_amt
+
             txt_discount_amt.Text = dis_amt
             'MsgBox(a & " " & c)
         Catch ex As Exception
             MsgBox(ex)
         End Try
     End Sub
+
+
 End Class
